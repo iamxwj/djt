@@ -1,6 +1,6 @@
 package com.djt.utils.alipay.util;
 
-import com.tzdr.utils.alipay.config.AlipayConfig;
+import com.djt.utils.alipay.config.AlipayConfig;
 
 import java.io.FileWriter;
 import java.io.IOException;

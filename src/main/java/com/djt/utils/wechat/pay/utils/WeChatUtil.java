@@ -1,15 +1,15 @@
 package com.djt.utils.wechat.pay.utils;
 
-import com.tzdr.common.PaymentOperationState;
-import com.tzdr.data.payment.SubmitOrderInfo;
-import com.tzdr.data.payment.xml.WeChatPay;
-import com.tzdr.data.payment.xml.WeChatPayCallbackInfo;
-import com.tzdr.data.payment.xml.WeChatPayDirectPay;
-import com.tzdr.utils.BeanToMapUtils;
-import com.tzdr.utils.UnknowOperationTypeException;
-import com.tzdr.utils.XMLObjectParser;
-import com.tzdr.utils.alipay.util.AlipayCore;
-import com.tzdr.utils.alipay.util.AlipaySubmit;
+import com.djt.common.PaymentOperationState;
+import com.djt.data.payment.SubmitOrderInfo;
+import com.djt.data.payment.xml.WeChatPay;
+import com.djt.data.payment.xml.WeChatPayCallbackInfo;
+import com.djt.data.payment.xml.WeChatPayDirectPay;
+import com.djt.utils.BeanToMapUtils;
+import com.djt.utils.UnknowOperationTypeException;
+import com.djt.utils.XMLObjectParser;
+import com.djt.utils.alipay.util.AlipayCore;
+import com.djt.utils.alipay.util.AlipaySubmit;
 
 import java.util.Map;
 

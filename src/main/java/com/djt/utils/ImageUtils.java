@@ -7,7 +7,7 @@
 
 package com.djt.utils;
 
-import com.tzdr.data.ResponseData;
+import com.djt.data.ResponseData;
 import org.apache.log4j.Logger;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;

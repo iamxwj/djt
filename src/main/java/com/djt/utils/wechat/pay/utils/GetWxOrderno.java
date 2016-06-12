@@ -1,9 +1,9 @@
 package com.djt.utils.wechat.pay.utils;
 
 
-import com.tzdr.data.payment.xml.WeChatPayCallbackInfo;
-import com.tzdr.utils.XMLObjectParser;
-import com.tzdr.utils.wechat.pay.utils.http.HttpClientConnectionManager;
+import com.djt.data.payment.xml.WeChatPayCallbackInfo;
+import com.djt.utils.XMLObjectParser;
+import com.djt.utils.wechat.pay.utils.http.HttpClientConnectionManager;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.params.ClientPNames;

@@ -1,7 +1,7 @@
 package com.djt.utils.alipay.services;
 
-import com.tzdr.utils.alipay.config.AlipayConfig;
-import com.tzdr.utils.alipay.util.AlipaySubmit;
+import com.djt.utils.alipay.config.AlipayConfig;
+import com.djt.utils.alipay.util.AlipaySubmit;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;

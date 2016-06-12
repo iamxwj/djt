@@ -1,11 +1,11 @@
 package com.djt.utils.alipay.util;
 
-import com.tzdr.utils.alipay.config.AlipayConfig;
-import com.tzdr.utils.alipay.sign.MD5;
-import com.tzdr.utils.alipay.util.httpClient.HttpProtocolHandler;
-import com.tzdr.utils.alipay.util.httpClient.HttpRequest;
-import com.tzdr.utils.alipay.util.httpClient.HttpResponse;
-import com.tzdr.utils.alipay.util.httpClient.HttpResultType;
+import com.djt.utils.alipay.config.AlipayConfig;
+import com.djt.utils.alipay.sign.MD5;
+import com.djt.utils.alipay.util.httpClient.HttpProtocolHandler;
+import com.djt.utils.alipay.util.httpClient.HttpRequest;
+import com.djt.utils.alipay.util.httpClient.HttpResponse;
+import com.djt.utils.alipay.util.httpClient.HttpResultType;
 import org.apache.commons.httpclient.NameValuePair;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;

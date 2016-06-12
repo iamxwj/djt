@@ -1,6 +1,6 @@
 package com.djt.utils.alipay.util;
 
-import com.tzdr.utils.alipay.config.AlipayConfig;
+import com.djt.utils.alipay.config.AlipayConfig;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.UnsupportedEncodingException;

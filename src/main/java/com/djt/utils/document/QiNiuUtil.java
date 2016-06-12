@@ -6,8 +6,8 @@ import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import com.qiniu.util.StringUtils;
-import com.tzdr.data.document.QiNiuResponseInfo;
-import com.tzdr.utils.JSONUtil;
+import com.djt.data.document.QiNiuResponseInfo;
+import com.djt.utils.JSONUtil;
 
 /**
  * Created by Zhipeng on 2016/6/6.

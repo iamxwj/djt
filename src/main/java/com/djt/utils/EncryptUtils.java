@@ -7,7 +7,7 @@
 
 package com.djt.utils;
 
-import com.tzdr.constant.SystemConstants;
+import com.djt.constant.SystemConstants;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

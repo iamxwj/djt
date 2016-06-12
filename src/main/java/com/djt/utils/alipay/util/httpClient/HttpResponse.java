@@ -1,7 +1,7 @@
 package com.djt.utils.alipay.util.httpClient;
 
 
-import com.tzdr.utils.alipay.config.AlipayConfig;
+import com.djt.utils.alipay.config.AlipayConfig;
 import org.apache.commons.httpclient.Header;
 
 import java.io.UnsupportedEncodingException;

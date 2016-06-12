@@ -1,6 +1,6 @@
 package com.djt.utils.alipay.android;
 
-import com.tzdr.utils.alipay.config.AlipayConfig;
+import com.djt.utils.alipay.config.AlipayConfig;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

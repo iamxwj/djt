@@ -1,6 +1,6 @@
 package com.djt.utils.wechat.pay.servlet;
 
-import com.tzdr.utils.wechat.pay.utils.Sha1Util;
+import com.djt.utils.wechat.pay.utils.Sha1Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

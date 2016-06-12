@@ -7,6 +7,8 @@
 
 package com.djt.domain;
 
+import com.djt.common.UserType;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -17,7 +19,7 @@ import java.sql.Timestamp;
  * @date 2015/12/2
  */
 @Entity
-@Table(name = "user_info", schema = "", catalog = "tzdr")
+@Table(name = "user_info", schema = "", catalog = "djt")
 public class UserInfoEntity {
     private Long userId;
     private String name;
@@ -27,6 +29,10 @@ public class UserInfoEntity {
     private Byte userType;
     private Timestamp createTime;
     private Timestamp updateTime;
+
+    public UserInfoEntity() {
+        userType = UserType.DEFAULT;
+    }
 
     @Id
     @Column(name = "user_id")

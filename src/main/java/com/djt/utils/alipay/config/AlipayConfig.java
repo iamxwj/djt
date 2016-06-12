@@ -21,7 +21,7 @@ package com.djt.utils.alipay.config;
  *2、更换浏览器或电脑，重新登录查询。
  */
 
-import com.tzdr.utils.alipay.util.UtilDate;
+import com.djt.utils.alipay.util.UtilDate;
 
 public class AlipayConfig {
     //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓

@@ -7,7 +7,7 @@
 
 package com.djt.data.zimg;
 
-import com.tzdr.utils.ConfigUtils;
+import com.djt.utils.ConfigUtils;
 
 /**
  * ZimgResult

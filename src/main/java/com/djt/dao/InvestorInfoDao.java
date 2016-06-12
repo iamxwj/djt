@@ -1,0 +1,53 @@
+/*
+ * @(#)InvestorDao.java, 2015/11/13.
+ *
+ * Copyright 2015 Alibaodu, Inc. All rights reserved.
+ * ALIBAODU PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
+
+package com.djt.dao;
+
+import com.djt.domain.InvestorInfoEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
+
+/**
+ * InvestorInfoDao
+ *
+ * @author chenbin
+ * @date 2015/11/13
+ */
+public interface InvestorInfoDao extends JpaSpecificationExecutor<InvestorInfoEntity>,
+        JpaRepository<InvestorInfoEntity, Long> {
+
+    /**
+     * 通过用户ID获取投资人信息
+     * @param userId
+     * @return
+     */
+    @Query("select investor from InvestorInfoEntity investor where investor.userInfoEntity.userId = ?1")
+    InvestorInfoEntity findByUserId(long userId);
+
+    /**
+     * 通过投资人ID获取投资人信息
+     * @param investorId
+     * @return
+     */
+    InvestorInfoEntity findByInvestorId(long investorId);
+
+    List<InvestorInfoEntity> findByInvestType(String investType);
+    @Query("from InvestorInfoEntity i where i.investType = ?1 and i.investPhase like ?2")
+    List<InvestorInfoEntity> findByInvestTypeAndInvestPhaseLike(String investType, String investPhase);
+
+    List<InvestorInfoEntity> findByTagLike(String tag);
+
+    List<InvestorInfoEntity> findByFirstFieldsLike(String firstFields);
+
+    @Query("from InvestorInfoEntity i where i.tag like ?1 or i.firstFields like ?2")
+    List<InvestorInfoEntity> findByTagAndInvestPhaseLike(String tag, String firstFields);
+
+    List<InvestorInfoEntity> findByInvestorNameLike(String investorName);
+}
