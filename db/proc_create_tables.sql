@@ -59,7 +59,6 @@ CREATE TABLE IF NOT EXISTS `user_info` (
 #===============================================================================================
 CREATE TABLE IF NOT EXISTS `institution_info` (
   `institution_id` BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT '机构ID',
-  `user_id` BIGINT UNSIGNED COMMENT '用户ID',
   `institution_name` VARCHAR(60) NOT NULL DEFAULT '' COMMENT '机构名称',
   `institution_level` TINYINT NOT NULL DEFAULT 0 COMMENT '机构评级 1 ==> 正科; 2==>副处; ... 7==>正部',
   `found_year` VARCHAR(10) NOT NULL DEFAULT '' COMMENT '成立时间',
@@ -72,8 +71,6 @@ CREATE TABLE IF NOT EXISTS `institution_info` (
   `main_phase` VARCHAR(500) NOT NULL DEFAULT '' COMMENT '主要投资阶段',
   `tag` VARCHAR(500) NOT NULL DEFAULT '' COMMENT '标签',
 
-  `first_fields` VARCHAR(500) NOT NULL DEFAULT '' COMMENT '一级行业',
-  `second_fields` VARCHAR(500) NOT NULL DEFAULT '' COMMENT '二级行业',
 
   `web_logo` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '机构Web Logo',
   `mobile_logo` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '机构Mobile Logo',
@@ -93,19 +90,14 @@ CREATE TABLE IF NOT EXISTS `institution_info` (
   `annual_rank` INTEGER NOT NULL DEFAULT 0 COMMENT '年度排名',
   `active_rank` INTEGER NOT NULL DEFAULT 0 COMMENT '活跃度排名',
 
-  `fans_number` INTEGER NOT NULL DEFAULT 0 COMMENT '粉丝数量',
-  `talk_number` INTEGER NOT NULL DEFAULT 0 COMMENT '约谈数量',
-  `invest_number` INTEGER NOT NULL DEFAULT 0 COMMENT '投资数量',
 
   `achievement` VARCHAR(600) NOT NULL DEFAULT '' COMMENT '机构的成就与荣誉',
   `institution_intro` VARCHAR(1000) NOT NULL DEFAULT '' COMMENT '机构简介',
 
-  `authenticated` BOOLEAN NOT NULL DEFAULT FALSE COMMENT '机构是否认证过',
 
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
-  FOREIGN KEY (`user_id`) REFERENCES `user_info`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `institution_member` (
@@ -160,7 +152,6 @@ CREATE TABLE IF NOT EXISTS `institution_case` (
 #=======================================================================================
 create TABLE IF NOT EXISTS `investor_info` (
   `investor_id` BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT '投资人ID',
-  `user_id` BIGINT UNSIGNED,
   `investor_name` VARCHAR(30) NOT NULL DEFAULT "" COMMENT '投资人名字',
   `investor_level` TINYINT NOT NULL DEFAULT 0 COMMENT '投资人评级',
   `birth_year` varchar(10) NOT NULL DEFAULT "" COMMENT '投资人出生年份',
@@ -169,24 +160,12 @@ create TABLE IF NOT EXISTS `investor_info` (
   `age` INTEGER NOT NULL DEFAULT 1960 COMMENT '年龄',
   `gender` VARCHAR(20) NOT NULL DEFAULT "" COMMENT '性别',
 
-  `invest_type` VARCHAR(200) NOT NULL DEFAULT "" COMMENT '投资类型',
-  `invest_phase` VARCHAR(200) NOT NULL DEFAULT "" COMMENT '投资阶段',
-  `main_phase` VARCHAR(100) NOT NULL DEFAULT "" COMMENT '主要投资阶段',
   `tag` VARCHAR(200) NOT NULL DEFAULT "" COMMENT '阿里系，北大系等标签',
 
-  `first_fields` VARCHAR(500) NOT NULL DEFAULT '' COMMENT '一级行业',
-  `second_fields` VARCHAR(500) NOT NULL DEFAULT '' COMMENT '二级行业',
 
   `investor_intro` VARCHAR(1200) NOT NULL DEFAULT "" COMMENT '投资人简介',
   `achievement` VARCHAR(1200) NOT NULL DEFAULT "" COMMENT '成就与荣誉',
   `education` VARCHAR(500) NOT NULL DEFAULT "" COMMENT '教育背景',
-  `edu_exp` VARCHAR(1000) NOT NULL DEFAULT "" COMMENT '教育经历',
-  `work_exp` VARCHAR(1200) NOT NULL DEFAULT "" COMMENT '工作经历',
-  `invest_philosophy` VARCHAR(600) NOT NULL DEFAULT "" COMMENT '投资理念',
-  `fund_number` DOUBLE NOT NULL DEFAULT 0 COMMENT '基金规模',
-  `fund_unit` VARCHAR(15) NOT NULL DEFAULT '' COMMENT '基金单位（万元，万美元，亿元，亿美元）',
-  `others` VARCHAR(600) NOT NULL DEFAULT "" COMMENT '其他信息',
-
   `institution_name` VARCHAR(50) NOT NULL DEFAULT "" COMMENT '所属机构',
   `investor_position` VARCHAR(60)  NOT NULL DEFAULT "" COMMENT '投资人职位',
   `institution_id` BIGINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '所属投资机构ID',
@@ -200,23 +179,13 @@ create TABLE IF NOT EXISTS `investor_info` (
   `annual_rank` INTEGER NOT NULL DEFAULT 0 COMMENT '年度排名',
   `active_rank` INTEGER NOT NULL DEFAULT 0 COMMENT '活跃度排名',
 
-  `fans_number` BIGINT NOT NULL DEFAULT 0 COMMENT '粉丝数量',
-  `talk_number` INTEGER NOT NULL DEFAULT 0 COMMENT '约谈数量',
-  `invest_number` INTEGER NOT NULL DEFAULT 0 COMMENT '投资数量',
-
-  `province` VARCHAR(40) NOT NULL DEFAULT '' COMMENT '投资人所在省',
-  `city` VARCHAR(40) NOT NULL DEFAULT '' COMMENT '投资人所在市',
-  `address` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '投资人地址',
-
-  `authenticated` BOOLEAN NOT NULL DEFAULT FALSE COMMENT '投资人是否认证过',
   `web_portrait` VARCHAR(1000) NOT NULL DEFAULT '' COMMENT 'Web端投资人头像(以|分隔)',
   `mobile_portrait` VARCHAR(500) NOT NULL DEFAULT '' COMMENT '移动端投资人头像',
   `investor_photo` VARCHAR(10000) NOT NULL DEFAULT '' COMMENT '投资人照片(以|分隔)',
 
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
-  FOREIGN KEY (`user_id`) REFERENCES `user_info`(`user_id`) ON DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 

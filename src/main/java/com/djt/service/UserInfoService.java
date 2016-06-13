@@ -10,7 +10,8 @@ import javax.servlet.http.HttpSession;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Created by chenbin on 2015/10/27.
+ * @author HOU Zhipeng
+ * @date 2016/06/12
  */
 public interface UserInfoService {
 

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * CaptchaService
  *
- * @author chenbin
- * @date 2015/11/9
+ * @author HOU Zhipeng
+ * @date 2016/06/12
  */
 public interface CaptchaService {
 

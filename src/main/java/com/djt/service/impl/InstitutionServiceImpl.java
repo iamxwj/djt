@@ -26,8 +26,8 @@ import java.util.*;
 /**
  * InstitutionServiceImpl
  *
- * @author zhipeng
- * @date 2016/06/10
+ * @author HOU Zhipeng
+ * @date 2016/06/12
  */
 @Service
 public class InstitutionServiceImpl implements InstitutionService {

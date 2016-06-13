@@ -5,7 +5,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import java.util.Map;
 
 /**
- * Created by Zhipeng on 2016/5/12.
+ * Created by Zhipeng on 2016/6/12.
  */
 public class BeanToMapUtils {
     public static Map<String,String> describe(Object T){

@@ -27,8 +27,8 @@ import java.util.*;
 /**
  * InvestorServiceImpl
  *
- * @author chenbin
- * @date 2015/11/18
+ * @author HOU Zhipeng
+ * @date 2016/06/12
  */
 @Service
 public class InvestorServiceImpl implements InvestorService {

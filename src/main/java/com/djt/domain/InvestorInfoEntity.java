@@ -14,8 +14,8 @@ import java.util.List;
 /**
  * InvestorInfoEntity
  *
- * @author chenbin
- * @date 2015/12/2
+ * @author HOU Zhipeng
+ * @date 2016/06/12
  */
 @Entity
 @Table(name = "investor_info", schema = "", catalog = "djt")

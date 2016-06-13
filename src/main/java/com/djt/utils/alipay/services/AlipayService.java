@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Map;
 //http://localhost:8080/directPayTest.jsp?detailId=100&subject=test&alibody=test&total_fee=0.01
 
+/**
+ * @author HOU Zhipeng
+ * @date 2016/06/12
+ */
 public class AlipayService {
 
     private final static String ALIPAY_GATEWAY_OLD = "https://www.alipay.com/cooperate/gateway.do?";

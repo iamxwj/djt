@@ -22,8 +22,8 @@ import java.util.Random;
 /**
  * CaptchaServiceImpl
  *
- * @author chenbin
- * @date 2015/11/9
+ * @author HOU Zhipeng
+ * @date 2016/06/12
  */
 @Service
 public class CaptchaServiceImpl implements CaptchaService {

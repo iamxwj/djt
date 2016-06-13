@@ -1,5 +1,9 @@
 package com.djt.utils.alipay.android;
 
+/**
+ * @author HOU Zhipeng
+ * @date 2016/06/12
+ */
 public final class Base64 {
 
 	private static final int BASELENGTH = 128;

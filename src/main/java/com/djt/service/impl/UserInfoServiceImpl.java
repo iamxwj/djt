@@ -28,8 +28,8 @@ import java.util.concurrent.ExecutionException;
 /**
  * SpringUserDetailServiceImpl
  *
- * @author chenbin
- * @date 2015/10/28
+ * @author HOU Zhipeng
+ * @date 2016/06/12
  */
 @Service
 public class UserInfoServiceImpl implements UserInfoService {

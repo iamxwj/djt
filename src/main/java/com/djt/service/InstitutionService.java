@@ -18,8 +18,8 @@ import java.util.List;
 /**
  * InstitutionService
  *
- * @author chenbin
- * @date 2015/11/4
+ * @author HOU Zhipeng
+ * @date 2016/06/12
  */
 public interface InstitutionService {
     /**

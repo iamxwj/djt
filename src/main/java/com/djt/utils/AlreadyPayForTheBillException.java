@@ -1,7 +1,7 @@
 package com.djt.utils;
 
 /**
- * Created by Zhipeng on 2016/5/20.
+ * Created by Zhipeng on 2016/6/12.
  */
 public class AlreadyPayForTheBillException extends Exception {
     public AlreadyPayForTheBillException(){

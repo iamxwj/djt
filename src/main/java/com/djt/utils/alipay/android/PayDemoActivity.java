@@ -5,7 +5,10 @@ import com.djt.utils.alipay.config.AlipayConfig;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-
+/**
+ * @author HOU Zhipeng
+ * @date 2016/06/12
+ */
 public class PayDemoActivity {
 
     // 商户PID

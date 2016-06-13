@@ -2,7 +2,7 @@ package com.djt.utils;
 
 /**
  * 金额计算工具
- * Created by Zhipeng on 2016/5/10.
+ * Created by Zhipeng on 2016/6/12.
  */
 public class AmountCalculatorUtil {
     public static final Long projectDeliveryInvestLevelDiff = 200L;
