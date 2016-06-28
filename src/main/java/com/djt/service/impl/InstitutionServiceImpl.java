@@ -12,13 +12,19 @@ import com.djt.data.*;
 import com.djt.data.condition.InvestSearchCondition;
 import com.djt.data.institution.*;
 import com.djt.domain.*;
+import com.djt.domain.es.InstitutionDocument;
+import com.djt.repositories.InstitutionRepository;
 import com.djt.service.InstitutionService;
 import com.djt.utils.*;
+import com.qiniu.util.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
 import java.util.*;
@@ -37,18 +43,22 @@ public class InstitutionServiceImpl implements InstitutionService {
     @Autowired
     private InstitutionInfoDao institutionInfoDao;
 
+    @Autowired
+    private InstitutionRepository institutionRepository;
+
     /**
      * 透过机构ID获取投资机构信息
+     *
      * @param institutionId
      * @return
      */
     @Override
     public ResponseData getInstitutionById(Long institutionId) {
-        if(institutionId == null) {
+        if (institutionId == null) {
             logger.error("method parameter institutionId is null");
             return new ResponseData(false, "institutionId is null", null);
         }
-        if(institutionId == 0) {
+        if (institutionId == 0) {
             logger.error("method parameter institutionId == 0");
             return new ResponseData(false, "institutionId == 0", null);
         }
@@ -56,7 +66,7 @@ public class InstitutionServiceImpl implements InstitutionService {
 
 
         InstitutionInfoEntity entity = institutionInfoDao.findByInstitutionId(institutionId);
-        if(entity == null)
+        if (entity == null)
             return new ResponseData(false, "get institution info fail", null);
 
         InstitutionInfo info = parseInstitutionEntity(entity);
@@ -65,6 +75,7 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     /**
      * 解析机构Entity
+     *
      * @param entity
      * @return
      */
@@ -83,25 +94,25 @@ public class InstitutionServiceImpl implements InstitutionService {
 
         String[] phaseArray = entity.getInvestPhase().split("\\|");
         List<String> investPhase;
-        if(phaseArray[0].length() == 0)
+        if (phaseArray[0].length() == 0)
             investPhase = new ArrayList<>();
         else
             investPhase = Arrays.asList(phaseArray);
 
-        String mainPhase =entity.getMainPhase();
+        String mainPhase = entity.getMainPhase();
 
         String tag = entity.getTag();
 
-        List<String> tags = StringUtil.renderStringToList(tag,"\\|");
+        List<String> tags = StringUtil.renderStringToList(tag, "\\|");
 
         String[] firstFieldArray = entity.getFirstFields().split("\\|");
         List<String> firstFields;
-        if(firstFieldArray[0].length() == 0)
+        if (firstFieldArray[0].length() == 0)
             firstFields = new ArrayList<>();
         else
             firstFields = Arrays.asList(firstFieldArray);
 
-        String secondFields= entity.getSecondFields();
+        String secondFields = entity.getSecondFields();
 
         byte successIndicator = entity.getInvestSuccessIndicator();
         byte activeIndicator = entity.getInvestActiveIndicator();
@@ -118,7 +129,7 @@ public class InstitutionServiceImpl implements InstitutionService {
 
 
         String province = entity.getProvince();
-        List<String >locateProvinces = StringUtil.renderStringToList(entity.getLocateProvinces(),"\\|");
+        List<String> locateProvinces = StringUtil.renderStringToList(entity.getLocateProvinces(), "\\|");
         String city = entity.getCity();
         String address = entity.getAddress();
 
@@ -139,7 +150,7 @@ public class InstitutionServiceImpl implements InstitutionService {
                 fansNumber, talkNumber, investNumber,
                 province, locateProvinces, city, address,
                 authenticated, webLogo, mobileLogo, institutionPhoto,
-                 createTime, updateTime);
+                createTime, updateTime);
 
         return info;
     }
@@ -152,23 +163,23 @@ public class InstitutionServiceImpl implements InstitutionService {
         int pageSize = Integer.parseInt(ConfigUtils.getProperty("institution.page_size"));
 
         String property = "fansNumber";
-        if(condition.getOrderBy() != null && condition.getOrderBy().length() != 0) {
+        if (condition.getOrderBy() != null && condition.getOrderBy().length() != 0) {
             property = condition.getOrderBy();
         }
         Pageable page = PageAndSortUtils.pageDescSortRequest(property, condition.getPageNumber(), pageSize);
         //Specification<InstitutionInfoEntity> spec = SpecUtils.institutionListSpec(condition);
         //Iterable<InstitutionInfoEntity> institutionInfoEntityList = institutionInfoDao.findAll(spec, page);
         Iterable<InstitutionInfoEntity> institutionInfoEntityList = institutionInfoDao.findAll();
-        if(institutionInfoEntityList == null) {
+        if (institutionInfoEntityList == null) {
             return null;
         }
 
         List<InstitutionInfo> institutionList = new ArrayList<>();
         Set<Long> institutionIdSet = new HashSet<>();
-        for(InstitutionInfoEntity entity : institutionInfoEntityList) {
+        for (InstitutionInfoEntity entity : institutionInfoEntityList) {
             Long id = entity.getInstitutionId();
 
-            if(institutionIdSet.contains(id)) continue;
+            if (institutionIdSet.contains(id)) continue;
 
             institutionIdSet.add(id);
 
@@ -181,7 +192,7 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     @Override
     public ResponseData getInstitutionIdNameList(String nameLike) {
-        if(nameLike == null || nameLike.length() == 0) {
+        if (nameLike == null || nameLike.length() == 0) {
             String logStr = "method parameter nameLike == " + nameLike;
             logger.error(logStr);
             return new ResponseData(false, logStr, null);
@@ -190,11 +201,11 @@ public class InstitutionServiceImpl implements InstitutionService {
         List<InstitutionInfoEntity> institutionInfoEntityList = institutionInfoDao.findByInstitutionNameLike(nameLike);
 
         List<InstitutionIdName> institutionIdNameList = new ArrayList<>();
-        if(institutionInfoEntityList == null || institutionInfoEntityList.size() == 0) {
+        if (institutionInfoEntityList == null || institutionInfoEntityList.size() == 0) {
             return new ResponseData(true, "result is empty", institutionIdNameList);
         }
 
-        for(InstitutionInfoEntity entity : institutionInfoEntityList) {
+        for (InstitutionInfoEntity entity : institutionInfoEntityList) {
             long institutionId = entity.getInstitutionId();
             String institutionName = entity.getInstitutionName();
 
@@ -207,14 +218,14 @@ public class InstitutionServiceImpl implements InstitutionService {
     @Override
     @Transactional
     public ResponseData uploadInstitutionBasicInfo(InstitutionBasicInfo info) {
-        if(info == null) {
+        if (info == null) {
             String logInfo = "method parameter info == " + info;
             logger.error(logInfo);
             return new ResponseData(false, logInfo, null);
         }
         ValidResult valid = info.validateAllFields();
         logger.debug("field validate result : " + valid.getMsg());
-        if(!valid.isValid()) {
+        if (!valid.isValid()) {
             String msg = valid.getMsg();
             return new ResponseData(false, msg, null);
         }
@@ -231,8 +242,8 @@ public class InstitutionServiceImpl implements InstitutionService {
             entity.setInvestType(info.getInvestType());
 
             StringBuilder sb = new StringBuilder();
-            for(int i = 0; i < info.getInvestPhase().size(); i++) {
-                if(i == 0)
+            for (int i = 0; i < info.getInvestPhase().size(); i++) {
+                if (i == 0)
                     sb.append(info.getInvestPhase().get(i));
                 else
                     sb.append("|" + info.getInvestPhase().get(i));
@@ -243,8 +254,8 @@ public class InstitutionServiceImpl implements InstitutionService {
             entity.setTag(StringUtil.renderListToString(info.getTag()));
 
             StringBuilder sb2 = new StringBuilder();
-            for(int i = 0; i < info.getFirstFields().size(); i++) {
-                if(i == 0)
+            for (int i = 0; i < info.getFirstFields().size(); i++) {
+                if (i == 0)
                     sb2.append(info.getFirstFields().get(i));
                 else
                     sb2.append("|" + info.getFirstFields().get(i));
@@ -276,10 +287,10 @@ public class InstitutionServiceImpl implements InstitutionService {
     public ResponseData uploadInsitutionPhoto(Long institutionId, List<String> url) {
         InstitutionInfoEntity entity = institutionInfoDao.findOne(institutionId);
 
-        if(entity != null) {
+        if (entity != null) {
             StringBuilder sb = new StringBuilder();
-            for(int i = 0; i < url.size(); i++) {
-                if(i == 0)
+            for (int i = 0; i < url.size(); i++) {
+                if (i == 0)
                     sb.append(url.get(i));
                 else
                     sb.append("|" + url.get(i));
@@ -296,7 +307,7 @@ public class InstitutionServiceImpl implements InstitutionService {
     public ResponseData getAllInstitutionList() {
         try {
             Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findAll();
-            List<InstitutionInfo> investorInfos= parseInvestorEntities(institutionInfoEntities);
+            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);
         } catch (Exception e) {
@@ -308,7 +319,7 @@ public class InstitutionServiceImpl implements InstitutionService {
     private List<InstitutionInfo> parseInvestorEntities(Iterable<InstitutionInfoEntity> institutionInfoEntities) {
         List<InstitutionInfo> institutionInfos = new ArrayList<>();
         InstitutionInfo institutionInfo;
-        for(InstitutionInfoEntity in : institutionInfoEntities){
+        for (InstitutionInfoEntity in : institutionInfoEntities) {
             institutionInfo = parseInstitutionEntity(in);
             institutionInfos.add(institutionInfo);
         }
@@ -320,7 +331,7 @@ public class InstitutionServiceImpl implements InstitutionService {
         try {
             phase = "%" + phase + "%";
             Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByInvestTypeAndInvestPhaseLike(investType, phase);
-            List<InstitutionInfo> investorInfos= parseInvestorEntities(institutionInfoEntities);
+            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);
         } catch (Exception e) {
@@ -333,7 +344,7 @@ public class InstitutionServiceImpl implements InstitutionService {
     public ResponseData getInstitutionListByType(String investType) {
         try {
             Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByInvestType(investType);
-            List<InstitutionInfo> investorInfos= parseInvestorEntities(institutionInfoEntities);
+            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);
         } catch (Exception e) {
@@ -345,9 +356,9 @@ public class InstitutionServiceImpl implements InstitutionService {
     @Override
     public ResponseData getInstitutionListByTag(String tag) {
         try {
-            tag = "%" +tag +"%";
+            tag = "%" + tag + "%";
             Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByTagLike(tag);
-            List<InstitutionInfo> investorInfos= parseInvestorEntities(institutionInfoEntities);
+            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);
         } catch (Exception e) {
@@ -359,15 +370,58 @@ public class InstitutionServiceImpl implements InstitutionService {
     @Override
     public ResponseData getListByNameList(String name) {
         try {
-            name = "%" +name +"%";
+            name = "%" + name + "%";
             Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByInstitutionNameLike(name);
-            List<InstitutionInfo> investorInfos= parseInvestorEntities(institutionInfoEntities);
+            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseData(false, "get investor info List exists", null);
         }
+    }
+
+    @Override
+    @ResponseBody
+    public ResponseData getFullSearch(String institutionName, String institutionMember, int page, int size) {
+        try {
+            updateES();
+
+            if (StringUtils.isNullOrEmpty(institutionName)) {
+                institutionName = "?";
+            }
+
+            if (StringUtils.isNullOrEmpty(institutionMember)) {
+                institutionMember = "?";
+            }
+            Iterable<Long> ids = EntityDocumentConvertor.getInstitutionIds(institutionRepository.findByInstitutionNameAndInstitutionMemberNames(institutionName, institutionMember, new PageRequest(page, size)));
+            Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findAll(ids);
+
+            List<InstitutionInfo> institutionInfos = parseInvestorEntities(institutionInfoEntities);
+            return new ResponseData(true, "", institutionInfos);
+        } catch (Exception e) {
+            return new ResponseData(false, "", null);
+        }
+    }
+
+    @Override
+    public ResponseData getFirstField(String firstField, int page, int size) {
+        try {
+            firstField = "%" + firstField + "%";
+            Page<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByFirstFieldsLike(firstField, new PageRequest(page,size));
+            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
+
+            return new ResponseData(true, "get investor info List success", investorInfos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseData(false, "get investor info List exists", null);
+        }
+    }
+
+    private void updateES() {
+        institutionRepository.deleteAll();
+        Iterable<InstitutionDocument> documents = EntityDocumentConvertor.renderInstitutions(institutionInfoDao.findAll());
+        institutionRepository.save(documents);
     }
 
 }

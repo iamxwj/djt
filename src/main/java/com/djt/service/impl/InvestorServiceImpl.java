@@ -13,10 +13,14 @@ import com.djt.data.*;
 import com.djt.data.condition.InvestSearchCondition;
 import com.djt.data.investor.*;
 import com.djt.domain.*;
+import com.djt.repositories.InvestorRepository;
 import com.djt.service.InvestorService;
 import com.djt.utils.*;
+import com.qiniu.util.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,13 +47,15 @@ public class InvestorServiceImpl implements InvestorService {
     @Autowired
     private InstitutionInfoDao institutionInfoDao;
 
+    @Autowired
+    private InvestorRepository investorRepository;
 
     @Override
     public ResponseData getInvestorList(InvestSearchCondition condition) {
         int pageSize = Integer.parseInt(ConfigUtils.getProperty("investor.page_size"));
 
         String property = "fansNumber";
-        if(condition.getOrderBy() != null && condition.getOrderBy().trim().length() != 0) {
+        if (condition.getOrderBy() != null && condition.getOrderBy().trim().length() != 0) {
             property = condition.getOrderBy();
         }
         Pageable page = PageAndSortUtils.pageDescSortRequest(property, condition.getPageNumber(), pageSize);
@@ -59,16 +65,16 @@ public class InvestorServiceImpl implements InvestorService {
 
         //Specification<InvestorInfoEntity> spec = SpecUtils.investorListSpec(condition);
         Iterable<InvestorInfoEntity> investorInfoEntityList = investorInfoDao.findAll();
-        if(investorInfoEntityList == null)
+        if (investorInfoEntityList == null)
             return null;
 
         List<InvestorInfo> investorList = new ArrayList<>();
         Set<Long> investorIdList = new HashSet<>();
 
-        for(InvestorInfoEntity entity : investorInfoEntityList) {
+        for (InvestorInfoEntity entity : investorInfoEntityList) {
             Long investorId = entity.getInvestorId();
 
-            if(investorIdList.contains(investorId)) continue;
+            if (investorIdList.contains(investorId)) continue;
 
             investorIdList.add(investorId);
 
@@ -81,11 +87,11 @@ public class InvestorServiceImpl implements InvestorService {
 
     @Override
     public ResponseData getInvestorById(Long investorId) {
-        if(investorId == null) {
+        if (investorId == null) {
             logger.error(" method parameter investorId is null");
             return new ResponseData(false, "investorId is null", null);
 
-        }else if(investorId == 0) {
+        } else if (investorId == 0) {
             logger.error("method parameter investorId == 0");
             return new ResponseData(false, "investorId == 0", null);
         }
@@ -103,6 +109,7 @@ public class InvestorServiceImpl implements InvestorService {
 
     /**
      * 解析Investor Entity
+     *
      * @param entity
      * @return
      */
@@ -157,7 +164,7 @@ public class InvestorServiceImpl implements InvestorService {
         String investPhase = entity.getInvestPhase();
         String[] phaseArray = investPhase.split("\\|");
         List<String> phaseList;
-        if(phaseArray[0].length() == 0)
+        if (phaseArray[0].length() == 0)
             phaseList = new ArrayList<>();
         else
             phaseList = Arrays.asList(phaseArray);
@@ -167,7 +174,7 @@ public class InvestorServiceImpl implements InvestorService {
         String firstFields = entity.getFirstFields();
         String[] firstFieldArray = firstFields.split("\\|");
         List<String> fieldList;
-        if(firstFieldArray[0].length() == 0)
+        if (firstFieldArray[0].length() == 0)
             fieldList = new ArrayList<>();
         else
             fieldList = Arrays.asList(firstFieldArray);
@@ -178,9 +185,9 @@ public class InvestorServiceImpl implements InvestorService {
         Timestamp lastUpdate = entity.getUpdateTime();
 
         InvestorInfo investorInfo = new InvestorInfo(investorId, investorName, investType, mainPhase, tag, investorPosition, investorLevel, birthYear,
-                nativeProvince,nativeDistrict, education, age, gender, institutionName, fundNumber, fundUnit, successIndicator, activeIndicator, brandIndicator,
+                nativeProvince, nativeDistrict, education, age, gender, institutionName, fundNumber, fundUnit, successIndicator, activeIndicator, brandIndicator,
                 rateIndicator, overallRank, annualRank, activeRank, fansNumber, talkNumber, investNumber, province, city, address,
-                achievement,investorIntro, authenticated,  phaseList, fieldList, secondFields, philosophy, eduExp,
+                achievement, investorIntro, authenticated, phaseList, fieldList, secondFields, philosophy, eduExp,
                 workExp, others, mobilePortraitUrl, webPortraitUrl, investorPhotoUrlList, createTime, lastUpdate);
 
         return investorInfo;
@@ -217,8 +224,8 @@ public class InvestorServiceImpl implements InvestorService {
 
             List<String> webPortraitUrlList = info.getWebPortraitUrl();
             StringBuilder sb = new StringBuilder();
-            for(int i = 0; i < webPortraitUrlList.size(); i++) {
-                if(i == 0)
+            for (int i = 0; i < webPortraitUrlList.size(); i++) {
+                if (i == 0)
                     sb.append(webPortraitUrlList.get(0));
                 else
                     sb.append("|" + webPortraitUrlList.get(1));
@@ -226,7 +233,7 @@ public class InvestorServiceImpl implements InvestorService {
             entity.setWebPortrait(sb.toString());
 
             sb = new StringBuilder();
-            for(int i = 0; i < info.getInvestPhaseList().size(); i++) {
+            for (int i = 0; i < info.getInvestPhaseList().size(); i++) {
                 if (i == 0)
                     sb.append(info.getInvestPhaseList().get(i));
                 else
@@ -236,7 +243,7 @@ public class InvestorServiceImpl implements InvestorService {
 
 
             sb = new StringBuilder();
-            for(int i = 0; i < info.getFirstFieldList().size(); i++) {
+            for (int i = 0; i < info.getFirstFieldList().size(); i++) {
                 if (i == 0)
                     sb.append(info.getFirstFieldList().get(i));
                 else
@@ -284,7 +291,7 @@ public class InvestorServiceImpl implements InvestorService {
 
     @Override
     public ResponseData uploadInvestorPhoto(Long investorId, List<String> urlList) {
-        if(investorId == null || investorId <=0 || urlList == null || urlList.size() == 0) {
+        if (investorId == null || investorId <= 0 || urlList == null || urlList.size() == 0) {
             String msg = "investorId = " + investorId + "; url = " + urlList;
             logger.error(msg);
             return new ResponseData(false, msg, null);
@@ -294,8 +301,8 @@ public class InvestorServiceImpl implements InvestorService {
             InvestorInfoEntity entity = investorInfoDao.findByInvestorId(investorId);
 
             StringBuilder sb = new StringBuilder();
-            for(int i = 0; i < urlList.size(); i++) {
-                if(i == 0)
+            for (int i = 0; i < urlList.size(); i++) {
+                if (i == 0)
                     sb.append(urlList.get(i));
                 else
                     sb.append("|" + urlList.get(i));
@@ -317,7 +324,7 @@ public class InvestorServiceImpl implements InvestorService {
     public ResponseData getAllInvestorList() {
         try {
             List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findAll();
-            List<InvestorInfo> investorInfos= parseInvestorEntities(investorInfoEntities);
+            List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);
         } catch (Exception e) {
@@ -331,7 +338,7 @@ public class InvestorServiceImpl implements InvestorService {
         try {
             phase = "%" + phase + "%";
             List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByInvestTypeAndInvestPhaseLike(investType, phase);
-            List<InvestorInfo> investorInfos= parseInvestorEntities(investorInfoEntities);
+            List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);
         } catch (Exception e) {
@@ -344,7 +351,7 @@ public class InvestorServiceImpl implements InvestorService {
     public ResponseData getInvestorListByType(String investType) {
         try {
             List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByInvestType(investType);
-            List<InvestorInfo> investorInfos= parseInvestorEntities(investorInfoEntities);
+            List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);
         } catch (Exception e) {
@@ -356,9 +363,9 @@ public class InvestorServiceImpl implements InvestorService {
     @Override
     public ResponseData getInvestorListByTag(String tag) {
         try {
-            tag = "%" +tag +"%";
+            tag = "%" + tag + "%";
             List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByTagLike(tag);
-            List<InvestorInfo> investorInfos= parseInvestorEntities(investorInfoEntities);
+            List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);
         } catch (Exception e) {
@@ -370,11 +377,11 @@ public class InvestorServiceImpl implements InvestorService {
     @Override
     public ResponseData getAdvertisment() {
         try {
-            String tag = "%" +"VIP" +"%";
+            String tag = "%" + "VIP" + "%";
             List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByTagLike(tag);
-            List<AdvertismentInfo> investorInfos= parseInvestorEntitiesToAdInfo(investorInfoEntities);
-            
-            List <InstitutionInfoEntity> instituionList = institutionInfoDao.findByTagLike(tag);
+            List<AdvertismentInfo> investorInfos = parseInvestorEntitiesToAdInfo(investorInfoEntities);
+
+            List<InstitutionInfoEntity> instituionList = institutionInfoDao.findByTagLike(tag);
             List<AdvertismentInfo> investorInfos2 = parseInstitutionToAdInfo(instituionList);
             List<AdvertismentInfo> all = new ArrayList<>();
             all.addAll(investorInfos);
@@ -387,20 +394,20 @@ public class InvestorServiceImpl implements InvestorService {
     }
 
     @Override
-    public ResponseData getRecommonderList( List<String> phase) {
+    public ResponseData getRecommonderList(List<String> phase) {
         try {
 
-            String tag = "%" +"VIP" +"%";
+            String tag = "%" + "VIP" + "%";
             List<InvestorInfo> investorInfos = new ArrayList<>();
             List<InvestorInfoEntity> investorInfoEntities1 = investorInfoDao.findByTagLike(tag);
             Set<InvestorInfoEntity> investorInfoEntitySet = new HashSet<>();
             investorInfoEntitySet.addAll(investorInfoEntities1);
             investorInfos.addAll(parseInvestorEntities(investorInfoEntities1));
-            for(String p : phase) {
+            for (String p : phase) {
                 System.out.println(p);
                 String firstFields = "%" + p + "%";
-                List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByFirstFieldsLike(firstFields);
-                investorInfoEntitySet.addAll(investorInfoEntities);
+//                List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByFirstFieldsLike(firstFields);
+//                investorInfoEntitySet.addAll(investorInfoEntities);
             }
             investorInfos = parseInvestorEntities(investorInfoEntitySet);
             return new ResponseData(true, "get Recommonder List success", investorInfos);
@@ -414,9 +421,9 @@ public class InvestorServiceImpl implements InvestorService {
     public ResponseData getListByName(String name) {
         try {
 
-             name = "%" +name +"%";
+            name = "%" + name + "%";
             List<InvestorInfoEntity> investorInfoEntities1 = investorInfoDao.findByInvestorNameLike(name);
-            List <InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities1);
+            List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities1);
             return new ResponseData(true, "get search List success", investorInfos);
         } catch (Exception e) {
             e.printStackTrace();
@@ -424,41 +431,85 @@ public class InvestorServiceImpl implements InvestorService {
         }
     }
 
+    @Override
+    public ResponseData getFullSearch(String institutionName, String institutionMember, String position, int page, int size) {
+        try {
+            updateES();
+
+            if (StringUtils.isNullOrEmpty(institutionName)) {
+                institutionName = "?";
+            }
+
+            if (StringUtils.isNullOrEmpty(institutionMember)) {
+                institutionMember = "?";
+            }
+            if (StringUtils.isNullOrEmpty(position)) {
+                position = "?";
+            }
+            Iterable<Long> ids =
+                    EntityDocumentConvertor
+                            .getInvestorIds(investorRepository.findByInvestorNameAndInstitutionNameAndInvestorPosition(institutionName, institutionMember, position, new PageRequest(page, size)));
+            Iterable<InvestorInfoEntity> InvestorInfoEntities = investorInfoDao.findAll(ids);
+
+            List<InvestorInfo> investorInfos = parseInvestorEntities(InvestorInfoEntities);
+            return new ResponseData(true, "", investorInfos);
+        } catch (Exception e) {
+            return new ResponseData(false, "", null);
+        }
+    }
+
+    @Override
+    public ResponseData getByFirstField(String firstField, Byte position, int page, int size) {
+        try {
+
+            firstField = "%" + firstField + "%";
+            Page<InvestorInfoEntity> investorInfoEntities1 = investorInfoDao.findByLevelTypeAndFirstFieldsLike(position,firstField, new PageRequest(page,size));
+            List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities1);
+            return new ResponseData(true, "get search List success", investorInfos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseData(false, "get search List fail", null);
+        }
+    }
+
+    private void updateES() {
+        investorRepository.deleteAll();
+        investorRepository.save(EntityDocumentConvertor.renderInvestor(investorInfoDao.findAll()));
+    }
+
     private List<AdvertismentInfo> parseInstitutionToAdInfo(List<InstitutionInfoEntity> instituionList) {
-        List<AdvertismentInfo> infos= new ArrayList<>();
+        List<AdvertismentInfo> infos = new ArrayList<>();
         Long id;
         String name;
         String img;
-        for(InstitutionInfoEntity e: instituionList){
+        for (InstitutionInfoEntity e : instituionList) {
             id = e.getInstitutionId();
             name = e.getInstitutionName();
             img = e.getMobileLogo();
-            infos.add(new AdvertismentInfo(id,name, UserType.INSTITUTION,img));
+            infos.add(new AdvertismentInfo(id, name, UserType.INSTITUTION, img));
 
         }
         return infos;
     }
 
     private List<AdvertismentInfo> parseInvestorEntitiesToAdInfo(List<InvestorInfoEntity> investorInfoEntities) {
-        List<AdvertismentInfo> infos= new ArrayList<>();
+        List<AdvertismentInfo> infos = new ArrayList<>();
         Long id;
         String name;
         String img;
-        for(InvestorInfoEntity e: investorInfoEntities){
+        for (InvestorInfoEntity e : investorInfoEntities) {
             id = e.getInvestorId();
             name = e.getInvestorName();
             img = e.getMobilePortrait();
-            infos.add(new AdvertismentInfo(id,name, UserType.INVESTOR,img));
-
+            infos.add(new AdvertismentInfo(id, name, UserType.INVESTOR, img));
         }
         return infos;
-
     }
 
-    private List<InvestorInfo> parseInvestorEntities(Collection<InvestorInfoEntity> investorInfoEntities) {
+    private List<InvestorInfo> parseInvestorEntities(Iterable<InvestorInfoEntity> investorInfoEntities) {
         List<InvestorInfo> investorInfos = new ArrayList<>();
         InvestorInfo investorInfo;
-        for(InvestorInfoEntity investorInfoEntity: investorInfoEntities){
+        for (InvestorInfoEntity investorInfoEntity : investorInfoEntities) {
             investorInfo = parseInvestorEntity(investorInfoEntity);
             investorInfos.add(investorInfo);
         }
@@ -467,18 +518,19 @@ public class InvestorServiceImpl implements InvestorService {
 
     /**
      * 获取投资人照片
+     *
      * @param urlStr
      * @return
      */
     private List<String> getPhotoUrlList(String urlStr) {
-        if(urlStr == null || urlStr.length() == 0) {
+        if (urlStr == null || urlStr.length() == 0) {
             logger.error("gwo et investor photo url list error, method parameter entity is null");
             return null;
         }
         String[] urlArray = urlStr.split("\\|");
 
         List<String> urlList;
-        if(urlArray.length == 1 && urlArray[0].length() == 0)
+        if (urlArray.length == 1 && urlArray[0].length() == 0)
             urlList = new ArrayList<>();
         else
             urlList = Arrays.asList(urlArray);

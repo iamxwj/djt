@@ -8,6 +8,9 @@
 package com.djt.dao;
 
 import com.djt.domain.InvestorInfoEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -50,4 +53,7 @@ public interface InvestorInfoDao extends JpaSpecificationExecutor<InvestorInfoEn
     List<InvestorInfoEntity> findByTagAndInvestPhaseLike(String tag, String firstFields);
 
     List<InvestorInfoEntity> findByInvestorNameLike(String investorName);
+
+
+    Page<InvestorInfoEntity> findByLevelTypeAndFirstFieldsLike(Byte position, String firstField, Pageable pageRequest);
 }

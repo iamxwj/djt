@@ -63,9 +63,11 @@ public class InvestorInfoEntity {
     private String webPortrait;
     private String mobilePortrait;
     private String investorPhoto;
+    private Byte levelType;// 人物职位等级
 
     // 投资项目列表
 //    private List<InvestorCaseEntity> investorCaseEntityList;
+    private UserInfoEntity userInfoEntity;
 
     private Timestamp createTime;
     private Timestamp updateTime;
@@ -121,6 +123,7 @@ public class InvestorInfoEntity {
         webPortrait = "";
         mobilePortrait = "";
         investorPhoto = "";
+
     }
 
     @Id
@@ -136,9 +139,18 @@ public class InvestorInfoEntity {
 
     /**
      * 单向OneToOne, FetchType.LAZY
+     *
      * @return
      */
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    public UserInfoEntity getUserInfoEntity() {
+        return userInfoEntity;
+    }
 
+    public void setUserInfoEntity(UserInfoEntity userInfoEntity) {
+        this.userInfoEntity = userInfoEntity;
+    }
     @Basic
     @Column(name = "invest_type")
     public String getInvestType() {
@@ -180,7 +192,6 @@ public class InvestorInfoEntity {
     }
 
 
-
     @Basic
     @Column(name = "investor_position")
     public String getInvestorPosition() {
@@ -200,7 +211,6 @@ public class InvestorInfoEntity {
     public void setInvestorLevel(Byte investorLevel) {
         this.investorLevel = investorLevel;
     }
-
 
 
     @Basic
@@ -344,7 +354,6 @@ public class InvestorInfoEntity {
     }
 
 
-
     @Basic
     @Column(name = "province")
     public String getProvince() {
@@ -486,7 +495,6 @@ public class InvestorInfoEntity {
     }
 
 
-
     @Basic
     @Column(name = "investor_intro")
     public String getInvestorIntro() {
@@ -566,11 +574,12 @@ public class InvestorInfoEntity {
 
     /**
      * 单向ManyToMany, FetchType.LAZY
+     *
      * @return
      */
 
     @Basic
-    @Column(name = "create_time", insertable = false, updatable = false)
+    @Column(name = "create_time", insertable = true, updatable = false)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -580,15 +589,24 @@ public class InvestorInfoEntity {
     }
 
 
-
     @Basic
-    @Column(name = "update_time", insertable = false, updatable = false)
+    @Column(name = "update_time", insertable = true, updatable = false)
     public Timestamp getUpdateTime() {
         return updateTime;
     }
 
     public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Basic
+    @Column(name = "level_type")
+    public Byte getLevelType() {
+        return levelType;
+    }
+
+    public void setLevelType(Byte levelType) {
+        this.levelType = levelType;
     }
 
     @Override

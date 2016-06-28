@@ -10,7 +10,6 @@ package com.djt.service;
 import com.djt.data.*;
 import com.djt.data.condition.InvestSearchCondition;
 import com.djt.data.investor.InvestorBasicInfo;
-import com.djt.data.investor.InvestorCase;
 import com.djt.data.investor.InvestorIntro;
 
 import java.util.List;
@@ -74,5 +73,31 @@ public interface InvestorService {
 
     public ResponseData getRecommonderList(List<String> firstField);
 
+    /**
+     * 通过姓名搜索
+     * @param name
+     * @return
+     */
     public ResponseData getListByName(String name);
+
+    /**
+     * 全文搜索
+     * @param institutionName
+     * @param institutionMember
+     * @param position
+     * @param page
+     * @param size
+     * @return
+     */
+    public ResponseData getFullSearch(String institutionName, String institutionMember, String position, int page, int size);
+
+    /**
+     * 通过行业和职位 查询
+     * @param firstField
+     * @param position
+     * @param page
+     * @param size
+     * @return
+     */
+    public ResponseData getByFirstField(String firstField, Byte position, int page, int size);
 }

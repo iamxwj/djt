@@ -10,8 +10,6 @@ package com.djt.service;
 import com.djt.data.*;
 import com.djt.data.condition.InvestSearchCondition;
 import com.djt.data.institution.InstitutionBasicInfo;
-import com.djt.data.institution.InstitutionCase;
-import com.djt.data.institution.InstitutionMember;
 
 import java.util.List;
 
@@ -60,4 +58,8 @@ public interface InstitutionService {
     public ResponseData getInstitutionListByTag(String tag);
 
     public ResponseData getListByNameList(String name);
+
+    public ResponseData getFullSearch(String institutionName, String institutionMember, int page, int size);
+
+    public ResponseData getFirstField(String firstField, int page, int size);
 }

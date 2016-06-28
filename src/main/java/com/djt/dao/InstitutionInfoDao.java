@@ -8,6 +8,8 @@
 package com.djt.dao;
 
 import com.djt.domain.InstitutionInfoEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -21,7 +23,7 @@ import java.util.List;
  * @author chenbin
  * @date 2015/11/12
  */
-public interface InstitutionInfoDao extends JpaSpecificationExecutor<InstitutionInfoEntity>,
+public interface InstitutionInfoDao extends
         PagingAndSortingRepository<InstitutionInfoEntity, Long> {
 
     /**
@@ -47,5 +49,6 @@ public interface InstitutionInfoDao extends JpaSpecificationExecutor<Institution
     List<InstitutionInfoEntity> findByInvestTypeAndInvestPhaseLike(String investType, String investPhase);
 
     List<InstitutionInfoEntity> findByTagLike(String tag);
-
+//    @Query("select i from InstitutionInfoEntity i where i.firstFields like :firstField ")
+    Page<InstitutionInfoEntity> findByFirstFieldsLike(@Param("firstField")String firstField, Pageable pageable);
 }

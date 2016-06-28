@@ -37,6 +37,7 @@ public class InstitutionController {
 
     /**
      * 机构列表展示
+     *
      * @param condition
      */
     @RequestMapping(value = "/institution_list", method = RequestMethod.POST)
@@ -57,6 +58,7 @@ public class InstitutionController {
 
     /**
      * 机构详细信息
+     *
      * @param institutionId
      */
     @RequestMapping(value = "/institution_info", method = RequestMethod.GET)
@@ -68,14 +70,14 @@ public class InstitutionController {
     }
 
     /**
-     *  机构个人中心
+     * 机构个人中心
      */
     @RequestMapping(value = "/institution_center", method = RequestMethod.GET)
     @ResponseBody
     public ResponseData institutionCenter(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         // 用户尚未登录
-        if(session == null)
+        if (session == null)
             return null;
 
         Long institutionId = (Long) session.getAttribute("institutionId");
@@ -84,6 +86,7 @@ public class InstitutionController {
 
     /**
      * 上传基本信息
+     *
      * @param info
      */
     @RequestMapping(value = "/institution_basic_info", method = RequestMethod.POST)
@@ -106,6 +109,7 @@ public class InstitutionController {
         logger.debug(" method begin");
         return institutionService.getInstitutionIdNameList(nameLike);
     }
+
     /**
      * 获取全部列表
      */
@@ -119,29 +123,49 @@ public class InstitutionController {
 
     /**
      * 获取列表通过类型和阶段
+     *
      * @param investType
      * @param phase
      * @return
      */
     @RequestMapping(value = "/list_by_type_phase", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData getInvestorListByTypeAndPhase(@RequestParam("investType")String investType, @RequestParam("phase")String phase){
+    public ResponseData getInvestorListByTypeAndPhase(@RequestParam("investType") String investType, @RequestParam("phase") String phase) {
         return institutionService.getInstitutionListByTypeAndPhase(investType, phase);
     }
 
     @RequestMapping(value = "/list_by_type", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData getInvestorListByType(@RequestParam("investType")String investType){
+    public ResponseData getInvestorListByType(@RequestParam("investType") String investType) {
         return institutionService.getInstitutionListByType(investType);
     }
+
     @RequestMapping(value = "/list_by_tag", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData getInvestorListByTag(@RequestParam("tag")String tag){
+    public ResponseData getInvestorListByTag(@RequestParam("tag") String tag) {
         return institutionService.getInstitutionListByTag(tag);
     }
+
     @RequestMapping(value = "/search_by_name", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData getListByNameList(@RequestParam("name")String name){
+    public ResponseData getListByNameList(@RequestParam("name") String name) {
         return institutionService.getListByNameList(name);
+    }
+
+    @RequestMapping(value = "/full_search", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseData getFullSearch(@RequestParam("institutionName") String institutionName,
+                                      @RequestParam("institutionMember") String institutionMember,
+                                      @RequestParam("page") int page,
+                                      @RequestParam("size") int size) {
+        return institutionService.getFullSearch(institutionName, institutionMember, page, size);
+    }
+
+    @RequestMapping(value = "/first_field", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseData getFirstField(@RequestParam("firstField") String firstField,
+                                      @RequestParam("page") int page,
+                                      @RequestParam("size") int size){
+        return institutionService.getFirstField(firstField, page, size);
     }
 }

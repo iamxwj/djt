@@ -123,7 +123,6 @@ public class InvestorController {
     }
 
 
-
     /**
      * 获取列表通过类型和
      *
@@ -167,4 +166,32 @@ public class InvestorController {
     public ResponseData getInvestorListByName(@RequestParam("name") String name) {
         return investorService.getListByName(name);
     }
+
+    @RequestMapping(value = "/full_search", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseData getFullSearch(@RequestParam("investorName") String investorName,
+                                      @RequestParam("institutionMember") String institutionName,
+                                      @RequestParam("position") String position,
+                                      @RequestParam("page") int page,
+                                      @RequestParam("size") int size) {
+        return investorService.getFullSearch(investorName, institutionName, position, page, size);
+    }
+
+    /**
+     *
+     * @param firstField
+     * @param position
+     * @param page
+     * @param size
+     * @return
+     */
+    @RequestMapping(value = "/get_by_firstField", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseData getByFirstField(@RequestParam("firstField") String firstField,
+                                        @RequestParam("position") Byte position,
+                                        @RequestParam("page") int page,
+                                        @RequestParam("size") int size){
+        return investorService.getByFirstField(firstField,position, page,size);
+    }
+
 }

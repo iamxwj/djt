@@ -14,8 +14,8 @@ import java.util.List;
 /**
  * InstitutionInfoEntity
  *
- * @author HOU Zhipeng
- * @date 2016/06/12
+ * @author chenbin
+ * @date 2015/12/2
  */
 @Entity
 @Table(name = "institution_info", schema = "", catalog = "djt")
@@ -75,6 +75,22 @@ public class InstitutionInfoEntity {
         authenticated = 0;
     }
 
+
+    private UserInfoEntity userInfoEntity;
+
+    /**
+     * 单向OneToOne, FetchType.LAZY
+     * @return
+     */
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    public UserInfoEntity getUserInfoEntity() {
+        return userInfoEntity;
+    }
+
+    public void setUserInfoEntity(UserInfoEntity userInfoEntity) {
+        this.userInfoEntity = userInfoEntity;
+    }
 
     private String institutionName;
 
@@ -447,17 +463,23 @@ public class InstitutionInfoEntity {
         this.authenticated = authenticated;
     }
 
+    // 机构成员列表
+    private List<InvestorInfoEntity> memberEntityList;
 
     /**
      * 单向OneToMany, FetchType.LAZY
      * @return
      */
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "institution_id")
+    public List<InvestorInfoEntity> getMemberEntityList() {
+        return memberEntityList;
+    }
 
-    // 投资项目列表
-    /**
-     * 单向ManyToMany, FetchType.LAZY
-     * @return
-     */
+    public void setMemberEntityList(List<InvestorInfoEntity> memberEntityList) {
+        this.memberEntityList = memberEntityList;
+    }
+
 
     private Timestamp createTime;
 

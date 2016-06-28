@@ -31,7 +31,6 @@ public class UserInfoEntity {
     private Timestamp updateTime;
 
     public UserInfoEntity() {
-        userType = UserType.DEFAULT;
     }
 
     @Id
