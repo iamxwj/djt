@@ -20,6 +20,18 @@ import java.util.List;
 @Entity
 @Table(name = "institution_info", schema = "", catalog = "djt")
 public class InstitutionInfoEntity {
+
+
+    private  String fundYear;
+    @Column(name = "fund_year")
+    public String getFundYear() {
+        return fundYear;
+    }
+
+    public void setFundYear(String fundYear) {
+        this.fundYear = fundYear;
+    }
+
     private Long institutionId;
 
     @Id
@@ -34,45 +46,20 @@ public class InstitutionInfoEntity {
     }
 
     public InstitutionInfoEntity() {
-        institutionName = "";
+        institutionName = "未命名";
         institutionLevel = 0;
-        foundYear = "";
+        fundYear = "未知";
         fundNumber = 0.0;
-        fundUnit = "";
-        staffSize = "";
-
-        investType = "";
-        investPhase = "";
-        mainPhase = "";
-        tag = "";
-
-        firstFields = "";
-        secondFields = "";
-
+        fundUnit = "未知";
+        staffSize = "未知";
+        firstFields = "未知";
         webLogo = "";
-        mobileLogo = "";
-        institutionPhoto = "";
-
-        investSuccessIndicator = 0;
-        investActiveIndicator = 0;
-        brandIndicator = 0;
-        investRateIndicator = 0;
-
-        province = "";
-        city = "";
-        locateProvinces = "";
-        address = "";
-
-        overallRank = 0;
-        annualRank = 0;
-        activeRank = 0;
-        fansNumber = 0;
-        talkNumber = 0;
-        investNumber = 0;
-
-        achievement = "";
-        institutionIntro = "";
-        authenticated = 0;
+        mobileLogo = "http://123.56.184.92:4869/38b5110e7095d0274f8ef511175d090c?p=0";
+        province = "未知";
+        city = "未知";
+        address = "未知";
+        achievement = "未知";
+        institutionIntro = "未知";
     }
 
 
@@ -82,7 +69,7 @@ public class InstitutionInfoEntity {
      * 单向OneToOne, FetchType.LAZY
      * @return
      */
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     public UserInfoEntity getUserInfoEntity() {
         return userInfoEntity;
@@ -92,7 +79,7 @@ public class InstitutionInfoEntity {
         this.userInfoEntity = userInfoEntity;
     }
 
-    private String institutionName;
+    private String institutionName;//机构简称
 
     @Basic
     @Column(name = "institution_name")
@@ -104,7 +91,7 @@ public class InstitutionInfoEntity {
         this.institutionName = institutionName;
     }
 
-    private Byte institutionLevel;
+    private Byte institutionLevel; //等级
 
     @Basic
     @Column(name = "institution_level")
@@ -116,19 +103,9 @@ public class InstitutionInfoEntity {
         this.institutionLevel = institutionLevel;
     }
 
-    private String foundYear;
 
-    @Basic
-    @Column(name = "found_year")
-    public String getFoundYear() {
-        return foundYear;
-    }
 
-    public void setFoundYear(String foundYear) {
-        this.foundYear = foundYear;
-    }
-
-    private Double fundNumber;
+    private Double fundNumber; //市值金额
 
     @Basic
     @Column(name = "fund_number")
@@ -140,7 +117,7 @@ public class InstitutionInfoEntity {
         this.fundNumber = fundNumber;
     }
 
-    private String fundUnit;
+    private String fundUnit;//市值单位
 
     @Basic
     @Column(name = "fund_unit")
@@ -152,7 +129,7 @@ public class InstitutionInfoEntity {
         this.fundUnit = fundUnit;
     }
 
-    private String staffSize;
+    private String staffSize;//人员规模
 
     @Basic
     @Column(name = "staff_size")
@@ -164,50 +141,28 @@ public class InstitutionInfoEntity {
         this.staffSize = staffSize;
     }
 
-    private String investType;
-    private String investPhase;
-    private String mainPhase;
-    private String tag;
-
-    @Column(name = "invest_type")
-    public String getInvestType() {
-        return investType;
+    private String status; //地位
+    private String business; //业务
+    @Column
+    public String getStatus() {
+        return status;
     }
 
-    public void setInvestType(String investType) {
-        this.investType = investType;
-    }
-
-    @Column(name = "invest_phase")
-    public String getInvestPhase() {
-        return investPhase;
-    }
-
-    public void setInvestPhase(String investPhase) {
-        this.investPhase = investPhase;
-    }
-
-    @Column(name = "main_phase")
-    public String getMainPhase() {
-        return mainPhase;
-    }
-
-    public void setMainPhase(String mainPhase) {
-        this.mainPhase = mainPhase;
-    }
-
-    @Column(name = "tag")
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 
-    private String firstFields;
-    private String secondFields;
+    @Column
+    public String getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(String business) {
+        this.business = business;
+    }
+
+    private String firstFields; //行业
 
     @Column(name = "first_fields")
     public String getFirstFields() {
@@ -218,18 +173,9 @@ public class InstitutionInfoEntity {
         this.firstFields = firstFields;
     }
 
-    @Column(name = "second_fields")
-    public String getSecondFields() {
-        return secondFields;
-    }
-
-    public void setSecondFields(String secondFields) {
-        this.secondFields = secondFields;
-    }
 
     private String webLogo;
     private String mobileLogo;
-    private String institutionPhoto;
 
     @Column(name = "web_logo")
     public String getWebLogo() {
@@ -249,65 +195,10 @@ public class InstitutionInfoEntity {
         this.mobileLogo = mobileLogo;
     }
 
-    @Column(name = "institution_photo")
-    public String getInstitutionPhoto() {
-        return institutionPhoto;
-    }
 
-    public void setInstitutionPhoto(String institutionPhoto) {
-        this.institutionPhoto = institutionPhoto;
-    }
 
-    private Byte investSuccessIndicator;
 
-    @Basic
-    @Column(name = "invest_success_indicator")
-    public Byte getInvestSuccessIndicator() {
-        return investSuccessIndicator;
-    }
-
-    public void setInvestSuccessIndicator(Byte investSuccessIndicator) {
-        this.investSuccessIndicator = investSuccessIndicator;
-    }
-
-    private Byte investActiveIndicator;
-
-    @Basic
-    @Column(name = "invest_active_indicator")
-    public Byte getInvestActiveIndicator() {
-        return investActiveIndicator;
-    }
-
-    public void setInvestActiveIndicator(Byte investActiveIndicator) {
-        this.investActiveIndicator = investActiveIndicator;
-    }
-
-    private Byte brandIndicator;
-
-    @Basic
-    @Column(name = "brand_indicator")
-    public Byte getBrandIndicator() {
-        return brandIndicator;
-    }
-
-    public void setBrandIndicator(Byte brandIndicator) {
-        this.brandIndicator = brandIndicator;
-    }
-
-    private Byte investRateIndicator;
-
-    @Basic
-    @Column(name = "invest_rate_indicator")
-    public Byte getInvestRateIndicator() {
-        return investRateIndicator;
-    }
-
-    public void setInvestRateIndicator(Byte investRateIndicator) {
-        this.investRateIndicator = investRateIndicator;
-    }
-
-    // 机构所在省份
-    private String province;
+    private String province;//总部省份
 
     @Basic
     @Column(name = "province")
@@ -319,7 +210,7 @@ public class InstitutionInfoEntity {
         this.province = province;
     }
 
-    private String city;
+    private String city; //总部城市
 
     @Column(name = "city")
     public String getCity() {
@@ -330,22 +221,10 @@ public class InstitutionInfoEntity {
         this.city = city;
     }
 
-    private String locateProvinces;
 
-    @Basic
-    @Column(name = "locate_provinces")
-    public String getLocateProvinces() {
-        return locateProvinces;
-    }
+    private String address; //总部地址
 
-    public void setLocateProvinces(String locateProvinces) {
-        this.locateProvinces = locateProvinces;
-    }
-
-    private String address;
-
-    @Basic
-    @Column(name = "address")
+    @Column
     public String getAddress() {
         return address;
     }
@@ -354,82 +233,10 @@ public class InstitutionInfoEntity {
         this.address = address;
     }
 
-    private Integer overallRank;
-
-    @Basic
-    @Column(name = "overall_rank")
-    public Integer getOverallRank() {
-        return overallRank;
-    }
-
-    public void setOverallRank(Integer overallRank) {
-        this.overallRank = overallRank;
-    }
-
-    private Integer annualRank;
-
-    @Basic
-    @Column(name = "annual_rank")
-    public Integer getAnnualRank() {
-        return annualRank;
-    }
-
-    public void setAnnualRank(Integer annualRank) {
-        this.annualRank = annualRank;
-    }
-
-    private Integer activeRank;
-
-    @Basic
-    @Column(name = "active_rank")
-    public Integer getActiveRank() {
-        return activeRank;
-    }
-
-    public void setActiveRank(Integer activeRank) {
-        this.activeRank = activeRank;
-    }
-
-    private Integer fansNumber;
-
-    @Basic
-    @Column(name = "fans_number")
-    public Integer getFansNumber() {
-        return fansNumber;
-    }
-
-    public void setFansNumber(Integer fansNumber) {
-        this.fansNumber = fansNumber;
-    }
-
-    private Integer talkNumber;
-
-    @Basic
-    @Column(name = "talk_number")
-    public Integer getTalkNumber() {
-        return talkNumber;
-    }
-
-    public void setTalkNumber(Integer talkNumber) {
-        this.talkNumber = talkNumber;
-    }
-
-    private Integer investNumber;
-
-    @Basic
-    @Column(name = "invest_number")
-    public Integer getInvestNumber() {
-        return investNumber;
-    }
-
-    public void setInvestNumber(Integer investNumber) {
-        this.investNumber = investNumber;
-    }
 
 
-    private String achievement;
+    private String achievement; //成就与荣誉
 
-    @Basic
     @Column(name = "achievement")
     public String getAchievement() {
         return achievement;
@@ -439,9 +246,8 @@ public class InstitutionInfoEntity {
         this.achievement = achievement;
     }
 
-    private String institutionIntro;
+    private String institutionIntro; // 机构简介
 
-    @Basic
     @Column(name = "institution_intro")
     public String getInstitutionIntro() {
         return institutionIntro;
@@ -451,17 +257,6 @@ public class InstitutionInfoEntity {
         this.institutionIntro = institutionIntro;
     }
 
-    private Byte authenticated;
-
-    @Basic
-    @Column(name = "authenticated")
-    public Byte getAuthenticated() {
-        return authenticated;
-    }
-
-    public void setAuthenticated(Byte authenticated) {
-        this.authenticated = authenticated;
-    }
 
     // 机构成员列表
     private List<InvestorInfoEntity> memberEntityList;

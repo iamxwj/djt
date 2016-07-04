@@ -76,34 +76,34 @@ public class InvestorInfoEntity {
      * 默认构造方法设置各个字段的默认值
      */
     public InvestorInfoEntity() {
-        investorName = "";
-        investType = "";
-        tag = "";
+        investorName = "未命名";
+        investType = "未知";
+        tag = "未知";
 
         investorLevel = 0;
         birthYear = "0000";
-        nativeProvince = "";
-        nativeDistrict = "";
+        nativeProvince = "未知";
+        nativeDistrict = "未知";
         age = 1960;
-        gender = "";
+        gender = "未知";
 
-        investPhase = "";
-        mainPhase = "";
-        firstFields = "";
-        secondFields = "";
+        investPhase = "未知";
+        mainPhase = "未知";
+        firstFields = "未知";
+        secondFields = "未知";
 
-        investorIntro = "";
-        achievement = "";
-        education = "";
-        eduExp = "";
-        workExp = "";
-        investPhilosophy = "";
+        investorIntro = "未知";
+        achievement = "未知";
+        education = "未知";
+        eduExp = "未知";
+        workExp = "未知";
+        investPhilosophy = "未知";
         fundNumber = 0.0;
         fundUnit = "";
-        others = "";
+        others = "未知";
 
-        institutionName = "";
-        investorPosition = "";
+        institutionName = "未知";
+        investorPosition = "未知";
         institutionId = 0L;
         investSuccessIndicator = 0;
         investActiveIndicator = 0;
@@ -116,14 +116,14 @@ public class InvestorInfoEntity {
         talkNumber = 0;
         investNumber = 0;
 
-        province = "";
-        city = "";
-        address = "";
+        province = "未知";
+        city = "未知";
+        address = "未知";
         authenticated = 0;
         webPortrait = "";
-        mobilePortrait = "";
+        mobilePortrait = "http://123.56.184.92:4869/9d43184eefdf27ed129bfeff6a5b8c99?p=0";
         investorPhoto = "";
-
+        levelType = (byte)1;
     }
 
     @Id
@@ -142,7 +142,7 @@ public class InvestorInfoEntity {
      *
      * @return
      */
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     public UserInfoEntity getUserInfoEntity() {
         return userInfoEntity;

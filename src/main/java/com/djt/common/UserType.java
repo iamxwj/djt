@@ -16,5 +16,4 @@ public class UserType {
     public static final Byte INVESTOR = 1;
     public static final Byte INSTITUTION = 2;
     public static final Byte PROJECT = 3;
-    public static final Byte DEFAULT = 0;
 }

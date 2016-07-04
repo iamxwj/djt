@@ -19,35 +19,29 @@ import java.util.List;
  */
 public class InstitutionBasicInfo {
     private Long institutionId;
-    private String institutionName;
-    private String foundYear;
-    private Double fundNumber;
-    private String fundUnit;
-    private String staffSize;
+    private String institutionName;//机构简称
+    private String fundYear; //成立时间
+    private Double fundNumber;// 资金数量
+    private String fundUnit; //资金单位
+    private String staffSize; //员工规模
 
-    private String investType;
-    private List<String> investPhase;
-    private String mainPhase;
-    private List<String >tag;
+    private String status; //身份
+    private String business; // 业务
 
-    private List<String> firstFields;
-    private String secondFields;
+    private List<String> firstFields; //所属行业
 
-    private String province;
-    private String city;
-    private String address;
-    private List<String >locateProvinces;
+    private String province; // 省
+    private String city; // 城市
+    private String address;// 地址
 
-    private String achievement;
-    private String intro;
-    private String webLogo;
-    private String mobileLogo;
+    private String achievement; // 成就
+    private String intro; // 简介
+    private String webLogo; // web 图片
+    private String mobileLogo; // mobile 图片
 
     public ValidResult validateAllFields() {
         if(institutionName == null || institutionName.length() == 0)
             return new ValidResult(false, "institutionName == "+institutionName);
-        if(foundYear == null || foundYear.length() == 0)
-            return new ValidResult(false, "foundYear == " + foundYear);
         if(fundNumber == 0)
             return new ValidResult(false, "fundNumber == " + fundNumber);
         if(fundUnit == null || fundUnit.length() == 0)
@@ -60,8 +54,8 @@ public class InstitutionBasicInfo {
             return new ValidResult(false, "city == " + city);
         if(address == null || address.length() == 0)
             return new ValidResult(false, "address == " + address);
-        if(locateProvinces == null || locateProvinces.size() == 0)
-            return new ValidResult(false, "locateProvinces == " + locateProvinces);
+//        if(locateProvinces == null || locateProvinces.size() == 0)
+//            return new ValidResult(false, "locateProvinces == " + locateProvinces);
 //        if(achievement == null || achievement.length() == 0)
 //            return new ValidResult(false, "achievement == " + achievement);
         if(intro == null || intro.length() == 0)
@@ -73,6 +67,51 @@ public class InstitutionBasicInfo {
         return new ValidResult(true, "all fields valid");
     }
 
+    @Override
+    public String toString() {
+        return "InstitutionBasicInfo{" +
+                "institutionId=" + institutionId +
+                ", institutionName='" + institutionName + '\'' +
+                ", fundYear='" + fundYear + '\'' +
+                ", fundNumber=" + fundNumber +
+                ", fundUnit='" + fundUnit + '\'' +
+                ", staffSize='" + staffSize + '\'' +
+                ", status='" + status + '\'' +
+                ", business='" + business + '\'' +
+                ", firstFields=" + firstFields +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", address='" + address + '\'' +
+                ", achievement='" + achievement + '\'' +
+                ", intro='" + intro + '\'' +
+                ", webLogo='" + webLogo + '\'' +
+                ", mobileLogo='" + mobileLogo + '\'' +
+                '}';
+    }
+
+    public String getFundYear() {
+        return fundYear;
+    }
+
+    public void setFundYear(String fundYear) {
+        this.fundYear = fundYear;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(String business) {
+        this.business = business;
+    }
 
     public Long getInstitutionId() {
         return institutionId;
@@ -90,13 +129,6 @@ public class InstitutionBasicInfo {
         this.institutionName = institutionName;
     }
 
-    public String getFoundYear() {
-        return foundYear;
-    }
-
-    public void setFoundYear(String foundYear) {
-        this.foundYear = foundYear;
-    }
 
     public Double getFundNumber() {
         return fundNumber;
@@ -114,37 +146,6 @@ public class InstitutionBasicInfo {
         this.fundUnit = fundUnit;
     }
 
-    public String getInvestType() {
-        return investType;
-    }
-
-    public void setInvestType(String investType) {
-        this.investType = investType;
-    }
-
-    public List<String> getInvestPhase() {
-        return investPhase;
-    }
-
-    public void setInvestPhase(List<String> investPhase) {
-        this.investPhase = investPhase;
-    }
-
-    public String getMainPhase() {
-        return mainPhase;
-    }
-
-    public void setMainPhase(String mainPhase) {
-        this.mainPhase = mainPhase;
-    }
-
-    public List<String >getTag() {
-        return tag;
-    }
-
-    public void setTag(List<String >tag) {
-        this.tag = tag;
-    }
 
     public List<String> getFirstFields() {
         return firstFields;
@@ -154,13 +155,6 @@ public class InstitutionBasicInfo {
         this.firstFields = firstFields;
     }
 
-    public String getSecondFields() {
-        return secondFields;
-    }
-
-    public void setSecondFields(String secondFields) {
-        this.secondFields = secondFields;
-    }
 
     public String getProvince() {
         return province;
@@ -178,13 +172,6 @@ public class InstitutionBasicInfo {
         this.staffSize = staffSize;
     }
 
-    public List<String >getLocateProvinces() {
-        return locateProvinces;
-    }
-
-    public void setLocateProvinces(List<String >locateProvinces) {
-        this.locateProvinces = locateProvinces;
-    }
 
     public String getAchievement() {
         return achievement;
@@ -234,29 +221,4 @@ public class InstitutionBasicInfo {
         this.mobileLogo = mobileLogo;
     }
 
-    @Override
-    public String toString() {
-        return "InstitutionBasicInfo{" +
-                "institutionId=" + institutionId +
-                ", institutionName='" + institutionName + '\'' +
-                ", foundYear='" + foundYear + '\'' +
-                ", fundNumber=" + fundNumber +
-                ", fundUnit='" + fundUnit + '\'' +
-                ", staffSize='" + staffSize + '\'' +
-                ", investType='" + investType + '\'' +
-                ", investPhase=" + investPhase +
-                ", mainPhase=" + mainPhase +
-                ", tag='" + tag + '\'' +
-                ", firstFields=" + firstFields +
-                ", secondFields=" + secondFields +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", address='" + address + '\'' +
-                ", locateProvinces='" + locateProvinces + '\'' +
-                ", achievement='" + achievement + '\'' +
-                ", intro='" + intro + '\'' +
-                ", webLogo='" + webLogo + '\'' +
-                ", mobileLogo='" + mobileLogo + '\'' +
-                '}';
-    }
 }

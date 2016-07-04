@@ -46,16 +46,16 @@ public interface InstitutionService {
 
 
 
-    public ResponseData uploadInsitutionPhoto(Long institutionId, List<String> url);
+//    public ResponseData uploadInsitutionPhoto(Long institutionId, List<String> url);
 
 
     public ResponseData getAllInstitutionList();
 
-    public ResponseData getInstitutionListByTypeAndPhase(String investType, String phase);
-
-    public ResponseData getInstitutionListByType(String investType);
-
-    public ResponseData getInstitutionListByTag(String tag);
+//    public ResponseData getInstitutionListByTypeAndPhase(String investType, String phase);
+//
+//    public ResponseData getInstitutionListByType(String investType);
+//
+//    public ResponseData getInstitutionListByTag(String tag);
 
     public ResponseData getListByNameList(String name);
 

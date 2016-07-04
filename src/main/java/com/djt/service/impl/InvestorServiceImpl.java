@@ -117,7 +117,10 @@ public class InvestorServiceImpl implements InvestorService {
         Long investorId = entity.getInvestorId();
         String investorName = entity.getInvestorName();
         String investType = entity.getInvestType();
-        List<String> tag = StringUtil.renderStringToList(entity.getTag(), "\\|");
+        Long userId = entity.getUserInfoEntity().getUserId();
+        List<String> tag = new ArrayList<>();
+        if (!StringUtils.isNullOrEmpty(entity.getTag()))
+            tag = StringUtil.renderStringToList(entity.getTag(), "\\|");
         String investorPosition = entity.getInvestorPosition();
         String birthYear = entity.getBirthYear();
         String nativeProvince = entity.getNativeProvince();
@@ -162,23 +165,28 @@ public class InvestorServiceImpl implements InvestorService {
         List<String> investorPhotoUrlList = getPhotoUrlList(entity.getInvestorPhoto());
 
         String investPhase = entity.getInvestPhase();
-        String[] phaseArray = investPhase.split("\\|");
-        List<String> phaseList;
-        if (phaseArray[0].length() == 0)
-            phaseList = new ArrayList<>();
-        else
-            phaseList = Arrays.asList(phaseArray);
+        String[] phaseArray = null;
+        List<String> phaseList = new ArrayList<>();
+        if (!StringUtils.isNullOrEmpty(investPhase)) {
+            phaseArray = investPhase.split("\\|");
 
+            if (phaseArray[0].length() == 0)
+                phaseList = new ArrayList<>();
+            else
+                phaseList = Arrays.asList(phaseArray);
+        }
         String mainPhase = entity.getMainPhase();
 
         String firstFields = entity.getFirstFields();
-        String[] firstFieldArray = firstFields.split("\\|");
-        List<String> fieldList;
-        if (firstFieldArray[0].length() == 0)
-            fieldList = new ArrayList<>();
-        else
-            fieldList = Arrays.asList(firstFieldArray);
+        List<String> fieldList = new ArrayList<>();
+        if (!StringUtils.isNullOrEmpty(firstFields)) {
+            String[] firstFieldArray = firstFields.split("\\|");
 
+            if (firstFieldArray[0].length() == 0)
+                fieldList = new ArrayList<>();
+            else
+                fieldList = Arrays.asList(firstFieldArray);
+        }
         String secondFields = entity.getSecondFields();
 
         Timestamp createTime = entity.getCreateTime();
@@ -188,7 +196,7 @@ public class InvestorServiceImpl implements InvestorService {
                 nativeProvince, nativeDistrict, education, age, gender, institutionName, fundNumber, fundUnit, successIndicator, activeIndicator, brandIndicator,
                 rateIndicator, overallRank, annualRank, activeRank, fansNumber, talkNumber, investNumber, province, city, address,
                 achievement, investorIntro, authenticated, phaseList, fieldList, secondFields, philosophy, eduExp,
-                workExp, others, mobilePortraitUrl, webPortraitUrl, investorPhotoUrlList, createTime, lastUpdate);
+                workExp, others, mobilePortraitUrl, webPortraitUrl, investorPhotoUrlList, createTime, lastUpdate, userId);
 
         return investorInfo;
     }
@@ -201,56 +209,75 @@ public class InvestorServiceImpl implements InvestorService {
 
         try {
             InvestorInfoEntity entity = investorInfoDao.findByInvestorId(investorId);
-
-            entity.setInvestorName(info.getInvestorName());
-            entity.setBirthYear(info.getBirthYear());
-            entity.setNativeProvince(info.getNativeProvince());
-            entity.setNativeDistrict(info.getNativeDistrict());
+            if (!StringUtils.isNullOrEmpty(info.getInvestorName()))
+                entity.setInvestorName(info.getInvestorName());
+            if (!StringUtils.isNullOrEmpty(info.getBirthYear()))
+                entity.setBirthYear(info.getBirthYear());
+            if (!StringUtils.isNullOrEmpty(info.getNativeProvince()))
+                entity.setNativeProvince(info.getNativeProvince());
+            if (!StringUtils.isNullOrEmpty(info.getNativeDistrict()))
+                entity.setNativeDistrict(info.getNativeDistrict());
             entity.setAge(info.getAge());
-            entity.setGender(info.getGender());
+            if (!StringUtils.isNullOrEmpty(info.getGender()))
+                entity.setGender(info.getGender());
             entity.setFundNumber(info.getFundNumber());
-            entity.setFundUnit(info.getFundUnit());
-            entity.setEducation(info.getEducation());
-            entity.setInstitutionName(info.getInstitutionName());
-            entity.setInvestorPosition(info.getInvestorPosition());
-            entity.setInvestType(info.getInvestType());
-            entity.setMainPhase(info.getMainPhase());
-
-            entity.setTag(StringUtil.renderListToString(info.getTag()));
-            entity.setProvince(info.getProvince());
-            entity.setCity(info.getCity());
-            entity.setAddress(info.getAddress());
-            entity.setMobilePortrait(info.getMobilePortraitUrl());
+            if (!StringUtils.isNullOrEmpty(info.getFundUnit()))
+                entity.setFundUnit(info.getFundUnit());
+            if (!StringUtils.isNullOrEmpty(info.getEducation()))
+                entity.setEducation(info.getEducation());
+            if (!StringUtils.isNullOrEmpty(info.getInstitutionName()))
+                entity.setInstitutionName(info.getInstitutionName());
+            if (!StringUtils.isNullOrEmpty(info.getInvestorPosition()))
+                entity.setInvestorPosition(info.getInvestorPosition());
+            if (!StringUtils.isNullOrEmpty(info.getInvestType()))
+                entity.setInvestType(info.getInvestType());
+            if (!StringUtils.isNullOrEmpty(info.getMainPhase()))
+                entity.setMainPhase(info.getMainPhase());
+            if (info.getTag() != null) {
+                entity.setTag(StringUtil.renderListToString(info.getTag()));
+            }
+            if (!StringUtils.isNullOrEmpty(info.getProvince()))
+                entity.setProvince(info.getProvince());
+            if (!StringUtils.isNullOrEmpty(info.getCity()))
+                entity.setCity(info.getCity());
+            if (!StringUtils.isNullOrEmpty(info.getAddress()))
+                entity.setAddress(info.getAddress());
+            if (!StringUtils.isNullOrEmpty(info.getMobilePortraitUrl()))
+                entity.setMobilePortrait(info.getMobilePortraitUrl());
 
             List<String> webPortraitUrlList = info.getWebPortraitUrl();
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < webPortraitUrlList.size(); i++) {
-                if (i == 0)
-                    sb.append(webPortraitUrlList.get(0));
-                else
-                    sb.append("|" + webPortraitUrlList.get(1));
+            if (webPortraitUrlList != null) {
+                for (int i = 0; i < webPortraitUrlList.size(); i++) {
+                    if (i == 0)
+                        sb.append(webPortraitUrlList.get(0));
+                    else
+                        sb.append("|" + webPortraitUrlList.get(1));
+                }
+                entity.setWebPortrait(sb.toString());
             }
-            entity.setWebPortrait(sb.toString());
-
             sb = new StringBuilder();
-            for (int i = 0; i < info.getInvestPhaseList().size(); i++) {
-                if (i == 0)
-                    sb.append(info.getInvestPhaseList().get(i));
-                else
-                    sb.append("|" + info.getInvestPhaseList().get(i));
+            if (info.getInvestPhaseList() != null) {
+                for (int i = 0; i < info.getInvestPhaseList().size(); i++) {
+                    if (i == 0)
+                        sb.append(info.getInvestPhaseList().get(i));
+                    else
+                        sb.append("|" + info.getInvestPhaseList().get(i));
+                }
+                entity.setInvestPhase(sb.toString());
             }
-            entity.setInvestPhase(sb.toString());
+            if (info.getInvestPhaseList() != null) {
+                sb = new StringBuilder();
+                for (int i = 0; i < info.getFirstFieldList().size(); i++) {
+                    if (i == 0)
+                        sb.append(info.getFirstFieldList().get(i));
+                    else
+                        sb.append("|" + info.getFirstFieldList().get(i));
+                }
 
-
-            sb = new StringBuilder();
-            for (int i = 0; i < info.getFirstFieldList().size(); i++) {
-                if (i == 0)
-                    sb.append(info.getFirstFieldList().get(i));
-                else
-                    sb.append("|" + info.getFirstFieldList().get(i));
+                entity.setFirstFields(sb.toString());
             }
-            entity.setFirstFields(sb.toString());
-
+            if (!StringUtils.isNullOrEmpty(info.getSecondField()))
             entity.setSecondFields(info.getSecondField());
 
             // 上传基本信息、投资人照片、投资阶段、投资领域
@@ -463,7 +490,7 @@ public class InvestorServiceImpl implements InvestorService {
         try {
 
             firstField = "%" + firstField + "%";
-            Page<InvestorInfoEntity> investorInfoEntities1 = investorInfoDao.findByLevelTypeAndFirstFieldsLike(position,firstField, new PageRequest(page,size));
+            Page<InvestorInfoEntity> investorInfoEntities1 = investorInfoDao.findByLevelTypeAndFirstFieldsLike(position, firstField, new PageRequest(page, size));
             List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities1);
             return new ResponseData(true, "get search List success", investorInfos);
         } catch (Exception e) {

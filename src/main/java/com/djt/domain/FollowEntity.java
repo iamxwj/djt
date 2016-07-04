@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Zhipeng on 2016/4/7.
  */
 @Entity
-@Table(name = "follow", schema = "", catalog = "tzdr")
+@Table(name = "follow", schema = "", catalog = "djt")
 public class FollowEntity {
     private Long id;
     private Long noticeList;

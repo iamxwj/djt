@@ -11,6 +11,7 @@ import com.djt.dao.*;
 import com.djt.data.*;
 import com.djt.data.condition.InvestSearchCondition;
 import com.djt.data.institution.*;
+import com.djt.data.investor.InvestorShortList;
 import com.djt.domain.*;
 import com.djt.domain.es.InstitutionDocument;
 import com.djt.repositories.InstitutionRepository;
@@ -85,74 +86,65 @@ public class InstitutionServiceImpl implements InstitutionService {
         String institutionIntro = entity.getInstitutionIntro();
         String achievements = entity.getAchievement();
         int level = entity.getInstitutionLevel();
-        String year = entity.getFoundYear();
+        Long userId = entity.getUserInfoEntity().getUserId();
+        String year = entity.getFundYear();
         Double fundNumber = entity.getFundNumber();
         String fundUnit = entity.getFundUnit();
         String staffSize = entity.getStaffSize();
 
-        String investType = entity.getInvestType();
+        String[] phaseArray = null;
+        List<String> investPhase = new ArrayList<>();
 
-        String[] phaseArray = entity.getInvestPhase().split("\\|");
-        List<String> investPhase;
-        if (phaseArray[0].length() == 0)
-            investPhase = new ArrayList<>();
-        else
-            investPhase = Arrays.asList(phaseArray);
+        List<String> firstFields = new ArrayList<>();
+        if (!StringUtils.isNullOrEmpty(entity.getFirstFields())) {
+            String[] firstFieldArray = entity.getFirstFields().split("\\|");
 
-        String mainPhase = entity.getMainPhase();
-
-        String tag = entity.getTag();
-
-        List<String> tags = StringUtil.renderStringToList(tag, "\\|");
-
-        String[] firstFieldArray = entity.getFirstFields().split("\\|");
-        List<String> firstFields;
-        if (firstFieldArray[0].length() == 0)
-            firstFields = new ArrayList<>();
-        else
-            firstFields = Arrays.asList(firstFieldArray);
-
-        String secondFields = entity.getSecondFields();
-
-        byte successIndicator = entity.getInvestSuccessIndicator();
-        byte activeIndicator = entity.getInvestActiveIndicator();
-        byte brandIndicator = entity.getBrandIndicator();
-        byte rateIndicator = entity.getInvestRateIndicator();
-
-        int overallRank = entity.getOverallRank();
-        int annualRank = entity.getAnnualRank();
-        int activeRank = entity.getActiveRank();
-
-        long fansNumber = entity.getFansNumber();
-        int talkNumber = entity.getTalkNumber();
-        int investNumber = entity.getInvestNumber();
+            if (firstFieldArray[0].length() == 0)
+                firstFields = new ArrayList<>();
+            else
+                firstFields = Arrays.asList(firstFieldArray);
+        }
 
 
         String province = entity.getProvince();
-        List<String> locateProvinces = StringUtil.renderStringToList(entity.getLocateProvinces(), "\\|");
         String city = entity.getCity();
         String address = entity.getAddress();
-
-        Byte authenticated = entity.getAuthenticated();
+        List<String> investorNames = renderInvestorsToStringList(entity.getMemberEntityList());
+        List<InvestorShortList> investorShortList = renderInvestorsToShortLists(entity.getMemberEntityList());
 
         String webLogo = entity.getWebLogo();
         String mobileLogo = entity.getMobileLogo();
-        String institutionPhoto = entity.getInstitutionPhoto();
 
         Timestamp createTime = entity.getCreateTime();
         Timestamp updateTime = entity.getUpdateTime();
 
         InstitutionInfo info = new InstitutionInfo(institutionId, name, institutionIntro, achievements,
-                level, year, fundNumber, fundUnit, staffSize,
-                investType, investPhase, mainPhase, tags, firstFields, secondFields,
-                successIndicator, activeIndicator, brandIndicator, rateIndicator,
-                overallRank, annualRank, activeRank,
-                fansNumber, talkNumber, investNumber,
-                province, locateProvinces, city, address,
-                authenticated, webLogo, mobileLogo, institutionPhoto,
-                createTime, updateTime);
+                level, year, fundNumber, fundUnit, staffSize, firstFields, province,
+                city, address, webLogo, mobileLogo, createTime, updateTime, userId, investorNames, investorShortList);
 
         return info;
+    }
+
+    private List<InvestorShortList> renderInvestorsToShortLists(List<InvestorInfoEntity> memberEntityList) {
+        List<InvestorShortList> investorShortList = new ArrayList<>();
+        for(InvestorInfoEntity i : memberEntityList){
+            investorShortList.add(renderInvestorsToShortList(i));
+        }
+        return investorShortList;
+    }
+
+    private InvestorShortList renderInvestorsToShortList(InvestorInfoEntity i) {
+        return new InvestorShortList(i.getInvestorName(),i.getMobilePortrait(),i.getInvestorPosition());
+    }
+
+
+    private List<String> renderInvestorsToStringList(List<InvestorInfoEntity> memberEntityList) {
+        List<String> names = new ArrayList<>();
+
+        for(InvestorInfoEntity i : memberEntityList){
+            names.add(i.getInvestorName());
+        }
+        return  names;
     }
 
 
@@ -223,55 +215,53 @@ public class InstitutionServiceImpl implements InstitutionService {
             logger.error(logInfo);
             return new ResponseData(false, logInfo, null);
         }
-        ValidResult valid = info.validateAllFields();
-        logger.debug("field validate result : " + valid.getMsg());
-        if (!valid.isValid()) {
-            String msg = valid.getMsg();
-            return new ResponseData(false, msg, null);
-        }
+//        ValidResult valid = info.validateAllFields();
+//        logger.debug("field validate result : " + valid.getMsg());
+//        if (!valid.isValid()) {
+//            String msg = valid.getMsg();
+//            return new ResponseData(false, msg, null);
+//        }
 
         long institutionId = info.getInstitutionId();
         try {
             InstitutionInfoEntity entity = institutionInfoDao.findByInstitutionId(institutionId);
-
-            entity.setInstitutionName(info.getInstitutionName());
-            entity.setFoundYear(info.getFoundYear());
+            if (!StringUtils.isNullOrEmpty(info.getInstitutionName()))
+                entity.setInstitutionName(info.getInstitutionName());
+            if (!StringUtils.isNullOrEmpty(info.getFundYear()))
+                entity.setFundYear(info.getFundYear());
             entity.setFundNumber(info.getFundNumber());
-            entity.setFundUnit(info.getFundUnit());
-            entity.setStaffSize(info.getStaffSize());
-            entity.setInvestType(info.getInvestType());
+            if (!StringUtils.isNullOrEmpty(info.getFundUnit()))
+                entity.setFundUnit(info.getFundUnit());
+            if (!StringUtils.isNullOrEmpty(info.getStaffSize()))
+                entity.setStaffSize(info.getStaffSize());
 
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < info.getInvestPhase().size(); i++) {
-                if (i == 0)
-                    sb.append(info.getInvestPhase().get(i));
-                else
-                    sb.append("|" + info.getInvestPhase().get(i));
-            }
-            entity.setInvestPhase(sb.toString());
-
-            entity.setMainPhase(info.getMainPhase());
-            entity.setTag(StringUtil.renderListToString(info.getTag()));
 
             StringBuilder sb2 = new StringBuilder();
-            for (int i = 0; i < info.getFirstFields().size(); i++) {
-                if (i == 0)
-                    sb2.append(info.getFirstFields().get(i));
-                else
-                    sb2.append("|" + info.getFirstFields().get(i));
+            if (info.getFirstFields() != null) {
+                for (int i = 0; i < info.getFirstFields().size(); i++) {
+                    if (i == 0)
+                        sb2.append(info.getFirstFields().get(i));
+                    else
+                        sb2.append("|" + info.getFirstFields().get(i));
+                }
+                entity.setFirstFields(sb2.toString());
             }
-            entity.setFirstFields(sb2.toString());
-            entity.setSecondFields(info.getSecondFields());
 
-            entity.setProvince(info.getProvince());
-            entity.setCity(info.getCity());
-            entity.setAddress(info.getAddress());
-            entity.setLocateProvinces(StringUtil.renderListToString(info.getLocateProvinces()));
 
-            entity.setAchievement(info.getAchievement());
-            entity.setInstitutionIntro(info.getIntro());
-            entity.setWebLogo(info.getWebLogo());
-            entity.setMobileLogo(info.getMobileLogo());
+            if (!StringUtils.isNullOrEmpty(info.getProvince()))
+                entity.setProvince(info.getProvince());
+            if (!StringUtils.isNullOrEmpty(info.getCity()))
+                entity.setCity(info.getCity());
+            if (!StringUtils.isNullOrEmpty(info.getAddress()))
+                entity.setAddress(info.getAddress());
+            if (!StringUtils.isNullOrEmpty(info.getAchievement()))
+                entity.setAchievement(info.getAchievement());
+            if (!StringUtils.isNullOrEmpty(info.getIntro()))
+                entity.setInstitutionIntro(info.getIntro());
+            if (!StringUtils.isNullOrEmpty(info.getWebLogo()))
+                entity.setWebLogo(info.getWebLogo());
+            if (!StringUtils.isNullOrEmpty(info.getMobileLogo()))
+                entity.setMobileLogo(info.getMobileLogo());
 
             institutionInfoDao.save(entity);
 
@@ -283,25 +273,25 @@ public class InstitutionServiceImpl implements InstitutionService {
         }
     }
 
-    @Override
-    public ResponseData uploadInsitutionPhoto(Long institutionId, List<String> url) {
-        InstitutionInfoEntity entity = institutionInfoDao.findOne(institutionId);
-
-        if (entity != null) {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < url.size(); i++) {
-                if (i == 0)
-                    sb.append(url.get(i));
-                else
-                    sb.append("|" + url.get(i));
-            }
-            entity.setInstitutionPhoto(sb.toString());
-
-            institutionInfoDao.save(entity);
-            return new ResponseData(true, "success", null);
-        }
-        return new ResponseData(false, "fail", null);
-    }
+//    @Override
+//    public ResponseData uploadInsitutionPhoto(Long institutionId, List<String> url) {
+//        InstitutionInfoEntity entity = institutionInfoDao.findOne(institutionId);
+//
+//        if (entity != null) {
+//            StringBuilder sb = new StringBuilder();
+//            for (int i = 0; i < url.size(); i++) {
+//                if (i == 0)
+//                    sb.append(url.get(i));
+//                else
+//                    sb.append("|" + url.get(i));
+//            }
+//            entity.setInstitutionPhoto(sb.toString());
+//
+//            institutionInfoDao.save(entity);
+//            return new ResponseData(true, "success", null);
+//        }
+//        return new ResponseData(false, "fail", null);
+//    }
 
     @Override
     public ResponseData getAllInstitutionList() {
@@ -408,7 +398,7 @@ public class InstitutionServiceImpl implements InstitutionService {
     public ResponseData getFirstField(String firstField, int page, int size) {
         try {
             firstField = "%" + firstField + "%";
-            Page<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByFirstFieldsLike(firstField, new PageRequest(page,size));
+            Page<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByFirstFieldsLike(firstField, new PageRequest(page, size));
             List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
 
             return new ResponseData(true, "get investor info List success", investorInfos);

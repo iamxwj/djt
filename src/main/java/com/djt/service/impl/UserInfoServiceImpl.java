@@ -7,11 +7,16 @@
 
 package com.djt.service.impl;
 
+import com.djt.common.UserType;
+import com.djt.dao.InstitutionInfoDao;
+import com.djt.dao.InvestorInfoDao;
 import com.djt.dao.UserInfoDao;
 import com.djt.data.ResponseData;
 import com.djt.data.UserLoginInfo;
 import com.djt.data.UserRegisterInfo;
 import com.djt.data.ValidResult;
+import com.djt.domain.InstitutionInfoEntity;
+import com.djt.domain.InvestorInfoEntity;
 import com.djt.domain.UserInfoEntity;
 import com.djt.service.UserInfoService;
 import org.apache.log4j.Logger;
@@ -28,8 +33,8 @@ import java.util.concurrent.ExecutionException;
 /**
  * SpringUserDetailServiceImpl
  *
- * @author HOU Zhipeng
- * @date 2016/06/12
+ * @author chenbin
+ * @date 2015/10/28
  */
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
@@ -37,6 +42,21 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     private UserInfoDao userInfoDao;
+    @Autowired
+    private InstitutionInfoDao institutionInfoDao;
+    @Autowired
+    private InvestorInfoDao investorInfoDao;
+
+    // key==> value: username ==> UserInfoEntity
+//    private final LoadingCache<String, UserInfoEntity> userInfoEntityCache = CacheBuilder.newBuilder()
+//            .maximumSize(CacheConfig.USER_INFO_SIZE)
+//            .expireAfterAccess(TimeConstants.DAY_IN_HOUR, TimeUnit.HOURS)
+//            .build(new CacheLoader<String, UserInfoEntity>() {
+//                @Override
+//                public UserInfoEntity load(String username) throws Exception {
+//                    return userInfoDao.findByName(username);
+//                }
+//            });
 
     @Override
     public ResponseData validateUserPass(HttpServletRequest request, HttpServletResponse response, UserLoginInfo info) {
@@ -54,11 +74,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 
         try {
             UserInfoEntity userInfoEntity = userInfoDao.findByName(info.getUsername());
+            //boolean result = EncryptUtils.checkPassword(info.getPassword(), userInfoEntity.getPassword());
             boolean result = (userInfoEntity.getPassword().equals(info.getPassword())) ? true : false;
             if (result) {
                 request.getSession();
                 request.changeSessionId();
                 setSessionData(request.getSession(), info.getUsername());  // 设置会话数据
+
                 addCookies(request.getSession(), response);  // 添加Cookie
                 return new ResponseData(true, "validate username and password success", null);
             }
@@ -77,7 +99,20 @@ public class UserInfoServiceImpl implements UserInfoService {
         httpSession.setAttribute("username", username);   // 将username写入会话中
         byte userTypeId = userInfoEntity.getUserType();
         httpSession.setAttribute("userTypeId", userTypeId);  // 将用户类型ID写入会话数据
-
+        httpSession.setAttribute("mobile", userInfoEntity.getMobile());
+        if (userTypeId == UserType.INSTITUTION) {  // 机构用户类型
+            InstitutionInfoEntity institutionInfoEntity = institutionInfoDao.findByUserId(userId);
+            if (institutionInfoEntity != null) {
+                Long institutionId = institutionInfoEntity.getInstitutionId();
+                httpSession.setAttribute("id", institutionId);  // 将机构ID写入会话数据
+            }
+        } else if (userTypeId == UserType.INVESTOR) {  // 投资者用户类型
+            InvestorInfoEntity investorInfoEntity = investorInfoDao.findByUserId(userId);
+            if (investorInfoEntity != null) {
+                long investorId = investorInfoEntity.getInvestorId();
+                httpSession.setAttribute("id", investorId);  // 将投资人ID写入会话数据
+            }
+        }
     }
 
     @Override
@@ -100,10 +135,16 @@ public class UserInfoServiceImpl implements UserInfoService {
         Cookie userNameCookie = new Cookie("username", String.valueOf(session.getAttribute("username")));
         userNameCookie.setPath("/");
         userNameCookie.setHttpOnly(false);
+
+        Cookie mobileCookie = new Cookie("mobile", String.valueOf(session.getAttribute("mobile")));
+        mobileCookie.setPath("/");
+        mobileCookie.setHttpOnly(false);
+
         response.addCookie(userTypeCookie);
         response.addCookie(idCookie);
         response.addCookie(userIdCookie);
         response.addCookie(userNameCookie);
+        response.addCookie(mobileCookie);
         logger.info("response: " + response);
     }
 
@@ -145,6 +186,17 @@ public class UserInfoServiceImpl implements UserInfoService {
 
             logger.info("userInfo.userType: " + userType);
 
+            if (userType == UserType.INSTITUTION) {
+                InstitutionInfoEntity entity = new InstitutionInfoEntity();
+                entity.setUserInfoEntity(userInfoEntity);
+
+                institutionInfoDao.save(entity);
+            } else if (userType == UserType.INVESTOR) {
+                InvestorInfoEntity entity = new InvestorInfoEntity();
+                entity.setUserInfoEntity(userInfoEntity);
+
+                investorInfoDao.save(entity);
+            }
             // 设置会话
             setSessionData(request.getSession(), username);
 
@@ -237,8 +289,12 @@ public class UserInfoServiceImpl implements UserInfoService {
     public ResponseData modifyPhone(UserLoginInfo userLoginInfo) {
         try {
             if (validateUserByOldPassword(userLoginInfo)) {
+                UserInfoEntity userInfoEntity1 = userInfoDao.findByMobile(userLoginInfo.getPhone());
+                if(userInfoEntity1 != null){
+                    return new ResponseData(false,"手机号码已经被使用请更改手机号",null);
+                }
                 UserInfoEntity userInfoEntity = userInfoDao.findByName(userLoginInfo.getUsername());
-                userInfoEntity.setMobile(userInfoEntity.getMobile());
+                userInfoEntity.setMobile(userLoginInfo.getPhone());
                 userInfoDao.save(userInfoEntity);
                 return new ResponseData(true, "修改Phone成功", null);
             } else {

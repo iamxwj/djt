@@ -7,6 +7,9 @@
 
 package com.djt.data.institution;
 
+import com.djt.data.investor.InvestorShortList;
+import com.djt.domain.InvestorInfoEntity;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
@@ -27,88 +30,57 @@ public class InstitutionInfo implements Serializable {
     private Double fundNumber;
     private String fundUnit;
     private String staffSize;
-
-    private String investType;
-    private List<String> investPhase;
-    private String mainPhase;
-    private List<String> tag;
+    private String status; //身份
+    private String business; // 业务
 
     private List<String> firstFields;
-    private String secondFields;
-
-    private byte investSuccessIndicator;
-    private byte investActiveIndicator;
-    private byte brandIndicator;
-    private byte investRateIndicator;
-    private int overallRank;
-    private int annualRank;
-    private int activeRank;
-    private long fansNumber;
-    private int talkNumber;
-    private int investNumber;
 
     private String province;
-    private List<String> locateProvices;
     private String city;
     private String address;
-
-    private byte authenticated;
-
     private String webLogo;
     private String mobileLogo;
-    private String institutionPhoto;
-
 
     private Timestamp createTime;
     private Timestamp updateTime;
-
+    private Long userId;
+    private List<String> investorName;
+    private List<InvestorShortList> investorShortLists;
 
     public InstitutionInfo() {
     }
 
-    public InstitutionInfo(Long institutionId, String institutionName, String institutionIntro, String achievement,
-                           int institutionLevel, String foundYear, Double fundNumber, String fundUnit, String staffSize,
-                           String investType, List<String> investPhase, String mainPhase, List<String> tag, List<String> firstFields,
-                           String secondFields, byte investSuccessIndicator, byte investActiveIndicator,
-                           byte brandIndicator, byte investRateIndicator, int overallRank, int annualRank, int activeRank,
-                           long fansNumber, int talkNumber, int investNumber, String province, List<String> locateProvices,
-                           String city, String address, byte authenticated, String webLogo, String mobileLogo,
-                           String institutionPhoto, Timestamp createTime, Timestamp updateTime) {
+
+    public InstitutionInfo(Long institutionId, String name, String institutionIntro, String achievements, int level,
+                           String year, Double fundNumber, String fundUnit, String staffSize,
+                           List<String> firstFields, String province,  String city,
+                           String address,  String webLogo, String mobileLogo, Timestamp createTime,
+                           Timestamp updateTime, Long userId, List<String> investorName, List<InvestorShortList> investorShortLists) {
         this.institutionId = institutionId;
-        this.institutionName = institutionName;
         this.institutionIntro = institutionIntro;
-        this.achievement = achievement;
-        this.institutionLevel = institutionLevel;
-        this.foundYear = foundYear;
         this.fundNumber = fundNumber;
         this.fundUnit = fundUnit;
         this.staffSize = staffSize;
-        this.investType = investType;
-        this.investPhase = investPhase;
-        this.mainPhase = mainPhase;
-        this.tag = tag;
         this.firstFields = firstFields;
-        this.secondFields = secondFields;
-        this.investSuccessIndicator = investSuccessIndicator;
-        this.investActiveIndicator = investActiveIndicator;
-        this.brandIndicator = brandIndicator;
-        this.investRateIndicator = investRateIndicator;
-        this.overallRank = overallRank;
-        this.annualRank = annualRank;
-        this.activeRank = activeRank;
-        this.fansNumber = fansNumber;
-        this.talkNumber = talkNumber;
-        this.investNumber = investNumber;
         this.province = province;
-        this.locateProvices = locateProvices;
         this.city = city;
         this.address = address;
-        this.authenticated = authenticated;
         this.webLogo = webLogo;
         this.mobileLogo = mobileLogo;
-        this.institutionPhoto = institutionPhoto;
         this.createTime = createTime;
         this.updateTime = updateTime;
+        this.userId = userId;
+        this.investorName = investorName;
+        this.investorShortLists = investorShortLists;
+    }
+
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Long getInstitutionId() {
@@ -175,38 +147,6 @@ public class InstitutionInfo implements Serializable {
         this.fundUnit = fundUnit;
     }
 
-    public String getInvestType() {
-        return investType;
-    }
-
-    public void setInvestType(String investType) {
-        this.investType = investType;
-    }
-
-    public List<String> getInvestPhase() {
-        return investPhase;
-    }
-
-    public void setInvestPhase(List<String> investPhase) {
-        this.investPhase = investPhase;
-    }
-
-    public String getMainPhase() {
-        return mainPhase;
-    }
-
-    public void setMainPhase(String mainPhase) {
-        this.mainPhase = mainPhase;
-    }
-
-    public List<String> getTag() {
-        return tag;
-    }
-
-    public void setTag(List<String> tag) {
-        this.tag = tag;
-    }
-
     public List<String> getFirstFields() {
         return firstFields;
     }
@@ -215,93 +155,7 @@ public class InstitutionInfo implements Serializable {
         this.firstFields = firstFields;
     }
 
-    public String getSecondFields() {
-        return secondFields;
-    }
 
-    public void setSecondFields(String secondFields) {
-        this.secondFields = secondFields;
-    }
-
-    public byte getInvestSuccessIndicator() {
-        return investSuccessIndicator;
-    }
-
-    public void setInvestSuccessIndicator(byte investSuccessIndicator) {
-        this.investSuccessIndicator = investSuccessIndicator;
-    }
-
-    public byte getInvestActiveIndicator() {
-        return investActiveIndicator;
-    }
-
-    public void setInvestActiveIndicator(byte investActiveIndicator) {
-        this.investActiveIndicator = investActiveIndicator;
-    }
-
-    public byte getBrandIndicator() {
-        return brandIndicator;
-    }
-
-    public void setBrandIndicator(byte brandIndicator) {
-        this.brandIndicator = brandIndicator;
-    }
-
-    public byte getInvestRateIndicator() {
-        return investRateIndicator;
-    }
-
-    public void setInvestRateIndicator(byte investRateIndicator) {
-        this.investRateIndicator = investRateIndicator;
-    }
-
-    public int getOverallRank() {
-        return overallRank;
-    }
-
-    public void setOverallRank(int overallRank) {
-        this.overallRank = overallRank;
-    }
-
-    public int getAnnualRank() {
-        return annualRank;
-    }
-
-    public void setAnnualRank(int annualRank) {
-        this.annualRank = annualRank;
-    }
-
-    public int getActiveRank() {
-        return activeRank;
-    }
-
-    public void setActiveRank(int activeRank) {
-        this.activeRank = activeRank;
-    }
-
-    public long getFansNumber() {
-        return fansNumber;
-    }
-
-    public void setFansNumber(long fansNumber) {
-        this.fansNumber = fansNumber;
-    }
-
-    public int getTalkNumber() {
-        return talkNumber;
-    }
-
-    public void setTalkNumber(int talkNumber) {
-        this.talkNumber = talkNumber;
-    }
-
-    public int getInvestNumber() {
-        return investNumber;
-    }
-
-    public void setInvestNumber(int investNumber) {
-        this.investNumber = investNumber;
-    }
 
     public String getProvince() {
         return province;
@@ -311,21 +165,6 @@ public class InstitutionInfo implements Serializable {
         this.province = province;
     }
 
-    public List<String> getLocateProvices() {
-        return locateProvices;
-    }
-
-    public void setLocateProvices(List<String> locateProvices) {
-        this.locateProvices = locateProvices;
-    }
-
-    public byte getAuthenticated() {
-        return authenticated;
-    }
-
-    public void setAuthenticated(byte authenticated) {
-        this.authenticated = authenticated;
-    }
 
     public String getStaffSize() {
         return staffSize;
@@ -367,14 +206,6 @@ public class InstitutionInfo implements Serializable {
         this.mobileLogo = mobileLogo;
     }
 
-    public String getInstitutionPhoto() {
-        return institutionPhoto;
-    }
-
-    public void setInstitutionPhoto(String institutionPhoto) {
-        this.institutionPhoto = institutionPhoto;
-    }
-
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -393,13 +224,10 @@ public class InstitutionInfo implements Serializable {
 
     public InstitutionInfo(Long institutionId, String institutionName, String institutionIntro, String achievement,
                            int institutionLevel, String foundYear, Double fundNumber, String fundUnit, String staffSize,
-                           String investType, List<String> investPhase, String mainPhase, List<String> tag,
-                           List<String> firstFields, String secondFields, byte investSuccessIndicator,
-                           byte investActiveIndicator, byte brandIndicator, byte investRateIndicator, int overallRank,
-                           int annualRank, int activeRank, long fansNumber, int talkNumber, int investNumber,
-                           String province, List<String> locateProvices, String city, String address, byte authenticated,
-                           String webLogo, String mobileLogo, String institutionPhoto, List<InstitutionCase> investCaseList,
-                           List<InstitutionMember> institutionMemberList, Timestamp createTime, Timestamp updateTime) {
+
+                           List<String> firstFields, String province,  String city, String address,
+                           String webLogo, String mobileLogo,
+                           List<InstitutionMember> institutionMemberList, Timestamp createTime, Timestamp updateTime, Long userId) {
         this.institutionId = institutionId;
         this.institutionName = institutionName;
         this.institutionIntro = institutionIntro;
@@ -409,32 +237,15 @@ public class InstitutionInfo implements Serializable {
         this.fundNumber = fundNumber;
         this.fundUnit = fundUnit;
         this.staffSize = staffSize;
-        this.investType = investType;
-        this.investPhase = investPhase;
-        this.mainPhase = mainPhase;
-        this.tag = tag;
         this.firstFields = firstFields;
-        this.secondFields = secondFields;
-        this.investSuccessIndicator = investSuccessIndicator;
-        this.investActiveIndicator = investActiveIndicator;
-        this.brandIndicator = brandIndicator;
-        this.investRateIndicator = investRateIndicator;
-        this.overallRank = overallRank;
-        this.annualRank = annualRank;
-        this.activeRank = activeRank;
-        this.fansNumber = fansNumber;
-        this.talkNumber = talkNumber;
-        this.investNumber = investNumber;
         this.province = province;
-        this.locateProvices = locateProvices;
         this.city = city;
         this.address = address;
-        this.authenticated = authenticated;
         this.webLogo = webLogo;
         this.mobileLogo = mobileLogo;
-        this.institutionPhoto = institutionPhoto;
         this.createTime = createTime;
         this.updateTime = updateTime;
+        this.userId = userId;
     }
 
 }

@@ -44,11 +44,11 @@ public interface InstitutionInfoDao extends
 
     List<InstitutionInfoEntity> findByInstitutionNameLike(String nameLike);
 
-    List<InstitutionInfoEntity> findByInvestType(String investType);
-    @Query("from InstitutionInfoEntity i where i.investType =?1 and i.investPhase like ?2")
-    List<InstitutionInfoEntity> findByInvestTypeAndInvestPhaseLike(String investType, String investPhase);
+//    List<InstitutionInfoEntity> findByInvestType(String investType);
+//    @Query("from InstitutionInfoEntity i where i.investType =?1 and i.investPhase like ?2")
+//    List<InstitutionInfoEntity> findByInvestTypeAndInvestPhaseLike(String investType, String investPhase);
 
-    List<InstitutionInfoEntity> findByTagLike(String tag);
+//    List<InstitutionInfoEntity> findByTagLike(String tag);
 //    @Query("select i from InstitutionInfoEntity i where i.firstFields like :firstField ")
     Page<InstitutionInfoEntity> findByFirstFieldsLike(@Param("firstField")String firstField, Pageable pageable);
 }
