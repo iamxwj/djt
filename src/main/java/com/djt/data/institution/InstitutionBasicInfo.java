@@ -25,17 +25,17 @@ public class InstitutionBasicInfo {
     private String fundUnit; //资金单位
     private String staffSize; //员工规模
 
-    private String status; //身份
+    private String status; //地位
     private String business; // 业务
 
     private List<String> firstFields; //所属行业
 
-    private String province; // 省
-    private String city; // 城市
-    private String address;// 地址
+    private String province; // 总部省
+    private String city; // 总部城市
+    private String address;// 总部地址
 
     private String achievement; // 成就
-    private String intro; // 简介
+    private String intro; // 机构简介
     private String webLogo; // web 图片
     private String mobileLogo; // mobile 图片
 

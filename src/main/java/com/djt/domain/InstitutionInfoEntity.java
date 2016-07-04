@@ -23,7 +23,7 @@ public class InstitutionInfoEntity {
 
 
     private  String fundYear;
-    @Column(name = "fund_year")
+    @Column(name = "found_year")
     public String getFundYear() {
         return fundYear;
     }

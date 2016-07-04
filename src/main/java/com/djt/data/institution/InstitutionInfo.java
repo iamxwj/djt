@@ -22,30 +22,62 @@ import java.util.List;
  */
 public class InstitutionInfo implements Serializable {
     private Long institutionId;
-    private String institutionName;
-    private String institutionIntro;
-    private String achievement;
-    private int institutionLevel;
-    private String foundYear;
-    private Double fundNumber;
-    private String fundUnit;
-    private String staffSize;
-    private String status; //身份
+    private String institutionName; // 机构名
+    private String institutionIntro; // 机构简介
+    private String achievement; //成就
+    private int institutionLevel;// 等级
+    private String foundYear;// 成立时间
+    private Double fundNumber;// 资金规模
+    private String fundUnit;// 资金单位
+    private String staffSize;// 员工规模
+    private String status; //地位
     private String business; // 业务
 
-    private List<String> firstFields;
+    private List<String> firstFields;//行业
 
-    private String province;
-    private String city;
-    private String address;
-    private String webLogo;
-    private String mobileLogo;
+    private String province;//总部省
+    private String city;//总部城市
+    private String address;//总部地址
+    private String webLogo;// web 图片
+    private String mobileLogo;// 手机图片
 
-    private Timestamp createTime;
-    private Timestamp updateTime;
-    private Long userId;
-    private List<String> investorName;
-    private List<InvestorShortList> investorShortLists;
+    private Timestamp createTime;//创建时间
+    private Timestamp updateTime;//更新时间
+    private Long userId;// 用户ID
+    private List<String> investorName;// 高管名字列表
+    private List<InvestorShortList> investorShortLists;// 高管简略列表
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(String business) {
+        this.business = business;
+    }
+
+    public List<String> getInvestorName() {
+        return investorName;
+    }
+
+    public void setInvestorName(List<String> investorName) {
+        this.investorName = investorName;
+    }
+
+    public List<InvestorShortList> getInvestorShortLists() {
+        return investorShortLists;
+    }
+
+    public void setInvestorShortLists(List<InvestorShortList> investorShortLists) {
+        this.investorShortLists = investorShortLists;
+    }
 
     public InstitutionInfo() {
     }

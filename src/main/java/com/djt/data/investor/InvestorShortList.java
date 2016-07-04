@@ -5,9 +5,9 @@ package com.djt.data.investor;
  * @date 2016/7/4.
  */
 public class InvestorShortList {
-    private String name;
-    private String photo;
-    private String position;
+    private String name; //高管名字
+    private String photo;//高管照片
+    private String position;//高管职位
 
 
     public InvestorShortList(String name, String photo, String position) {
