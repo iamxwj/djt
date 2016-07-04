@@ -69,7 +69,6 @@ public interface InvestorService {
 
     public ResponseData getInvestorListByTag(String tag);
 
-    public ResponseData getAdvertisment();
 
     public ResponseData getRecommonderList(List<String> firstField);
 

@@ -401,24 +401,6 @@ public class InvestorServiceImpl implements InvestorService {
         }
     }
 
-    @Override
-    public ResponseData getAdvertisment() {
-        try {
-            String tag = "%" + "VIP" + "%";
-            List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByTagLike(tag);
-            List<AdvertismentInfo> investorInfos = parseInvestorEntitiesToAdInfo(investorInfoEntities);
-
-            List<InstitutionInfoEntity> instituionList = institutionInfoDao.findByTagLike(tag);
-            List<AdvertismentInfo> investorInfos2 = parseInstitutionToAdInfo(instituionList);
-            List<AdvertismentInfo> all = new ArrayList<>();
-            all.addAll(investorInfos);
-            all.addAll(investorInfos2);
-            return new ResponseData(true, "get investor info List success", all);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
-        }
-    }
 
     @Override
     public ResponseData getRecommonderList(List<String> phase) {

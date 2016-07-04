@@ -299,10 +299,10 @@ public class InstitutionServiceImpl implements InstitutionService {
             Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findAll();
             List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
 
-            return new ResponseData(true, "get investor info List success", investorInfos);
+            return new ResponseData(true, "get institution info List success", investorInfos);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
+            return new ResponseData(false, "get institution info List exists", null);
         }
     }
 
@@ -316,7 +316,6 @@ public class InstitutionServiceImpl implements InstitutionService {
         return institutionInfos;
     }
 
-
     @Override
     public ResponseData getListByNameList(String name) {
         try {
@@ -324,10 +323,10 @@ public class InstitutionServiceImpl implements InstitutionService {
             Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByInstitutionNameLike(name);
             List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
 
-            return new ResponseData(true, "get investor info List success", investorInfos);
+            return new ResponseData(true, "get institution info List success", investorInfos);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
+            return new ResponseData(false, "get institution info List exists", null);
         }
     }
 
@@ -361,10 +360,10 @@ public class InstitutionServiceImpl implements InstitutionService {
             Page<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByFirstFieldsLike(firstField, new PageRequest(page, size));
             List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
 
-            return new ResponseData(true, "get investor info List success", investorInfos);
+            return new ResponseData(true, "get institution info List success", investorInfos);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
+            return new ResponseData(false, "get institution info List exists", null);
         }
     }
 
