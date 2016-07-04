@@ -121,30 +121,6 @@ public class InstitutionController {
 
     }
 
-    /**
-     * 获取列表通过类型和阶段
-     *
-     * @param investType
-     * @param phase
-     * @return
-     */
-    @RequestMapping(value = "/list_by_type_phase", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseData getInvestorListByTypeAndPhase(@RequestParam("investType") String investType, @RequestParam("phase") String phase) {
-        return institutionService.getInstitutionListByTypeAndPhase(investType, phase);
-    }
-
-    @RequestMapping(value = "/list_by_type", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseData getInvestorListByType(@RequestParam("investType") String investType) {
-        return institutionService.getInstitutionListByType(investType);
-    }
-
-    @RequestMapping(value = "/list_by_tag", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseData getInvestorListByTag(@RequestParam("tag") String tag) {
-        return institutionService.getInstitutionListByTag(tag);
-    }
 
     @RequestMapping(value = "/search_by_name", method = RequestMethod.GET)
     @ResponseBody
