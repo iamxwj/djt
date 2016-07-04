@@ -316,46 +316,6 @@ public class InstitutionServiceImpl implements InstitutionService {
         return institutionInfos;
     }
 
-    @Override
-    public ResponseData getInstitutionListByTypeAndPhase(String investType, String phase) {
-        try {
-            phase = "%" + phase + "%";
-            Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByInvestTypeAndInvestPhaseLike(investType, phase);
-            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
-
-            return new ResponseData(true, "get investor info List success", investorInfos);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
-        }
-    }
-
-    @Override
-    public ResponseData getInstitutionListByType(String investType) {
-        try {
-            Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByInvestType(investType);
-            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
-
-            return new ResponseData(true, "get investor info List success", investorInfos);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
-        }
-    }
-
-    @Override
-    public ResponseData getInstitutionListByTag(String tag) {
-        try {
-            tag = "%" + tag + "%";
-            Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByTagLike(tag);
-            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
-
-            return new ResponseData(true, "get investor info List success", investorInfos);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
-        }
-    }
 
     @Override
     public ResponseData getListByNameList(String name) {
