@@ -148,12 +148,6 @@ public class InvestorController {
         return investorService.getInvestorListByTag(tag);
     }
 
-    @RequestMapping(value = "/get_ad", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseData getInvestorListByTag() {
-        return investorService.getAdvertisment();
-    }
-
 
     @RequestMapping(value = "/get_recommander", method = RequestMethod.POST)
     @ResponseBody
