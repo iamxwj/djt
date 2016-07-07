@@ -14,13 +14,15 @@ public class FollowEntity {
     private Long groupId;
     private Byte noticeType;
     private Byte fansType;
+    private Byte followType;
 
-    public FollowEntity(Long noticeList, Long fansList, Byte noticeType, Byte fansType) {
+    public FollowEntity(Long noticeList, Long fansList, Byte noticeType, Byte fansType, Byte followType) {
         this.noticeList = noticeList;
         this.fansList = fansList;
         this.noticeType = noticeType;
         this.fansType = fansType;
         this.groupId = 0L;
+        this.followType = followType;
     }
 
     public FollowEntity() {
@@ -36,6 +38,7 @@ public class FollowEntity {
     public void setNoticeType(Byte noticeType) {
         this.noticeType = noticeType;
     }
+
     @Basic
     @Column(name = "fans_type")
     public Byte getFansType() {
@@ -56,6 +59,7 @@ public class FollowEntity {
     public void setId(Long id) {
         this.id = id;
     }
+
     @Basic
     @Column(name = "notice_list")
     public Long getNoticeList() {
@@ -65,6 +69,7 @@ public class FollowEntity {
     public void setNoticeList(Long noticeList) {
         this.noticeList = noticeList;
     }
+
     @Basic
     @Column(name = "fans_list")
     public Long getFansList() {
@@ -74,6 +79,7 @@ public class FollowEntity {
     public void setFansList(Long fansList) {
         this.fansList = fansList;
     }
+
     @Basic
     @Column(name = "group_id")
     public Long getGroupId() {
@@ -84,4 +90,12 @@ public class FollowEntity {
         this.groupId = groupId;
     }
 
+    @Column(name = "follow_type")
+    public Byte getFollowType() {
+        return followType;
+    }
+
+    public void setFollowType(Byte followType) {
+        this.followType = followType;
+    }
 }

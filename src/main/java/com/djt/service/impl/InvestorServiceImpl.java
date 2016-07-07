@@ -116,66 +116,31 @@ public class InvestorServiceImpl implements InvestorService {
     private InvestorInfo parseInvestorEntity(InvestorInfoEntity entity) {
         Long investorId = entity.getInvestorId();
         String investorName = entity.getInvestorName();
-        String investType = entity.getInvestType();
         Long userId = entity.getUserInfoEntity().getUserId();
-        List<String> tag = new ArrayList<>();
-        if (!StringUtils.isNullOrEmpty(entity.getTag()))
-            tag = StringUtil.renderStringToList(entity.getTag(), "\\|");
         String investorPosition = entity.getInvestorPosition();
         String birthYear = entity.getBirthYear();
         String nativeProvince = entity.getNativeProvince();
         String nativeDistrict = entity.getNativeDistrict();
         String education = entity.getEducation();
-        Integer age = entity.getAge();
         String gender = entity.getGender();
-        Double fundNumber = entity.getFundNumber();
-        String fundUnit = entity.getFundUnit();
 
         String institutionName = entity.getInstitutionName();
         int investorLevel = entity.getInvestorLevel();
 
-        byte successIndicator = entity.getInvestSuccessIndicator();
-        byte activeIndicator = entity.getInvestActiveIndicator();
-        byte brandIndicator = entity.getBrandIndicator();
-        byte rateIndicator = entity.getInvestRateIndicator();
-
-        int overallRank = entity.getOverallRank();
-        int annualRank = entity.getAnnualRank();
-        int activeRank = entity.getActiveRank();
-
-        long fansNumber = entity.getFansNumber();
-        int talkNumber = entity.getTalkNumber();
-        int investNumber = entity.getInvestNumber();
 
         String province = entity.getProvince();
         String city = entity.getCity();
-        String address = entity.getAddress();
 
         String achievement = entity.getAchievement();
         String investorIntro = entity.getInvestorIntro();
-        Byte authenticated = entity.getAuthenticated();
-        String philosophy = entity.getInvestPhilosophy();
 
         String eduExp = entity.getEduExp();
         String workExp = entity.getWorkExp();
-        String others = entity.getOthers();
 
         String mobilePortraitUrl = entity.getMobilePortrait();
         List<String> webPortraitUrl = getPhotoUrlList(entity.getWebPortrait());
         List<String> investorPhotoUrlList = getPhotoUrlList(entity.getInvestorPhoto());
 
-        String investPhase = entity.getInvestPhase();
-        String[] phaseArray = null;
-        List<String> phaseList = new ArrayList<>();
-        if (!StringUtils.isNullOrEmpty(investPhase)) {
-            phaseArray = investPhase.split("\\|");
-
-            if (phaseArray[0].length() == 0)
-                phaseList = new ArrayList<>();
-            else
-                phaseList = Arrays.asList(phaseArray);
-        }
-        String mainPhase = entity.getMainPhase();
 
         String firstFields = entity.getFirstFields();
         List<String> fieldList = new ArrayList<>();
@@ -187,16 +152,14 @@ public class InvestorServiceImpl implements InvestorService {
             else
                 fieldList = Arrays.asList(firstFieldArray);
         }
-        String secondFields = entity.getSecondFields();
 
         Timestamp createTime = entity.getCreateTime();
         Timestamp lastUpdate = entity.getUpdateTime();
-
-        InvestorInfo investorInfo = new InvestorInfo(investorId, investorName, investType, mainPhase, tag, investorPosition, investorLevel, birthYear,
-                nativeProvince, nativeDistrict, education, age, gender, institutionName, fundNumber, fundUnit, successIndicator, activeIndicator, brandIndicator,
-                rateIndicator, overallRank, annualRank, activeRank, fansNumber, talkNumber, investNumber, province, city, address,
-                achievement, investorIntro, authenticated, phaseList, fieldList, secondFields, philosophy, eduExp,
-                workExp, others, mobilePortraitUrl, webPortraitUrl, investorPhotoUrlList, createTime, lastUpdate, userId);
+        String status = entity.getStatus();
+        InvestorInfo investorInfo = new InvestorInfo(investorId, investorName, investorPosition, investorLevel, birthYear,
+                nativeProvince, nativeDistrict, education, gender, institutionName,  province, city, achievement,
+                investorIntro,  fieldList,  eduExp, workExp,  mobilePortraitUrl, webPortraitUrl,
+                investorPhotoUrlList, createTime, lastUpdate, userId, status);
 
         return investorInfo;
     }
@@ -217,31 +180,18 @@ public class InvestorServiceImpl implements InvestorService {
                 entity.setNativeProvince(info.getNativeProvince());
             if (!StringUtils.isNullOrEmpty(info.getNativeDistrict()))
                 entity.setNativeDistrict(info.getNativeDistrict());
-            entity.setAge(info.getAge());
             if (!StringUtils.isNullOrEmpty(info.getGender()))
                 entity.setGender(info.getGender());
-            entity.setFundNumber(info.getFundNumber());
-            if (!StringUtils.isNullOrEmpty(info.getFundUnit()))
-                entity.setFundUnit(info.getFundUnit());
             if (!StringUtils.isNullOrEmpty(info.getEducation()))
                 entity.setEducation(info.getEducation());
             if (!StringUtils.isNullOrEmpty(info.getInstitutionName()))
                 entity.setInstitutionName(info.getInstitutionName());
             if (!StringUtils.isNullOrEmpty(info.getInvestorPosition()))
                 entity.setInvestorPosition(info.getInvestorPosition());
-            if (!StringUtils.isNullOrEmpty(info.getInvestType()))
-                entity.setInvestType(info.getInvestType());
-            if (!StringUtils.isNullOrEmpty(info.getMainPhase()))
-                entity.setMainPhase(info.getMainPhase());
-            if (info.getTag() != null) {
-                entity.setTag(StringUtil.renderListToString(info.getTag()));
-            }
             if (!StringUtils.isNullOrEmpty(info.getProvince()))
                 entity.setProvince(info.getProvince());
             if (!StringUtils.isNullOrEmpty(info.getCity()))
                 entity.setCity(info.getCity());
-            if (!StringUtils.isNullOrEmpty(info.getAddress()))
-                entity.setAddress(info.getAddress());
             if (!StringUtils.isNullOrEmpty(info.getMobilePortraitUrl()))
                 entity.setMobilePortrait(info.getMobilePortraitUrl());
 
@@ -257,16 +207,7 @@ public class InvestorServiceImpl implements InvestorService {
                 entity.setWebPortrait(sb.toString());
             }
             sb = new StringBuilder();
-            if (info.getInvestPhaseList() != null) {
-                for (int i = 0; i < info.getInvestPhaseList().size(); i++) {
-                    if (i == 0)
-                        sb.append(info.getInvestPhaseList().get(i));
-                    else
-                        sb.append("|" + info.getInvestPhaseList().get(i));
-                }
-                entity.setInvestPhase(sb.toString());
-            }
-            if (info.getInvestPhaseList() != null) {
+            if (info.getFirstFieldList() != null) {
                 sb = new StringBuilder();
                 for (int i = 0; i < info.getFirstFieldList().size(); i++) {
                     if (i == 0)
@@ -277,8 +218,6 @@ public class InvestorServiceImpl implements InvestorService {
 
                 entity.setFirstFields(sb.toString());
             }
-            if (!StringUtils.isNullOrEmpty(info.getSecondField()))
-            entity.setSecondFields(info.getSecondField());
 
             // 上传基本信息、投资人照片、投资阶段、投资领域
             investorInfoDao.save(entity);
@@ -297,14 +236,14 @@ public class InvestorServiceImpl implements InvestorService {
         logger.info("upload investor intro begin, investorId = " + investorId);
         try {
             InvestorInfoEntity entity = investorInfoDao.findByInvestorId(investorId);
-
+            if (!StringUtils.isNullOrEmpty(intro.getInvestorIntro()))
             entity.setInvestorIntro(intro.getInvestorIntro());
+            if (!StringUtils.isNullOrEmpty(intro.getAchievement()))
             entity.setAchievement(intro.getAchievement());
+            if (!StringUtils.isNullOrEmpty(intro.getEduExp()))
             entity.setEduExp(intro.getEduExp());
+            if (!StringUtils.isNullOrEmpty(intro.getWorkExp()))
             entity.setWorkExp(intro.getWorkExp());
-            entity.setInvestPhilosophy(intro.getInvestPhilosophy());
-            entity.setOthers(intro.getOthers());
-
             // 上传投资人介绍信息
             investorInfoDao.save(entity);
             logger.info("save investor intro success, investorId = " + investorId);
@@ -360,71 +299,6 @@ public class InvestorServiceImpl implements InvestorService {
         }
     }
 
-    @Override
-    public ResponseData getInvestorListByTypeAndPhase(String investType, String phase) {
-        try {
-            phase = "%" + phase + "%";
-            List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByInvestTypeAndInvestPhaseLike(investType, phase);
-            List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities);
-
-            return new ResponseData(true, "get investor info List success", investorInfos);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
-        }
-    }
-
-    @Override
-    public ResponseData getInvestorListByType(String investType) {
-        try {
-            List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByInvestType(investType);
-            List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities);
-
-            return new ResponseData(true, "get investor info List success", investorInfos);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
-        }
-    }
-
-    @Override
-    public ResponseData getInvestorListByTag(String tag) {
-        try {
-            tag = "%" + tag + "%";
-            List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByTagLike(tag);
-            List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities);
-
-            return new ResponseData(true, "get investor info List success", investorInfos);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseData(false, "get investor info List exists", null);
-        }
-    }
-
-
-    @Override
-    public ResponseData getRecommonderList(List<String> phase) {
-        try {
-
-            String tag = "%" + "VIP" + "%";
-            List<InvestorInfo> investorInfos = new ArrayList<>();
-            List<InvestorInfoEntity> investorInfoEntities1 = investorInfoDao.findByTagLike(tag);
-            Set<InvestorInfoEntity> investorInfoEntitySet = new HashSet<>();
-            investorInfoEntitySet.addAll(investorInfoEntities1);
-            investorInfos.addAll(parseInvestorEntities(investorInfoEntities1));
-            for (String p : phase) {
-                System.out.println(p);
-                String firstFields = "%" + p + "%";
-//                List<InvestorInfoEntity> investorInfoEntities = investorInfoDao.findByFirstFieldsLike(firstFields);
-//                investorInfoEntitySet.addAll(investorInfoEntities);
-            }
-            investorInfos = parseInvestorEntities(investorInfoEntitySet);
-            return new ResponseData(true, "get Recommonder List success", investorInfos);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseData(false, "get Recommonder List exists", null);
-        }
-    }
 
     @Override
     public ResponseData getListByName(String name) {

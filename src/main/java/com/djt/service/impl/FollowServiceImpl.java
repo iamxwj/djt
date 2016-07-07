@@ -39,10 +39,10 @@ public class FollowServiceImpl implements FollowService {
 
 
     @Override
-    public ResponseData countFollows(Long userId) {
+    public ResponseData countFollows(Long userId, Byte followType) {
 
         try {
-            int follows = followDao.countFollow(userId);
+            int follows = followDao.countFollow(userId, followType);
             return new ResponseData(true, "count follows success", follows);
         } catch (Exception e) {
             return new ResponseData(false, "Follow new user fail", 0);
@@ -53,11 +53,12 @@ public class FollowServiceImpl implements FollowService {
      * 获取粉丝数
      *
      * @param userId
+     * @param followType
      */
     @Override
-    public ResponseData countFans(Long userId) {
+    public ResponseData countFans(Long userId, Byte followType) {
         try {
-            int follows = followDao.countFans(userId);
+            int follows = followDao.countFans(userId, followType);
 
             return new ResponseData(true, "count follows success", new FollowFansCountInfo(userId,follows));
         } catch (Exception e) {
@@ -66,10 +67,10 @@ public class FollowServiceImpl implements FollowService {
     }
 
     @Override
-    public ResponseData addFollow(Long userId, Byte userType, Long followId, Byte followType) {
+    public ResponseData addFollow(Long userId, Byte userType, Long followPersonId, Byte followPersonType, Byte followType) {
 
         try {
-            FollowEntity followEntity = new FollowEntity(userId, followId, userType, followType);
+            FollowEntity followEntity = new FollowEntity(userId, followPersonId, userType, followPersonType, followType);
             followDao.save(followEntity);
             return new ResponseData(true, "Follow new user success", null);
         } catch (Exception e) {
@@ -79,9 +80,9 @@ public class FollowServiceImpl implements FollowService {
     }
 
     @Override
-    public ResponseData deleteFollow(Long userId, Long followId) {
+    public ResponseData deleteFollow(Long userId, Long followId, Byte followType) {
         try {
-            List<FollowEntity> followEntity = followDao.findByNoticeListAndFansList(userId, followId);
+            List<FollowEntity> followEntity = followDao.findByNoticeListAndFansListAndFollowType(userId, followId,followType);
             followDao.delete(followEntity);
             return new ResponseData(true, "Delete Follower success", null);
         } catch (Exception e) {
@@ -91,9 +92,9 @@ public class FollowServiceImpl implements FollowService {
     }
 
     @Override
-    public ResponseData getAllFollowPerson(Long userId) {
+    public ResponseData getAllFollowPerson(Long userId, Byte followType) {
         try {
-            List<FollowEntity> entities = followDao.findByNoticeListAndFansType(userId, (byte) 1);
+            List<FollowEntity> entities = followDao.findByNoticeListAndFansTypeAndFollowType(userId, (byte) 1,followType);
             List<FollowInfo> followInfos = renderFollowPersons(entities);
             return new ResponseData(true, "get Follow Person success", followInfos);
         } catch (Exception e) {
@@ -106,8 +107,6 @@ public class FollowServiceImpl implements FollowService {
         List<FollowInfo> followInfos = new ArrayList<>();
 
         for (FollowEntity followEntity : entities) {
-
-
             followInfos.add(renderFollowPerson(followEntity));
         }
         return followInfos;
@@ -139,9 +138,9 @@ public class FollowServiceImpl implements FollowService {
 
 
     @Override
-    public ResponseData getAllFollowInstitution(Long userId) {
+    public ResponseData getAllFollowInstitution(Long userId, Byte followType) {
         try {
-            List<FollowEntity> entities = followDao.findByNoticeListAndFansType(userId, (byte) 2);
+            List<FollowEntity> entities = followDao.findByNoticeListAndFansTypeAndFollowType(userId, (byte) 2,followType);
             List<FollowInfo> followInfos = renderInstitutions(entities);
             return new ResponseData(true, "get Follow Person success", followInfos);
         } catch (Exception e) {
@@ -180,9 +179,9 @@ public class FollowServiceImpl implements FollowService {
     }
 
     @Override
-    public ResponseData getAllFansPerson(Long userId) {
+    public ResponseData getAllFansPerson(Long userId, Byte followType) {
         try {
-            List<FollowEntity> entities = followDao.findByFansListAndNoticeType(userId, (byte) UserType.INVESTOR);
+            List<FollowEntity> entities = followDao.findByFansListAndNoticeTypeAndFollowType(userId, (byte) UserType.INVESTOR, followType);
             List<FollowInfo> followInfos = renderFansPersons(entities);
             return new ResponseData(true, "get Follow Person success", followInfos);
         } catch (Exception e) {
@@ -194,7 +193,6 @@ public class FollowServiceImpl implements FollowService {
         List<FollowInfo> followInfos = new ArrayList<>();
 
         for (FollowEntity followEntity : entities) {
-
 
             followInfos.add(renderFansPerson(followEntity));
         }
@@ -228,9 +226,9 @@ public class FollowServiceImpl implements FollowService {
 
 
     @Override
-    public ResponseData getAllFansInstitution(Long userId) {
+    public ResponseData getAllFansInstitution(Long userId, Byte followType) {
         try {
-            List<FollowEntity> entities = followDao.findByFansListAndNoticeType(userId, (byte) 2);
+            List<FollowEntity> entities = followDao.findByFansListAndNoticeTypeAndFollowType(userId, (byte) 2, followType);
             List<FollowInfo> followInfos = renderFansInstitutions(entities);
             return new ResponseData(true, "get Follow Person success", followInfos);
         } catch (Exception e) {
@@ -288,7 +286,7 @@ public class FollowServiceImpl implements FollowService {
     public ResponseData countFollowGroupByUserType(Long userId, Byte userType) {
 
         try {
-            int number = followDao.countFollow(userId, userType);
+            int number = followDao.countFollowByUserAndUserType(userId, userType);
             return new ResponseData(true, "get Follow Person success", number);
         } catch (Exception e) {
             return new ResponseData(false, "get Follow Person fail", 0);
@@ -335,13 +333,14 @@ public class FollowServiceImpl implements FollowService {
      *
      * @param userId
      * @param followId
+     * @param followType
      * @return
      */
     @Override
-    public ResponseData isFollow(Long userId, Long followId) {
+    public ResponseData isFollow(Long userId, Long followId, Byte followType) {
         try {
             boolean flag = false;
-            List<FollowEntity> followInfos = followDao.findByNoticeListAndFansList(userId, followId);
+            List<FollowEntity> followInfos = followDao.findByNoticeListAndFansListAndFollowType(userId, followId,followType);
             if (followInfos.size() >0)
                 flag = true;
             FollowedOrNotInfo followedOrNotInfo = new FollowedOrNotInfo(followId,flag);

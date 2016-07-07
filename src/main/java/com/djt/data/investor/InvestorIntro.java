@@ -15,12 +15,10 @@ package com.djt.data.investor;
  */
 public class InvestorIntro {
     private long investorId;
-    private String investorIntro;
-    private String achievement;
-    private String eduExp;
-    private String workExp;
-    private String investPhilosophy;
-    private String others;
+    private String investorIntro;//简介
+    private String achievement; // 成就
+    private String eduExp; //教育经历
+    private String workExp; //工作经历
 
     public long getInvestorId() {
         return investorId;
@@ -62,22 +60,6 @@ public class InvestorIntro {
         this.workExp = workExp;
     }
 
-    public String getInvestPhilosophy() {
-        return investPhilosophy;
-    }
-
-    public void setInvestPhilosophy(String investPhilosophy) {
-        this.investPhilosophy = investPhilosophy;
-    }
-
-    public String getOthers() {
-        return others;
-    }
-
-    public void setOthers(String others) {
-        this.others = others;
-    }
-
     @Override
     public String toString() {
         return "InvestorIntro{" +
@@ -86,8 +68,6 @@ public class InvestorIntro {
                 ", achievement='" + achievement + '\'' +
                 ", eduExp='" + eduExp + '\'' +
                 ", workExp='" + workExp + '\'' +
-                ", investPhilosophy='" + investPhilosophy + '\'' +
-                ", others='" + others + '\'' +
                 '}';
     }
 }

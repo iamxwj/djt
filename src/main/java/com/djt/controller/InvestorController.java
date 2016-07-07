@@ -122,39 +122,6 @@ public class InvestorController {
         return investorService.uploadInvestorIntro(investorIntro);
     }
 
-
-    /**
-     * 获取列表通过类型和
-     *
-     * @param investType
-     * @param phase
-     * @return
-     */
-    @RequestMapping(value = "/list_by_type_phase", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseData getInvestorListByTypeAndPhase(@RequestParam("investType") String investType, @RequestParam("phase") String phase) {
-        return investorService.getInvestorListByTypeAndPhase(investType, phase);
-    }
-
-    @RequestMapping(value = "/list_by_type", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseData getInvestorListByType(@RequestParam("investType") String investType) {
-        return investorService.getInvestorListByType(investType);
-    }
-
-    @RequestMapping(value = "/list_by_tag", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseData getInvestorListByTag(@RequestParam("tag") String tag) {
-        return investorService.getInvestorListByTag(tag);
-    }
-
-
-    @RequestMapping(value = "/get_recommander", method = RequestMethod.POST)
-    @ResponseBody
-    public ResponseData getInvestorListByTag(@RequestBody List<String> investType) {
-        return investorService.getRecommonderList(investType);
-    }
-
     @RequestMapping(value = "/search_by_name", method = RequestMethod.GET)
     @ResponseBody
     public ResponseData getInvestorListByName(@RequestParam("name") String name) {

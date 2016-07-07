@@ -77,7 +77,28 @@ public class DefaultController {
         return defaultService.getMemberLevelList();
     }
 
+    /**
+     * 获取省份列表
+     * @return
+     */
+    @RequestMapping("/provinces_list")
+    @ResponseBody
+    public List<ProvinceInfo> getProvinceList() {
+        List<ProvinceInfo> provinceInfoList = defaultService.getProvincesList();
 
+        return provinceInfoList;
+    }
+
+    /**
+     * 根据省份ID获取城市列表
+     * @param provinceId
+     * @return
+     */
+    @RequestMapping("/cities_list")
+    @ResponseBody
+    public List<CityInfo> getCityList(@RequestParam("provinceId") Integer provinceId) {
+        return defaultService.getCitiesListByProvinceId(provinceId);
+    }
 
     /**
      * 获取省份列表
@@ -85,7 +106,7 @@ public class DefaultController {
      */
     @RequestMapping("/province_list")
     @ResponseBody
-    public List<ProvinceInfo> getProvinceList() {
+    public List<ProvinceInfo> getProvincesList() {
         List<ProvinceInfo> provinceInfoList = defaultService.getProvinceList();
 
         return provinceInfoList;
@@ -98,7 +119,7 @@ public class DefaultController {
      */
     @RequestMapping("/city_list")
     @ResponseBody
-    public List<CityInfo> getCityList(@RequestParam("provinceId") Integer provinceId) {
+    public List<CityInfo> getCitiesList(@RequestParam("provinceId") Integer provinceId) {
         return defaultService.getCityListByProvinceId(provinceId);
     }
 

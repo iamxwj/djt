@@ -7,10 +7,7 @@
 
 package com.djt.service.impl;
 
-import com.djt.dao.InvestFieldDao;
-import com.djt.dao.InvestMemberLevelDao;
-import com.djt.dao.InvestPhaseDao;
-import com.djt.dao.ProvinceDao;
+import com.djt.dao.*;
 import com.djt.data.*;
 import com.djt.domain.*;
 import com.djt.service.DefaultService;
@@ -40,6 +37,9 @@ public class DefaultServiceImpl implements DefaultService {
     private InvestPhaseDao investPhaseDao;
     @Autowired
     private InvestMemberLevelDao memberLevelDao;
+    @Autowired
+    private ProvincesDao provincesDao;
+
 
     @Override
     public List<ProvinceInfo> getProvinceList() {
@@ -61,6 +61,44 @@ public class DefaultServiceImpl implements DefaultService {
 
         List<CityInfo> cityInfoList = new ArrayList<>();
         for(CityEntity entity : cityEntityList) {
+            CityInfo info = new CityInfo(entity.getCityId(), entity.getCityName());
+            cityInfoList.add(info);
+        }
+        logger.info("get city list by province id success");
+        return cityInfoList;
+    }
+
+    /**
+     * 获取省份列表,按省份ID排序
+     *
+     * @return
+     */
+    @Override
+    public List<ProvinceInfo> getProvincesList() {
+        Iterable<ProvincesEntity> provinceEntityIterable = provincesDao.findAll();
+
+        List<ProvinceInfo> provinceList = new ArrayList<>();
+        for(ProvincesEntity entity : provinceEntityIterable) {
+            ProvinceInfo info = new ProvinceInfo(entity.getProvinceId(), entity.getProvinceName());
+            provinceList.add(info);
+        }
+        logger.info(" get province list success");
+        return provinceList;
+    }
+
+    /**
+     * 根据省份ID获取城市列表
+     *
+     * @param provinceId
+     * @return
+     */
+    @Override
+    public List<CityInfo> getCitiesListByProvinceId(int provinceId) {
+        ProvincesEntity provinceEntity = provincesDao.findOne(provinceId);
+        List<CitiesEntity> cityEntityList = provinceEntity.getCityEntityList();
+
+        List<CityInfo> cityInfoList = new ArrayList<>();
+        for(CitiesEntity entity : cityEntityList) {
             CityInfo info = new CityInfo(entity.getCityId(), entity.getCityName());
             cityInfoList.add(info);
         }

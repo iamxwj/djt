@@ -134,122 +134,68 @@ CREATE TABLE IF NOT EXISTS `institution_info` (
 #==========================投资人相关表 =================================================
 # investor_info investor_phase  investor_field  investor_case
 #=======================================================================================
-CREATE TABLE IF NOT EXISTS `investor_info` (
-  `investor_id`       BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT
+CREATE TABLE `investor_info` (
+  `investor_id`       BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT
   COMMENT '投资人ID',
-  `user_id`           BIGINT UNSIGNED,
-  `investor_name`     VARCHAR(30)                 DEFAULT ""
+  `user_id`           BIGINT(20) UNSIGNED          DEFAULT NULL,
+  `investor_name`     VARCHAR(30)                  DEFAULT ''
   COMMENT '投资人名字',
-  `investor_level`    TINYINT                     DEFAULT 0
+  `investor_level`    TINYINT(4)                   DEFAULT '0'
   COMMENT '投资人评级',
-  `birth_year`        VARCHAR(10)                 DEFAULT ""
+  `birth_year`        VARCHAR(10)                  DEFAULT ''
   COMMENT '投资人出生年份',
-  `native_province`   VARCHAR(60)                 DEFAULT ""
+  `native_province`   VARCHAR(60)                  DEFAULT ''
   COMMENT '投资人籍贯省',
-  `native_district`   VARCHAR(60)                 DEFAULT ""
+  `native_district`   VARCHAR(60)                  DEFAULT ''
   COMMENT '投资人籍贯市',
-  `age`               INTEGER                     DEFAULT 1960
+  `age`               INT(11)                      DEFAULT '1960'
   COMMENT '年龄',
-  `gender`            VARCHAR(20)                 DEFAULT ""
+  `gender`            VARCHAR(20)                  DEFAULT ''
   COMMENT '性别',
-
-  `invest_type`       VARCHAR(200)                DEFAULT ""
-  COMMENT '投资类型',
-  `invest_phase`      VARCHAR(200)                DEFAULT ""
-  COMMENT '投资阶段',
-  `main_phase`        VARCHAR(100)                DEFAULT ""
-  COMMENT '主要投资阶段',
-  `tag`               VARCHAR(200)                DEFAULT ""
-  COMMENT '阿里系，北大系等标签',
-
-  `first_fields`      VARCHAR(500)                DEFAULT ''
-  COMMENT '一级行业',
-  `second_fields`     VARCHAR(500)                DEFAULT ''
-  COMMENT '二级行业',
-
-  `investor_intro`    VARCHAR(1200)               DEFAULT ""
-  COMMENT '投资人简介',
-  `achievement`       VARCHAR(1200)               DEFAULT ""
+  `status`            VARCHAR(200)                 DEFAULT ''
+  COMMENT '身份',
+  `achievement`       VARCHAR(1200)                DEFAULT ''
   COMMENT '成就与荣誉',
-  `education`         VARCHAR(500)                DEFAULT ""
+  `first_fields`      VARCHAR(500)                 DEFAULT ''
+  COMMENT '一级行业',
+  `investor_intro`    VARCHAR(1200)                DEFAULT ''
+  COMMENT '投资人简介',
+  `education`         VARCHAR(500)                 DEFAULT ''
   COMMENT '教育背景',
-  `edu_exp`           VARCHAR(1000)               DEFAULT ""
+  `edu_exp`           VARCHAR(1000)                DEFAULT ''
   COMMENT '教育经历',
-  `work_exp`          VARCHAR(1200)               DEFAULT ""
+  `work_exp`          VARCHAR(1200)                DEFAULT ''
   COMMENT '工作经历',
-  `invest_philosophy` VARCHAR(600)                DEFAULT ""
-  COMMENT '投资理念',
-  `fund_number`       DOUBLE                      DEFAULT 0
-  COMMENT '基金规模',
-  `fund_unit`         VARCHAR(15)                 DEFAULT ''
-  COMMENT '基金单位（万元，万美元，亿元，亿美元）',
-  #   `others` VARCHAR(600)  DEFAULT "" COMMENT '其他信息',
-
-  `institution_name`  VARCHAR(50)                 DEFAULT ""
+  `institution_name`  VARCHAR(50)                  DEFAULT ''
   COMMENT '所属机构',
-  `investor_position` VARCHAR(60)                 DEFAULT ""
+  `investor_position` VARCHAR(60)                  DEFAULT ''
   COMMENT '投资人职位',
-  `institution_id`    BIGINT UNSIGNED             DEFAULT 0
+  `level_type`        TINYINT(4)                   DEFAULT '1'
+  COMMENT 'CEO:1,高层:2,精英:3',
+  `institution_id`    BIGINT(20) UNSIGNED          DEFAULT '0'
   COMMENT '所属投资机构ID',
-
-  #   `invest_success_indicator` TINYINT  DEFAULT 0 COMMENT '投资成功度',
-  #   `invest_active_indicator` TINYINT  DEFAULT 0 COMMENT '投资活跃度',
-  #   `brand_indicator` TINYINT  DEFAULT 0 COMMENT '品牌知名度',
-  #   `invest_rate_indicator` TINYINT  DEFAULT 0 COMMENT '投资速度',
-
-  #   `overall_rank` INTEGER  DEFAULT 0 COMMENT '总排名',
-  #   `annual_rank` INTEGER  DEFAULT 0 COMMENT '年度排名',
-  #   `active_rank` INTEGER DEFAULT 0 COMMENT '活跃度排名',
-  #
-  #   `fans_number` BIGINT  DEFAULT 0 COMMENT '粉丝数量',
-  #   `talk_number` INTEGER  DEFAULT 0 COMMENT '约谈数量',
-  #   `invest_number` INTEGER  DEFAULT 0 COMMENT '投资数量',
-
-  `province`          VARCHAR(40)                 DEFAULT ''
+  `province`          VARCHAR(40)                  DEFAULT ''
   COMMENT '投资人所在省',
-  `city`              VARCHAR(40)                 DEFAULT ''
+  `city`              VARCHAR(40)                  DEFAULT ''
   COMMENT '投资人所在市',
-  `address`           VARCHAR(100)                DEFAULT ''
+  `address`           VARCHAR(100)                 DEFAULT ''
   COMMENT '投资人地址',
-
-  `authenticated`     BOOLEAN                     DEFAULT FALSE
-  COMMENT '投资人是否认证过',
-  `web_portrait`      VARCHAR(1000)               DEFAULT ''
+  `web_portrait`      VARCHAR(1000)                DEFAULT ''
   COMMENT 'Web端投资人头像(以|分隔)',
-  `mobile_portrait`   VARCHAR(500)                DEFAULT ''
+  `mobile_portrait`   VARCHAR(500)                 DEFAULT ''
   COMMENT '移动端投资人头像',
-  `investor_photo`    VARCHAR(10000)              DEFAULT ''
+  `investor_photo`    VARCHAR(10000)               DEFAULT ''
   COMMENT '投资人照片(以|分隔)',
-
-  `create_time`       TIMESTAMP                   DEFAULT CURRENT_TIMESTAMP,
-  `update_time`       TIMESTAMP                   DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `level_type`        TINYINT                     DEFAULT 1
-  COMMENT '人物级别',
-  FOREIGN KEY (`user_id`) REFERENCES `user_info` (`user_id`)
+  `create_time`       TIMESTAMP           NULL     DEFAULT CURRENT_TIMESTAMP,
+  `update_time`       TIMESTAMP           NULL     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`investor_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `investor_info_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_info` (`user_id`)
     ON DELETE CASCADE
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-# CREATE TABLE IF NOT EXISTS `investor_phase` (
-#   `id` BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-#   `investor_id` BIGINT UNSIGNED NOT NULL ,
-#   `phase_id` TINYINT UNSIGNED NOT NULL ,
-#
-#   UNIQUE KEY (`investor_id`, `phase_id`),
-#   FOREIGN KEY (`investor_id`) REFERENCES `investor_info`(`investor_id`),
-#   FOREIGN KEY (`phase_id`) REFERENCES `invest_phase`(`phase_id`)
-# ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
-#
-# CREATE TABLE IF NOT EXISTS `investor_field` (
-#   `id` BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-#   `investor_id` BIGINT UNSIGNED NOT NULL ,
-#   `field_id` TINYINT UNSIGNED NOT NULL ,
-#
-#   UNIQUE KEY (`investor_id`, `field_id`),
-#   FOREIGN KEY (`investor_id`) REFERENCES `investor_info`(`investor_id`),
-#   FOREIGN KEY (`field_id`) REFERENCES `invest_field`(`field_id`)
-# ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 
 CREATE TABLE IF NOT EXISTS `follow` (
@@ -349,3 +295,19 @@ CREATE TABLE IF NOT EXISTS `request_cash` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
+
+CREATE TABLE `cities` (
+  `city_id` int(10) unsigned NOT NULL COMMENT '城市ID',
+  `city_name` varchar(60) NOT NULL COMMENT '城市名字',
+  `province_id` int(10) unsigned NOT NULL COMMENT '所属省份CODE',
+  PRIMARY KEY (`city_id`),
+  KEY `province_id` (`province_id`),
+  CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`province_id`) REFERENCES `provinces` (`province_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `provinces` (
+  `province_id` int(10) unsigned NOT NULL COMMENT '省份ID',
+  `province_name` varchar(50) NOT NULL COMMENT '省份名字',
+  PRIMARY KEY (`province_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

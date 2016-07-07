@@ -91,10 +91,8 @@ public class InstitutionServiceImpl implements InstitutionService {
         Double fundNumber = entity.getFundNumber();
         String fundUnit = entity.getFundUnit();
         String staffSize = entity.getStaffSize();
-
-        String[] phaseArray = null;
-        List<String> investPhase = new ArrayList<>();
-
+        String status = entity.getStatus();
+        String business = entity.getBusiness();
         List<String> firstFields = new ArrayList<>();
         if (!StringUtils.isNullOrEmpty(entity.getFirstFields())) {
             String[] firstFieldArray = entity.getFirstFields().split("\\|");
@@ -118,33 +116,33 @@ public class InstitutionServiceImpl implements InstitutionService {
         Timestamp createTime = entity.getCreateTime();
         Timestamp updateTime = entity.getUpdateTime();
 
-        InstitutionInfo info = new InstitutionInfo(institutionId, name, institutionIntro, achievements,
-                level, year, fundNumber, fundUnit, staffSize, firstFields, province,
-                city, address, webLogo, mobileLogo, createTime, updateTime, userId, investorNames, investorShortList);
+        InstitutionInfo info = new InstitutionInfo(institutionId, name, institutionIntro, achievements,level, year,
+                fundNumber, fundUnit, staffSize, firstFields, province, city, address, webLogo, mobileLogo, createTime,
+                updateTime, userId, investorNames, investorShortList, status, business);
 
         return info;
     }
 
     private List<InvestorShortList> renderInvestorsToShortLists(List<InvestorInfoEntity> memberEntityList) {
         List<InvestorShortList> investorShortList = new ArrayList<>();
-        for(InvestorInfoEntity i : memberEntityList){
+        for (InvestorInfoEntity i : memberEntityList) {
             investorShortList.add(renderInvestorsToShortList(i));
         }
         return investorShortList;
     }
 
     private InvestorShortList renderInvestorsToShortList(InvestorInfoEntity i) {
-        return new InvestorShortList(i.getInvestorName(),i.getMobilePortrait(),i.getInvestorPosition());
+        return new InvestorShortList(i.getInvestorName(), i.getMobilePortrait(), i.getInvestorPosition());
     }
 
 
     private List<String> renderInvestorsToStringList(List<InvestorInfoEntity> memberEntityList) {
         List<String> names = new ArrayList<>();
 
-        for(InvestorInfoEntity i : memberEntityList){
+        for (InvestorInfoEntity i : memberEntityList) {
             names.add(i.getInvestorName());
         }
-        return  names;
+        return names;
     }
 
 
@@ -229,7 +227,8 @@ public class InstitutionServiceImpl implements InstitutionService {
                 entity.setInstitutionName(info.getInstitutionName());
             if (!StringUtils.isNullOrEmpty(info.getFundYear()))
                 entity.setFundYear(info.getFundYear());
-            entity.setFundNumber(info.getFundNumber());
+            if (info.getFundNumber() != null)
+                entity.setFundNumber(info.getFundNumber());
             if (!StringUtils.isNullOrEmpty(info.getFundUnit()))
                 entity.setFundUnit(info.getFundUnit());
             if (!StringUtils.isNullOrEmpty(info.getStaffSize()))
@@ -331,7 +330,6 @@ public class InstitutionServiceImpl implements InstitutionService {
     }
 
     @Override
-    @ResponseBody
     public ResponseData getFullSearch(String institutionName, String institutionMember, int page, int size) {
         try {
             updateES();
@@ -372,5 +370,4 @@ public class InstitutionServiceImpl implements InstitutionService {
         Iterable<InstitutionDocument> documents = EntityDocumentConvertor.renderInstitutions(institutionInfoDao.findAll());
         institutionRepository.save(documents);
     }
-
 }

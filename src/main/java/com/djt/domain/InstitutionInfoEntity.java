@@ -22,7 +22,8 @@ import java.util.List;
 public class InstitutionInfoEntity {
 
 
-    private  String fundYear;
+    private String fundYear;
+
     @Column(name = "found_year")
     public String getFundYear() {
         return fundYear;
@@ -60,6 +61,7 @@ public class InstitutionInfoEntity {
         address = "未知";
         achievement = "未知";
         institutionIntro = "未知";
+        fundYear = "未知";
     }
 
 
@@ -67,6 +69,7 @@ public class InstitutionInfoEntity {
 
     /**
      * 单向OneToOne, FetchType.LAZY
+     *
      * @return
      */
     @OneToOne(fetch = FetchType.EAGER)
@@ -102,7 +105,6 @@ public class InstitutionInfoEntity {
     public void setInstitutionLevel(Byte institutionLevel) {
         this.institutionLevel = institutionLevel;
     }
-
 
 
     private Double fundNumber; //市值金额
@@ -143,7 +145,8 @@ public class InstitutionInfoEntity {
 
     private String status; //地位
     private String business; //业务
-    @Column
+
+    @Column(name = "status")
     public String getStatus() {
         return status;
     }
@@ -153,7 +156,7 @@ public class InstitutionInfoEntity {
     }
 
 
-    @Column
+    @Column(name = "business")
     public String getBusiness() {
         return business;
     }
@@ -196,8 +199,6 @@ public class InstitutionInfoEntity {
     }
 
 
-
-
     private String province;//总部省份
 
     @Basic
@@ -234,7 +235,6 @@ public class InstitutionInfoEntity {
     }
 
 
-
     private String achievement; //成就与荣誉
 
     @Column(name = "achievement")
@@ -263,6 +263,7 @@ public class InstitutionInfoEntity {
 
     /**
      * 单向OneToMany, FetchType.LAZY
+     *
      * @return
      */
     @OneToMany(fetch = FetchType.EAGER)

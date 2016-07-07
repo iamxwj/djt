@@ -41,16 +41,9 @@ public interface InvestorInfoDao extends JpaSpecificationExecutor<InvestorInfoEn
      */
     InvestorInfoEntity findByInvestorId(long investorId);
 
-    List<InvestorInfoEntity> findByInvestType(String investType);
-    @Query("from InvestorInfoEntity i where i.investType = ?1 and i.investPhase like ?2")
-    List<InvestorInfoEntity> findByInvestTypeAndInvestPhaseLike(String investType, String investPhase);
-
-    List<InvestorInfoEntity> findByTagLike(String tag);
 
     List<InvestorInfoEntity> findByFirstFieldsLike(String firstFields);
 
-    @Query("from InvestorInfoEntity i where i.tag like ?1 or i.firstFields like ?2")
-    List<InvestorInfoEntity> findByTagAndInvestPhaseLike(String tag, String firstFields);
 
     List<InvestorInfoEntity> findByInvestorNameLike(String investorName);
 

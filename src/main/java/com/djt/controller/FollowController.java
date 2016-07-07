@@ -28,9 +28,12 @@ public class FollowController {
      */
     @RequestMapping(value = "/follow_person", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData followPerson(@RequestParam("userId") Long userId, @RequestParam("userType") Byte userType,
-                                     @RequestParam("followId") Long followId, @RequestParam("followType") Byte followType) {
-        return followService.addFollow(userId, userType, followId, followType);
+    public ResponseData followPerson(@RequestParam("userId") Long userId,
+                                     @RequestParam("userType") Byte userType,
+                                     @RequestParam("followPersonId") Long followPersonId,
+                                     @RequestParam("followPersonType") Byte followPersonType,
+                                     @RequestParam("followType")Byte followType) {
+        return followService.addFollow(userId, userType, followPersonId, followPersonType, followType);
     }
 
     /**
@@ -40,8 +43,8 @@ public class FollowController {
      */
     @RequestMapping(value = "/unfollow_person", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData unfollowPerson(@RequestParam("userId") Long userId, @RequestParam("followId") Long followId) {
-        return followService.deleteFollow(userId, followId);
+    public ResponseData unfollowPerson(@RequestParam("userId") Long userId, @RequestParam("followId") Long followId, @RequestParam("followType")Byte followType) {
+        return followService.deleteFollow(userId, followId, followType);
     }
 
     /**
@@ -51,8 +54,8 @@ public class FollowController {
      */
     @RequestMapping(value = "/count_fans", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData countFans(@RequestParam("userId") Long userId) {
-        return followService.countFans(userId);
+    public ResponseData countFans(@RequestParam("userId") Long userId, @RequestParam("followType") Byte followType) {
+        return followService.countFans(userId, followType);
     }
 
 
@@ -63,8 +66,8 @@ public class FollowController {
      */
     @RequestMapping(value = "/count_follow", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData countPerson(@RequestParam("userId") Long userId) {
-        return followService.countFollows(userId);
+    public ResponseData countPerson(@RequestParam("userId") Long userId, @RequestParam("followType") Byte followType) {
+        return followService.countFollows(userId, followType);
     }
 
     /**
@@ -74,8 +77,8 @@ public class FollowController {
      */
     @RequestMapping(value = "/get_follow", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData getFollowList(@RequestParam("userId") Long userId) {
-        return followService.getAllFollowPerson(userId);
+    public ResponseData getFollowList(@RequestParam("userId") Long userId, @RequestParam("followType") Byte followType) {
+        return followService.getAllFollowPerson(userId, followType);
     }
 
     /**
@@ -85,8 +88,8 @@ public class FollowController {
      */
     @RequestMapping(value = "/get_follow_institution", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData getFollowInstitutionList(@RequestParam("userId") Long userId) {
-        return followService.getAllFollowInstitution(userId);
+    public ResponseData getFollowInstitutionList(@RequestParam("userId") Long userId, @RequestParam("followType") Byte followType) {
+        return followService.getAllFollowInstitution(userId, followType);
     }
 
     /**
@@ -96,8 +99,8 @@ public class FollowController {
      */
     @RequestMapping(value = "/get_fans", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData getAllFansPerson(@RequestParam("userId") Long userId) {
-        return followService.getAllFansPerson(userId);
+    public ResponseData getAllFansPerson(@RequestParam("userId") Long userId, @RequestParam("followType") Byte followType) {
+        return followService.getAllFansPerson(userId, followType);
     }
 
 
@@ -108,8 +111,8 @@ public class FollowController {
      */
     @RequestMapping(value = "/get_fans_institution", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData getAllFansInstitution(@RequestParam("userId") Long userId) {
-        return followService.getAllFansInstitution(userId);
+    public ResponseData getAllFansInstitution(@RequestParam("userId") Long userId , @RequestParam("followType") Byte followType) {
+        return followService.getAllFansInstitution(userId , followType);
     }
 
     /**
@@ -117,7 +120,7 @@ public class FollowController {
      */
     @RequestMapping(value = "/isfollow_person", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseData isfollowPerson(@RequestParam("userId") Long userId, @RequestParam("followId") Long followId) {
-        return followService.isFollow(userId, followId);
+    public ResponseData isfollowPerson(@RequestParam("userId") Long userId, @RequestParam("followId") Long followId, @RequestParam("followType")Byte followType) {
+        return followService.isFollow(userId, followId, followType);
     }
 }

@@ -10,13 +10,14 @@ public interface FollowService {
     /**
      * 获取关注数量
      * @param userId
+     * @param followType
      * @return
      */
-    ResponseData countFollows(Long userId);
+    ResponseData countFollows(Long userId, Byte followType);
     /**
      * 获取粉丝数
      */
-    ResponseData countFans(Long userId);
+    ResponseData countFans(Long userId, Byte followType);
 
     /**
      * 添加关注
@@ -24,21 +25,23 @@ public interface FollowService {
      * @param followId
      * @return
      */
-    ResponseData addFollow(Long userId, Byte userType, Long followId, Byte followType);
+    ResponseData addFollow(Long userId, Byte userType, Long followPersonId, Byte followPersonType, Byte followType);
     /**
      * 删除关注
      * @param userId
      * @param followId
+     * @param followType
      * @return
      */
-    ResponseData deleteFollow(Long userId, Long followId);
+    ResponseData deleteFollow(Long userId, Long followId, Byte followType);
     /**
      *
      * 获取关注的人
      * @param userId
+     * @param followType
      * @return
      */
-    ResponseData getAllFollowPerson(Long userId);
+    ResponseData getAllFollowPerson(Long userId, Byte followType);
 //    /**
 //     * 获取关注的项目
 //     * @param userId
@@ -50,15 +53,17 @@ public interface FollowService {
     /**
      * 获取关注的机构
      * @param userId
+     * @param followType
      * @return
      */
-    ResponseData getAllFollowInstitution(Long userId);
+    ResponseData getAllFollowInstitution(Long userId, Byte followType);
     /**
      * 获取粉丝投资人
      * @param userId
+     * @param followType
      * @return
      */
-    ResponseData getAllFansPerson(Long userId);
+    ResponseData getAllFansPerson(Long userId, Byte followType);
 //    /**
 //     * 获取粉丝项目
 //     * @param userId
@@ -68,9 +73,10 @@ public interface FollowService {
     /**
      * 获取粉丝机构
      * @param userId
+     * @param followType
      * @return
      */
-    ResponseData getAllFansInstitution(Long userId);
+    ResponseData getAllFansInstitution(Long userId, Byte followType);
 
     /**
      * 修改关注组
@@ -99,7 +105,8 @@ public interface FollowService {
      * 是否已经关注
      * @param userId
      * @param followId
+     * @param followType
      * @return
      */
-    ResponseData isFollow(Long userId, Long followId);
+    ResponseData isFollow(Long userId, Long followId, Byte followType);
 }

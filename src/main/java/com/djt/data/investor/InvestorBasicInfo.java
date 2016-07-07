@@ -17,31 +17,37 @@ import java.util.List;
  */
 public class InvestorBasicInfo {
     private Long investorId;
-    private String investorName;
-    private String birthYear;
+    private String investorName; // 名字
+    private String birthYear; //出生年份
     private String nativeProvince; // 籍贯省
     private String nativeDistrict; // 籍贯市
-    private Integer age;
-    private String gender;
-    private Double fundNumber;
-    private String fundUnit;
-    private String education;
-
-    private String institutionName;
-    private String investorPosition;
-
-    private String investType;  // 投资类型
-    private List<String> investPhaseList;
-    private String mainPhase; // 主要投资阶段
-    private List<String> tag;  // 阿里系，北大系投资
-    private List<String> firstFieldList;
-    private String secondField;
+    private String gender;//性别
+    private String education;// 教育
+    private String institutionName;// 机构名
+    private String investorPosition;// 职位
+    private String status;  // 投资类型
+    private List<String> firstFieldList;// 行业
     private String mobilePortraitUrl; // 移动端头像
     private List<String> webPortraitUrl; // web端头像
+    private String province;// 所在省
+    private String city;// 所在市
+    private Byte levelType;// 职位等级
 
-    private String province;
-    private String city;
-    private String address;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Byte getLevelType() {
+        return levelType;
+    }
+
+    public void setLevelType(Byte levelType) {
+        this.levelType = levelType;
+    }
 
     public Long getInvestorId() {
         return investorId;
@@ -83,36 +89,12 @@ public class InvestorBasicInfo {
         this.nativeDistrict = nativeDistrict;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
     public String getGender() {
         return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public Double getFundNumber() {
-        return fundNumber;
-    }
-
-    public void setFundNumber(Double fundNumber) {
-        this.fundNumber = fundNumber;
-    }
-
-    public String getFundUnit() {
-        return fundUnit;
-    }
-
-    public void setFundUnit(String fundUnit) {
-        this.fundUnit = fundUnit;
     }
 
     public String getEducation() {
@@ -139,33 +121,6 @@ public class InvestorBasicInfo {
         this.investorPosition = investorPosition;
     }
 
-
-    public String getInvestType() {
-        return investType;
-    }
-
-    public void setInvestType(String investType) {
-        this.investType = investType;
-    }
-
-    public String getMainPhase() {
-        return mainPhase;
-    }
-
-    public void setMainPhase(String mainPhase) {
-        this.mainPhase = mainPhase;
-    }
-
-    public List<String> getTag() {
-        return tag;
-    }
-
-    public void setTag(List<String >tag) {
-        this.tag = tag;
-    }
-
-
-
     public String getProvince() {
         return province;
     }
@@ -180,14 +135,6 @@ public class InvestorBasicInfo {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getMobilePortraitUrl() {
@@ -206,13 +153,6 @@ public class InvestorBasicInfo {
         this.webPortraitUrl = webPortraitUrl;
     }
 
-    public List<String> getInvestPhaseList() {
-        return investPhaseList;
-    }
-
-    public void setInvestPhaseList(List<String> investPhaseList) {
-        this.investPhaseList = investPhaseList;
-    }
 
     public List<String> getFirstFieldList() {
         return firstFieldList;
@@ -222,40 +162,4 @@ public class InvestorBasicInfo {
         this.firstFieldList = firstFieldList;
     }
 
-    public String getSecondField() {
-        return secondField;
-    }
-
-    public void setSecondField(String secondField) {
-        this.secondField = secondField;
-    }
-
-    @Override
-    public String toString() {
-        return "InvestorBasicInfo{" +
-                "investorId=" + investorId +
-                ", investorName='" + investorName + '\'' +
-                ", birthYear='" + birthYear + '\'' +
-                ", nativeProvince='" + nativeProvince + '\'' +
-                ", nativeDistrict='" + nativeDistrict + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", fundNumber=" + fundNumber +
-                ", fundUnit='" + fundUnit + '\'' +
-                ", education='" + education + '\'' +
-                ", institutionName='" + institutionName + '\'' +
-                ", investorPosition='" + investorPosition + '\'' +
-                ", investType='" + investType + '\'' +
-                ", investPhaseList=" + investPhaseList +
-                ", mainPhase='" + mainPhase + '\'' +
-                ", tag='" + tag + '\'' +
-                ", firstFieldList=" + firstFieldList +
-                ", secondField='" + secondField + '\'' +
-                ", mobilePortraitUrl='" + mobilePortraitUrl + '\'' +
-                ", webPortraitUrl=" + webPortraitUrl +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", address='" + address + '\'' +
-                '}';
-    }
 }

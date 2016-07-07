@@ -63,14 +63,8 @@ public interface InvestorService {
      */
     public ResponseData getAllInvestorList();
 
-    public ResponseData getInvestorListByTypeAndPhase(String investType, String phase);
-
-    public ResponseData getInvestorListByType(String investType);
-
-    public ResponseData getInvestorListByTag(String tag);
 
 
-    public ResponseData getRecommonderList(List<String> firstField);
 
     /**
      * 通过姓名搜索

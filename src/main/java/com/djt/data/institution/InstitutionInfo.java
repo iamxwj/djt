@@ -87,8 +87,13 @@ public class InstitutionInfo implements Serializable {
                            String year, Double fundNumber, String fundUnit, String staffSize,
                            List<String> firstFields, String province,  String city,
                            String address,  String webLogo, String mobileLogo, Timestamp createTime,
-                           Timestamp updateTime, Long userId, List<String> investorName, List<InvestorShortList> investorShortLists) {
+                           Timestamp updateTime, Long userId, List<String> investorName,
+                           List<InvestorShortList> investorShortLists, String status, String business) {
         this.institutionId = institutionId;
+        this.institutionName = name;
+        this.achievement = achievements;
+        this.institutionLevel = level;
+        this.foundYear = year;
         this.institutionIntro = institutionIntro;
         this.fundNumber = fundNumber;
         this.fundUnit = fundUnit;
@@ -104,6 +109,8 @@ public class InstitutionInfo implements Serializable {
         this.userId = userId;
         this.investorName = investorName;
         this.investorShortLists = investorShortLists;
+        this.status = status;
+        this.business = business;
     }
 
 
@@ -252,32 +259,6 @@ public class InstitutionInfo implements Serializable {
 
     public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public InstitutionInfo(Long institutionId, String institutionName, String institutionIntro, String achievement,
-                           int institutionLevel, String foundYear, Double fundNumber, String fundUnit, String staffSize,
-
-                           List<String> firstFields, String province,  String city, String address,
-                           String webLogo, String mobileLogo,
-                           List<InstitutionMember> institutionMemberList, Timestamp createTime, Timestamp updateTime, Long userId) {
-        this.institutionId = institutionId;
-        this.institutionName = institutionName;
-        this.institutionIntro = institutionIntro;
-        this.achievement = achievement;
-        this.institutionLevel = institutionLevel;
-        this.foundYear = foundYear;
-        this.fundNumber = fundNumber;
-        this.fundUnit = fundUnit;
-        this.staffSize = staffSize;
-        this.firstFields = firstFields;
-        this.province = province;
-        this.city = city;
-        this.address = address;
-        this.webLogo = webLogo;
-        this.mobileLogo = mobileLogo;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.userId = userId;
     }
 
 }

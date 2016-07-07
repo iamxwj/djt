@@ -21,12 +21,8 @@ import java.util.List;
 @Table(name = "investor_info", schema = "", catalog = "djt")
 public class InvestorInfoEntity {
     private Long investorId;
-    private String investType;
-    private String tag;
-    private String investPhase;
-    private String mainPhase;
+    private String status;
     private String firstFields;
-    private String secondFields;
     private String investorName;
     private String investorPosition;
     private Byte investorLevel;
@@ -34,32 +30,15 @@ public class InvestorInfoEntity {
     private String nativeProvince;
     private String nativeDistrict;
     private String education;
-    private Integer age;
     private String gender;
     private String eduExp;
     private String workExp;
-    private String investPhilosophy;
-    private Double fundNumber;
-    private String fundUnit;
-    private String others;
     private String institutionName;
     private Long institutionId;
     private String province;
     private String city;
-    private String address;
-    private Byte investSuccessIndicator;
-    private Byte investActiveIndicator;
-    private Byte brandIndicator;
-    private Byte investRateIndicator;
-    private Integer overallRank;
-    private Integer annualRank;
-    private Integer activeRank;
-    private Long fansNumber;
-    private Integer talkNumber;
-    private Integer investNumber;
     private String achievement;
     private String investorIntro;
-    private Byte authenticated;
     private String webPortrait;
     private String mobilePortrait;
     private String investorPhoto;
@@ -77,49 +56,27 @@ public class InvestorInfoEntity {
      */
     public InvestorInfoEntity() {
         investorName = "未命名";
-        investType = "未知";
-        tag = "未知";
 
         investorLevel = 0;
         birthYear = "0000";
         nativeProvince = "未知";
         nativeDistrict = "未知";
-        age = 1960;
         gender = "未知";
 
-        investPhase = "未知";
-        mainPhase = "未知";
         firstFields = "未知";
-        secondFields = "未知";
 
         investorIntro = "未知";
         achievement = "未知";
         education = "未知";
         eduExp = "未知";
         workExp = "未知";
-        investPhilosophy = "未知";
-        fundNumber = 0.0;
-        fundUnit = "";
-        others = "未知";
 
         institutionName = "未知";
         investorPosition = "未知";
         institutionId = 0L;
-        investSuccessIndicator = 0;
-        investActiveIndicator = 0;
-        brandIndicator = 0;
-        investRateIndicator = 0;
-        overallRank = 0;
-        annualRank = 0;
-        activeRank = 0;
-        fansNumber = 0L;
-        talkNumber = 0;
-        investNumber = 0;
 
         province = "未知";
         city = "未知";
-        address = "未知";
-        authenticated = 0;
         webPortrait = "";
         mobilePortrait = "http://123.56.184.92:4869/9d43184eefdf27ed129bfeff6a5b8c99?p=0";
         investorPhoto = "";
@@ -137,6 +94,15 @@ public class InvestorInfoEntity {
         this.investorId = investorId;
     }
 
+    @Column
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     /**
      * 单向OneToOne, FetchType.LAZY
      *
@@ -150,35 +116,6 @@ public class InvestorInfoEntity {
 
     public void setUserInfoEntity(UserInfoEntity userInfoEntity) {
         this.userInfoEntity = userInfoEntity;
-    }
-    @Basic
-    @Column(name = "invest_type")
-    public String getInvestType() {
-        return investType;
-    }
-
-    public void setInvestType(String investType) {
-        this.investType = investType;
-    }
-
-    @Basic
-    @Column(name = "tag")
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
-    @Basic
-    @Column(name = "main_phase")
-    public String getMainPhase() {
-        return mainPhase;
-    }
-
-    public void setMainPhase(String mainPhase) {
-        this.mainPhase = mainPhase;
     }
 
     @Basic
@@ -253,15 +190,6 @@ public class InvestorInfoEntity {
         this.education = education;
     }
 
-    @Basic
-    @Column(name = "age")
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
 
     @Basic
     @Column(name = "gender")
@@ -291,46 +219,6 @@ public class InvestorInfoEntity {
 
     public void setWorkExp(String workExp) {
         this.workExp = workExp;
-    }
-
-    @Basic
-    @Column(name = "invest_philosophy")
-    public String getInvestPhilosophy() {
-        return investPhilosophy;
-    }
-
-    public void setInvestPhilosophy(String investPhilosophy) {
-        this.investPhilosophy = investPhilosophy;
-    }
-
-    @Basic
-    @Column(name = "fund_number")
-    public Double getFundNumber() {
-        return fundNumber;
-    }
-
-    public void setFundNumber(Double fundNumber) {
-        this.fundNumber = fundNumber;
-    }
-
-    @Basic
-    @Column(name = "fund_unit")
-    public String getFundUnit() {
-        return fundUnit;
-    }
-
-    public void setFundUnit(String fundUnit) {
-        this.fundUnit = fundUnit;
-    }
-
-    @Basic
-    @Column(name = "others")
-    public String getOthers() {
-        return others;
-    }
-
-    public void setOthers(String others) {
-        this.others = others;
     }
 
     @Basic
@@ -375,116 +263,6 @@ public class InvestorInfoEntity {
     }
 
     @Basic
-    @Column(name = "address")
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Basic
-    @Column(name = "invest_success_indicator")
-    public Byte getInvestSuccessIndicator() {
-        return investSuccessIndicator;
-    }
-
-    public void setInvestSuccessIndicator(Byte investSuccessIndicator) {
-        this.investSuccessIndicator = investSuccessIndicator;
-    }
-
-    @Basic
-    @Column(name = "invest_active_indicator")
-    public Byte getInvestActiveIndicator() {
-        return investActiveIndicator;
-    }
-
-    public void setInvestActiveIndicator(Byte investActiveIndicator) {
-        this.investActiveIndicator = investActiveIndicator;
-    }
-
-    @Basic
-    @Column(name = "brand_indicator")
-    public Byte getBrandIndicator() {
-        return brandIndicator;
-    }
-
-    public void setBrandIndicator(Byte brandIndicator) {
-        this.brandIndicator = brandIndicator;
-    }
-
-    @Basic
-    @Column(name = "invest_rate_indicator")
-    public Byte getInvestRateIndicator() {
-        return investRateIndicator;
-    }
-
-    public void setInvestRateIndicator(Byte investRateIndicator) {
-        this.investRateIndicator = investRateIndicator;
-    }
-
-    @Basic
-    @Column(name = "overall_rank")
-    public Integer getOverallRank() {
-        return overallRank;
-    }
-
-    public void setOverallRank(Integer overallRank) {
-        this.overallRank = overallRank;
-    }
-
-    @Basic
-    @Column(name = "annual_rank")
-    public Integer getAnnualRank() {
-        return annualRank;
-    }
-
-    public void setAnnualRank(Integer annualRank) {
-        this.annualRank = annualRank;
-    }
-
-    @Basic
-    @Column(name = "active_rank")
-    public Integer getActiveRank() {
-        return activeRank;
-    }
-
-    public void setActiveRank(Integer activeRank) {
-        this.activeRank = activeRank;
-    }
-
-    @Basic
-    @Column(name = "fans_number")
-    public Long getFansNumber() {
-        return fansNumber;
-    }
-
-    public void setFansNumber(Long fansNumber) {
-        this.fansNumber = fansNumber;
-    }
-
-    @Basic
-    @Column(name = "talk_number")
-    public Integer getTalkNumber() {
-        return talkNumber;
-    }
-
-    public void setTalkNumber(Integer talkNumber) {
-        this.talkNumber = talkNumber;
-    }
-
-    @Basic
-    @Column(name = "invest_number")
-    public Integer getInvestNumber() {
-        return investNumber;
-    }
-
-    public void setInvestNumber(Integer investNumber) {
-        this.investNumber = investNumber;
-    }
-
-    @Basic
     @Column(name = "achievement")
     public String getAchievement() {
         return achievement;
@@ -494,7 +272,6 @@ public class InvestorInfoEntity {
         this.achievement = achievement;
     }
 
-
     @Basic
     @Column(name = "investor_intro")
     public String getInvestorIntro() {
@@ -503,16 +280,6 @@ public class InvestorInfoEntity {
 
     public void setInvestorIntro(String investorIntro) {
         this.investorIntro = investorIntro;
-    }
-
-    @Basic
-    @Column(name = "authenticated")
-    public Byte getAuthenticated() {
-        return authenticated;
-    }
-
-    public void setAuthenticated(Byte authenticated) {
-        this.authenticated = authenticated;
     }
 
     @Basic
@@ -545,15 +312,6 @@ public class InvestorInfoEntity {
         this.investorPhoto = investorPhoto;
     }
 
-    @Column(name = "invest_phase")
-    public String getInvestPhase() {
-        return investPhase;
-    }
-
-    public void setInvestPhase(String investPhase) {
-        this.investPhase = investPhase;
-    }
-
     @Column(name = "first_fields")
     public String getFirstFields() {
         return firstFields;
@@ -562,21 +320,6 @@ public class InvestorInfoEntity {
     public void setFirstFields(String firstFields) {
         this.firstFields = firstFields;
     }
-
-    @Column(name = "second_fields")
-    public String getSecondFields() {
-        return secondFields;
-    }
-
-    public void setSecondFields(String secondFields) {
-        this.secondFields = secondFields;
-    }
-
-    /**
-     * 单向ManyToMany, FetchType.LAZY
-     *
-     * @return
-     */
 
     @Basic
     @Column(name = "create_time", insertable = true, updatable = false)
