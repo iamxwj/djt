@@ -62,4 +62,6 @@ public interface InstitutionService {
     public ResponseData getFullSearch(String institutionName, String institutionMember, int page, int size);
 
     public ResponseData getFirstField(String firstField, int page, int size);
+
+    public ResponseData getInstitutionLevel(Long institutionId);
 }

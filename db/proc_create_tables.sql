@@ -197,7 +197,6 @@ CREATE TABLE `investor_info` (
   DEFAULT CHARSET = utf8;
 
 
-
 CREATE TABLE IF NOT EXISTS `follow` (
   `id`          BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   `notice_list` BIGINT UNSIGNED NOT NULL
@@ -257,6 +256,10 @@ CREATE TABLE IF NOT EXISTS `user_money_bag_detail` (
   COMMENT '退款状态',
   `delivery_to_user` BOOLEAN                                      DEFAULT 0
   COMMENT '是否已经支付成功过',
+  `to_user_id`       BIGINT UNSIGNED
+  COMMENT '转入的用户ID',
+  `from_user_id`     BIGINT UNSIGNED
+  COMMENT '来源的用户ID',
   FOREIGN KEY (`user_id`) REFERENCES `user_info` (`user_id`)
 )
   ENGINE = InnoDB
@@ -297,17 +300,37 @@ CREATE TABLE IF NOT EXISTS `request_cash` (
   DEFAULT CHARSET = utf8;
 
 CREATE TABLE `cities` (
-  `city_id` int(10) unsigned NOT NULL COMMENT '城市ID',
-  `city_name` varchar(60) NOT NULL COMMENT '城市名字',
-  `province_id` int(10) unsigned NOT NULL COMMENT '所属省份CODE',
+  `city_id`     INT(10) UNSIGNED NOT NULL
+  COMMENT '城市ID',
+  `city_name`   VARCHAR(60)      NOT NULL
+  COMMENT '城市名字',
+  `province_id` INT(10) UNSIGNED NOT NULL
+  COMMENT '所属省份CODE',
   PRIMARY KEY (`city_id`),
   KEY `province_id` (`province_id`),
   CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`province_id`) REFERENCES `provinces` (`province_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 
 CREATE TABLE `provinces` (
-  `province_id` int(10) unsigned NOT NULL COMMENT '省份ID',
-  `province_name` varchar(50) NOT NULL COMMENT '省份名字',
+  `province_id`   INT(10) UNSIGNED NOT NULL
+  COMMENT '省份ID',
+  `province_name` VARCHAR(50)      NOT NULL
+  COMMENT '省份名字',
   PRIMARY KEY (`province_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+
+CREATE TABLE `request_for_ranking` (
+  `ranking_id` INT(10) UNSIGNED NOT NULL  AUTO_INCREMENT
+  COMMENT '排名ID',
+  `user_id`    BIGINT           NOT NULL
+  COMMENT '省份名字',
+  PRIMARY KEY (`ranking_id`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;

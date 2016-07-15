@@ -158,4 +158,12 @@ public class UserPaymentController {
 
     }
 
+    /**
+     * 打赏/转账
+     */
+    @RequestMapping(value = "/bag_direct_transfer")
+    @ResponseBody
+    public ResponseData directPayByMoneyBag(@RequestParam("currentUserId") Long currentUserId, @RequestParam("payToUserId")Long payToUserId, @RequestParam("amount")long amount ){
+        return detailService.directPayByMoneyBag(currentUserId, payToUserId, amount);
+    }
 }

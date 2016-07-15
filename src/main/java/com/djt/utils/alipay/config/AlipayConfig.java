@@ -32,7 +32,7 @@ public class AlipayConfig {
 
     public static String seller_email = "baodu@alibaodu.com";
 
-    public static String uat_domain_url = "http://211.149.216.28/";
+    public static String uat_domain_url = "http://211.149.216.28";
 
     public static String prod_domain_url = "http://www.touzidaren.com";
 

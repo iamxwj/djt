@@ -155,4 +155,16 @@ public class InvestorController {
         return investorService.getByFirstField(firstField,position, page,size);
     }
 
+    /**
+     * 人物信息
+     *
+     * @param investorId
+     * @return
+     */
+    @RequestMapping(value = "/investor_level", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseData investorLevel(@RequestParam("id") Long investorId) {
+        logger.debug("investorId = " + investorId);
+        return investorService.getInvestorLevel(investorId);
+    }
 }

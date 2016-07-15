@@ -453,5 +453,50 @@ public class UserMoneyBagDetailServiceImpl implements UserMoneyBagDetailService 
         }
     }
 
+    /**
+     * 打赏/转账
+     *
+     * @param currentUserId
+     * @param payToUserId
+     * @param amount
+     */
+    @Override
+    public ResponseData directPayByMoneyBag(Long currentUserId, Long payToUserId, long amount) {
+        UserMoneyBagDetailEntity detailEntity = null, detailEntity1 = null;
+        try {
+            detailEntity = createDirectPayRecorde(currentUserId, payToUserId, amount, true);
+            detailEntity1 = createDirectPayRecorde(currentUserId,payToUserId,amount,false);
+            payOperation(amount, bagDao.findByUserId(currentUserId));
+            addAmountToBag(payToUserId,amount);
+//            saveOrderInfos(detailEntity1.getOperationType(), null, detailEntity1.getId(), relativeDao, true);
+            return new ResponseData(true, "保存交易记录成功,付款成功", null);
+        } catch (MoneyNotEnoughInBagException e) {
+            deleteDetailEntity(detailEntity);
+            deleteDetailEntity(detailEntity1);
+            return new ResponseData(false, "保存交易记录失败,钱包余额不足", null);
+        } catch (Exception e) {
+            deleteDetailEntity(detailEntity);
+            deleteDetailEntity(detailEntity1);
+            e.printStackTrace();
+            return new ResponseData(false, "系统问题交易失败", null);
+        }
+    }
+
+    private UserMoneyBagDetailEntity createDirectPayRecorde(Long currentUserId, Long payToUserId, Long amount, boolean b) {
+        int operationType = PaymentOperationState.operation_bag;
+        int paymentType = PaymentOperationState.payment_bag;
+        boolean inOut;
+        if (b) {
+            inOut = PaymentOperationState.bag_operation_out;
+            UserMoneyBagDetailEntity u = new UserMoneyBagDetailEntity(currentUserId, payToUserId, null ,amount, operationType, paymentType, inOut);
+            return bagDetailDao.save(u);
+        } else {
+            inOut = PaymentOperationState.bag_operation_in;
+            UserMoneyBagDetailEntity u = new UserMoneyBagDetailEntity(payToUserId,null , currentUserId ,amount, operationType, paymentType, inOut);
+            return bagDetailDao.save(u);
+        }
+
+    }
+
 
 }

@@ -144,4 +144,17 @@ public class InstitutionController {
                                       @RequestParam("size") int size){
         return institutionService.getFirstField(firstField, page, size);
     }
+
+    /**
+     * 机构评级
+     *
+     * @param institutionId
+     */
+    @RequestMapping(value = "/institution_Level", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseData getInstitutionLevel(@RequestParam("id") Long institutionId) {
+        logger.debug(" institutionId = " + institutionId);
+
+        return institutionService.getInstitutionLevel(institutionId);
+    }
 }

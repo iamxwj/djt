@@ -72,4 +72,9 @@ public interface UserMoneyBagDetailService {
      * webchat notify_url
      */
     public String handlerWeChatPayment(WeChatPayNotifyInfo weChatPayNotifyInfo);
+
+    /**
+     * 打赏/转账
+     */
+    public ResponseData directPayByMoneyBag(Long currentUserId, Long payToUserId, long amount );
 }

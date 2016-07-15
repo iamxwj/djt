@@ -93,4 +93,6 @@ public interface InvestorService {
      * @return
      */
     public ResponseData getByFirstField(String firstField, Byte position, int page, int size);
+
+    public ResponseData getInvestorLevel(Long investorId);
 }

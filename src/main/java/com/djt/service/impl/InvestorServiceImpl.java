@@ -172,6 +172,8 @@ public class InvestorServiceImpl implements InvestorService {
 
         try {
             InvestorInfoEntity entity = investorInfoDao.findByInvestorId(investorId);
+            if(entity ==null)
+                return new ResponseData(false,"此inverstorId不存在", null);
             if (!StringUtils.isNullOrEmpty(info.getInvestorName()))
                 entity.setInvestorName(info.getInvestorName());
             if (!StringUtils.isNullOrEmpty(info.getBirthYear()))
@@ -352,6 +354,18 @@ public class InvestorServiceImpl implements InvestorService {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseData(false, "get search List fail", null);
+        }
+    }
+
+    @Override
+    public ResponseData getInvestorLevel(Long investorId) {
+        try {
+
+            InvestorInfoEntity investorInfoEntities1 = investorInfoDao.findOne(investorId);
+            return new ResponseData(true, "get Investor Level success", investorInfoEntities1.getInvestorLevel());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseData(false, "get Investor Level fail", null);
         }
     }
 

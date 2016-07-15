@@ -365,6 +365,17 @@ public class InstitutionServiceImpl implements InstitutionService {
         }
     }
 
+    @Override
+    public ResponseData getInstitutionLevel(Long institutionId) {
+        try {
+            InstitutionInfoEntity institutionInfoEntities = institutionInfoDao.findByInstitutionId(institutionId);
+            return new ResponseData(true, "get Institution Level success", institutionInfoEntities.getInstitutionLevel());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseData(false, "get Institution Level fail", null);
+        }
+    }
+
     private void updateES() {
         institutionRepository.deleteAll();
         Iterable<InstitutionDocument> documents = EntityDocumentConvertor.renderInstitutions(institutionInfoDao.findAll());

@@ -17,29 +17,6 @@ public class UserMoneyBagDetailEntity {
     private String tradeNo;
     private int sourceDevice;
     private String tradeStatus;
-
-    @Override
-    public String toString() {
-        return "UserMoneyBagDetailEntity{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", amount=" + amount +
-                ", operationType=" + operationType +
-                ", createDate=" + createDate +
-                ", tradeNo='" + tradeNo + '\'' +
-                ", sourceDevice=" + sourceDevice +
-                ", tradeStatus='" + tradeStatus + '\'' +
-                ", paymentType=" + paymentType +
-                ", buyerEmail='" + buyerEmail + '\'' +
-                ", buyerId='" + buyerId + '\'' +
-                ", notifyId='" + notifyId + '\'' +
-                ", gmtPayment='" + gmtPayment + '\'' +
-                ", outOrIn=" + outOrIn +
-                ", refundStatus='" + refundStatus + '\'' +
-                ", deliveryToUser=" + deliveryToUser +
-                '}';
-    }
-
     private int paymentType;
     private String buyerEmail;
     private String buyerId;
@@ -48,6 +25,8 @@ public class UserMoneyBagDetailEntity {
     private boolean outOrIn;
     private String refundStatus;
     private boolean deliveryToUser;
+    private Long toUserId;
+    private Long fromUserId;
 
     public UserMoneyBagDetailEntity() {
 
@@ -61,6 +40,16 @@ public class UserMoneyBagDetailEntity {
         this.paymentType = paymentType;
         this.outOrIn = outOrin;
         this.deliveryToUser = false;
+    }
+
+    public UserMoneyBagDetailEntity(Long currentUserId, Long payToUserId, Long fromUserId, Long amount, int operationType, int paymentType, boolean inOut) {
+        this.userId = currentUserId;
+        this.toUserId = payToUserId;
+        this.fromUserId = fromUserId;
+        this.amount = amount;
+        this.operationType = operationType;
+        this.paymentType = paymentType;
+        this.outOrIn = inOut;
     }
 
     @Column(name = "delivery_to_user")
@@ -211,5 +200,45 @@ public class UserMoneyBagDetailEntity {
 
     public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
+    }
+    @Column(name = "to_user_id")
+    public Long getToUserId() {
+        return toUserId;
+    }
+
+    public void setToUserId(Long toUserId) {
+        this.toUserId = toUserId;
+    }
+    @Column(name = "from_user_id")
+    public Long getFromUserId() {
+        return fromUserId;
+    }
+
+    public void setFromUserId(Long fromUserId) {
+        this.fromUserId = fromUserId;
+    }
+
+    @Override
+    public String toString() {
+        return "UserMoneyBagDetailEntity{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", amount=" + amount +
+                ", operationType=" + operationType +
+                ", createDate=" + createDate +
+                ", tradeNo='" + tradeNo + '\'' +
+                ", sourceDevice=" + sourceDevice +
+                ", tradeStatus='" + tradeStatus + '\'' +
+                ", paymentType=" + paymentType +
+                ", buyerEmail='" + buyerEmail + '\'' +
+                ", buyerId='" + buyerId + '\'' +
+                ", notifyId='" + notifyId + '\'' +
+                ", gmtPayment='" + gmtPayment + '\'' +
+                ", outOrIn=" + outOrIn +
+                ", refundStatus='" + refundStatus + '\'' +
+                ", deliveryToUser=" + deliveryToUser +
+                ", toUserId=" + toUserId +
+                ", fromUserId=" + fromUserId +
+                '}';
     }
 }
