@@ -63,9 +63,10 @@
           <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:jdk15:2.4" />
           <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.5" />
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
-          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.1.0" />
-          <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.2.0" />
-          <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.6.0" />
+          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.1.2" />
+          <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.3.1" />
+          <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.8.0" />
+          <element id="library" level="project" name="Maven: com.qiniu:happy-dns-java:0.1.4" />
           <element id="library" level="project" name="Maven: org.javasimon:javasimon-core:4.1.1" />
           <element id="library" level="project" name="Maven: org.javasimon:javasimon-jdbc41:4.1.1" />
           <element id="library" level="project" name="Maven: org.javasimon:javasimon-javaee:4.1.1" />

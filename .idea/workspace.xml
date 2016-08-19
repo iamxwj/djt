@@ -5,30 +5,40 @@
       <artifact name="djt:war" />
     </artifacts-to-build>
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/djt/service/UserInfoService.java" description="ResponseData modifyPasswordByVerify(UserLoginInfo ..." line="91" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="62d215ce-5cf5-4720-9cc2-e281f6e91a7f" name="Default" comment="add new Project">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/controller/RequestCashController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/controller/RequestForRankingController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/dao/RequestForRankingDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/domain/RequestForRankingEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/RequestCashService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/RequestForRankingService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/RequestCashServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/RequestForRankingServiceImpl.java" />
+    <list default="true" id="62d215ce-5cf5-4720-9cc2-e281f6e91a7f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/taobao-sdk.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_qiniu_happy_dns_java_0_1_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/common/ResponseMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/controller/SmsVerifyController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/dao/SmsVerifyDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/domain/SmsVerifyEntity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/SmsVerifyService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/SmsVerifyServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AliResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AliResponse1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AlibabaAliqinFcSmsNumSendResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AlibabaResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AlidayuUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/ResponseResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/Result.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/djt_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/djt_war.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/djt_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/djt_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/proc_create_tables.sql" afterPath="$PROJECT_DIR$/db/proc_create_tables.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/controller/InstitutionController.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/controller/InstitutionController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/controller/InvestorController.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/controller/InvestorController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/controller/UserPaymentController.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/controller/UserPaymentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/domain/UserMoneyBagDetailEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/domain/UserMoneyBagDetailEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/service/InstitutionService.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/InstitutionService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/service/InvestorService.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/InvestorService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/service/UserMoneyBagDetailService.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/UserMoneyBagDetailService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/InstitutionServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/InstitutionServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/InvestorServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/InvestorServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserMoneyBagDetailServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserMoneyBagDetailServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/utils/alipay/config/AlipayConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/utils/alipay/config/AlipayConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djt.iml" afterPath="$PROJECT_DIR$/djt.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/controller/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/service/UserInfoService.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/UserInfoService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserInfoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserInfoServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-context.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-context.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_qiniu_qiniu_java_sdk_7_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_qiniu_qiniu_java_sdk_7_1_2.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_3_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_3_3_1.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_6_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_8_0.xml" />
     </list>
     <ignored path="djt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,215 +75,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RequestForRankingServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/RequestForRankingServiceImpl.java">
+      <file leaf-file-name="AlidayuUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AlidayuUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="57" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserPaymentController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/UserPaymentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="166" column="35" selection-start-line="166" selection-start-column="35" selection-end-line="166" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1132#1133#0" expanded="false" />
-                <element signature="e#1188#1189#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserMoneyBagDetailService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/UserMoneyBagDetailService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserMoneyBagDetailServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserMoneyBagDetailServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="494" column="56" selection-start-line="494" selection-start-column="56" selection-end-line="494" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#11928#11929#0" expanded="false" />
-                <element signature="e#11978#11979#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserMoneyBagDetailEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/UserMoneyBagDetailEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="29" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
+              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InvestorServiceImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/InvestorServiceImpl.java">
+      <file leaf-file-name="FollowedOrNotInfo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/data/follow/FollowedOrNotInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33396226">
-              <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CityEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/CityEntity.java">
+      <file leaf-file-name="spring-context.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring-context.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#1101#0" expanded="false" />
-                <element signature="e#531#532#0" expanded="false" />
-                <element signature="e#560#561#0" expanded="false" />
-                <element signature="e#605#606#0" expanded="false" />
-                <element signature="e#641#642#0" expanded="false" />
-                <element signature="e#719#720#0" expanded="false" />
-                <element signature="e#750#751#0" expanded="false" />
-                <element signature="e#798#799#0" expanded="false" />
-                <element signature="e#838#839#0" expanded="false" />
-                <element signature="e#940#941#0" expanded="false" />
-                <element signature="e#977#978#0" expanded="false" />
-                <element signature="e#1045#1046#0" expanded="false" />
-                <element signature="e#1097#1098#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstitutionInfoEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/InstitutionInfoEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="4" selection-start-line="74" selection-start-column="4" selection-end-line="75" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#6516#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#566#567#0" expanded="false" />
-                <element signature="e#597#598#0" expanded="false" />
-                <element signature="e#645#646#0" expanded="false" />
-                <element signature="e#685#686#0" expanded="false" />
-                <element signature="e#857#858#0" expanded="false" />
-                <element signature="e#893#894#0" expanded="false" />
-                <element signature="e#949#950#0" expanded="false" />
-                <element signature="e#999#1000#0" expanded="false" />
-                <element signature="e#1740#1741#0" expanded="false" />
-                <element signature="e#1777#1778#0" expanded="false" />
-                <element signature="e#1845#1846#0" expanded="false" />
-                <element signature="e#1897#1898#0" expanded="false" />
-                <element signature="e#2032#2033#0" expanded="false" />
-                <element signature="e#2070#2071#0" expanded="false" />
-                <element signature="e#2132#2133#0" expanded="false" />
-                <element signature="e#2186#2187#0" expanded="false" />
-                <element signature="e#2319#2320#0" expanded="false" />
-                <element signature="e#2358#2359#0" expanded="false" />
-                <element signature="e#2420#2421#0" expanded="false" />
-                <element signature="e#2476#2477#0" expanded="false" />
-                <element signature="e#2598#2599#0" expanded="false" />
-                <element signature="e#2631#2632#0" expanded="false" />
-                <element signature="e#2683#2684#0" expanded="false" />
-                <element signature="e#2727#2728#0" expanded="false" />
-                <element signature="e#2841#2842#0" expanded="false" />
-                <element signature="e#2872#2873#0" expanded="false" />
-                <element signature="e#2920#2921#0" expanded="false" />
-                <element signature="e#2960#2961#0" expanded="false" />
-                <element signature="e#3077#3078#0" expanded="false" />
-                <element signature="e#3109#3110#0" expanded="false" />
-                <element signature="e#3159#3160#0" expanded="false" />
-                <element signature="e#3201#3202#0" expanded="false" />
-                <element signature="e#3330#3331#0" expanded="false" />
-                <element signature="e#3359#3360#0" expanded="false" />
-                <element signature="e#3403#3404#0" expanded="false" />
-                <element signature="e#3439#3440#0" expanded="false" />
-                <element signature="e#3506#3507#0" expanded="false" />
-                <element signature="e#3537#3538#0" expanded="false" />
-                <element signature="e#3585#3586#0" expanded="false" />
-                <element signature="e#3625#3626#0" expanded="false" />
-                <element signature="e#3736#3737#0" expanded="false" />
-                <element signature="e#3770#3771#0" expanded="false" />
-                <element signature="e#3824#3825#0" expanded="false" />
-                <element signature="e#3870#3871#0" expanded="false" />
-                <element signature="e#3996#3997#0" expanded="false" />
-                <element signature="e#4026#4027#0" expanded="false" />
-                <element signature="e#4072#4073#0" expanded="false" />
-                <element signature="e#4110#4111#0" expanded="false" />
-                <element signature="e#4181#4182#0" expanded="false" />
-                <element signature="e#4214#4215#0" expanded="false" />
-                <element signature="e#4266#4267#0" expanded="false" />
-                <element signature="e#4310#4311#0" expanded="false" />
-                <element signature="e#4424#4425#0" expanded="false" />
-                <element signature="e#4455#4456#0" expanded="false" />
-                <element signature="e#4503#4504#0" expanded="false" />
-                <element signature="e#4543#4544#0" expanded="false" />
-                <element signature="e#4634#4635#0" expanded="false" />
-                <element signature="e#4661#4662#0" expanded="false" />
-                <element signature="e#4701#4702#0" expanded="false" />
-                <element signature="e#4733#4734#0" expanded="false" />
-                <element signature="e#4816#4817#0" expanded="false" />
-                <element signature="e#4846#4847#0" expanded="false" />
-                <element signature="e#4892#4893#0" expanded="false" />
-                <element signature="e#4930#4931#0" expanded="false" />
-                <element signature="e#5044#5045#0" expanded="false" />
-                <element signature="e#5078#5079#0" expanded="false" />
-                <element signature="e#5132#5133#0" expanded="false" />
-                <element signature="e#5178#5179#0" expanded="false" />
-                <element signature="e#5307#5308#0" expanded="false" />
-                <element signature="e#5346#5347#0" expanded="false" />
-                <element signature="e#5410#5411#0" expanded="false" />
-                <element signature="e#5466#5467#0" expanded="false" />
-                <element signature="e#5752#5753#0" expanded="false" />
-                <element signature="e#5791#5792#0" expanded="false" />
-                <element signature="e#6089#6090#0" expanded="false" />
-                <element signature="e#6122#6123#0" expanded="false" />
-                <element signature="e#6177#6178#0" expanded="false" />
-                <element signature="e#6221#6222#0" expanded="false" />
-                <element signature="e#6380#6381#0" expanded="false" />
-                <element signature="e#6413#6414#0" expanded="false" />
-                <element signature="e#6468#6469#0" expanded="false" />
-                <element signature="e#6512#6513#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PaymentOperationState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/common/PaymentOperationState.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+              <caret line="20" column="81" selection-start-line="20" selection-start-column="81" selection-end-line="20" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestForRankingController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/RequestForRankingController.java">
+      <file leaf-file-name="InstitutionController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/InstitutionController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <caret line="144" column="43" selection-start-line="144" selection-start-column="43" selection-end-line="144" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InstitutionService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/InstitutionService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InstitutionServiceImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/InstitutionServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.83286905">
+              <caret line="354" column="24" selection-start-line="354" selection-start-column="24" selection-end-line="354" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserInfoServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserInfoServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="311" column="5" selection-start-line="311" selection-start-column="5" selection-end-line="311" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResponseMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/common/ResponseMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserInfoService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/UserInfoService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -303,19 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/domain/InvestFieldEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/domain/CityEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/data/ProvinceInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/domain/InvestMemberLevelEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/dao/InvestMemberLevelDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserInfoServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring-dao.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/dao/InstitutionInfoDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/data/institution/InstitutionBasicInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/data/investor/InvestorShortList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/common/InvestorPositionLevelType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/domain/InvestorInfoEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/djt/dao/InvestorInfoDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/data/investor/InvestorIntro.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/data/investor/InvestorBasicInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/data/investor/InvestorInfo.java" />
@@ -343,7 +217,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/djt/controller/InvestorController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/domain/RequestForRanking.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/domain/RequestForRankingEntity.java" />
-        <option value="$PROJECT_DIR$/db/proc_create_tables.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/controller/RequestCashController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/service/impl/RequestCashServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/service/RequestCashService.java" />
@@ -354,6 +227,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserMoneyBagDetailServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/domain/UserMoneyBagDetailEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/djt/service/impl/InvestorServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/service/SmsVerifyService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/service/UserInfoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AlibabaAliqinFcSmsNumSendResponse.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/dao/SmsVerifyDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/common/ResponseMessage.java" />
+        <option value="$PROJECT_DIR$/db/proc_create_tables.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/domain/SmsVerifyEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/controller/SmsVerifyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/service/impl/SmsVerifyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AlidayuUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-context.xml" />
       </list>
     </option>
   </component>
@@ -437,7 +324,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -487,58 +373,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -559,134 +393,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -706,17 +412,18 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="D:\Program Files\nodejs\node.exe" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="62" />
@@ -739,18 +446,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.djt.service.impl" />
-      <recent name="com.djt.service" />
       <recent name="com.djt.controller" />
-      <recent name="com.djt.dao" />
+      <recent name="com.djt.common" />
       <recent name="com.djt.domain" />
+      <recent name="com.djt.dao" />
+      <recent name="com.djt.service.impl" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Program Files\Git\djt\src\main\java\com\djt\data" />
-      <recent name="D:\Program Files\Git\djt\src\main\java\com\djt\dao" />
-      <recent name="D:\Program Files\Git\djt\src\main\java\com\djt\domain" />
-      <recent name="D:\Program Files\Git\djt\src\test\java" />
+      <recent name="D:\Program Files\Git\djt\src\main\java\com\djt\service\impl" />
       <recent name="D:\Program Files\Git\djt\src\main\resources" />
+      <recent name="D:\Program Files\Git\djt\src\main\java\com\djt\utils" />
+      <recent name="D:\Program Files\Git\djt\src\main\java\com\djt\service" />
+      <recent name="D:\Program Files\Git\djt\src\main\java\com\djt\data" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.djt">
@@ -1401,7 +1108,23 @@
       <workItem from="1468313582731" duration="635000" />
       <workItem from="1468392977103" duration="1006000" />
       <workItem from="1468394891064" duration="2463000" />
-      <workItem from="1468563209986" duration="1453000" />
+      <workItem from="1468563209986" duration="2071000" />
+      <workItem from="1468804140533" duration="620000" />
+      <workItem from="1469519938889" duration="5993000" />
+      <workItem from="1469585831604" duration="443000" />
+      <workItem from="1469589412425" duration="5351000" />
+      <workItem from="1469612034680" duration="1596000" />
+      <workItem from="1469667700326" duration="3324000" />
+      <workItem from="1469703088685" duration="611000" />
+      <workItem from="1470134679409" duration="618000" />
+      <workItem from="1470665252477" duration="966000" />
+      <workItem from="1470707558675" duration="17000" />
+      <workItem from="1470830725633" duration="2112000" />
+      <workItem from="1470999627915" duration="1086000" />
+      <workItem from="1471001052660" duration="2859000" />
+      <workItem from="1471258011911" duration="662000" />
+      <workItem from="1471524370700" duration="2177000" />
+      <workItem from="1471604537928" duration="24000" />
     </task>
     <task id="LOCAL-00001" summary="add new Project">
       <created>1465546832157</created>
@@ -1475,7 +1198,13 @@
       <option name="project" value="LOCAL" />
       <updated>1467854134960</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add new Project">
+      <created>1468572284136</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1468572284136</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1511,7 +1240,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260231000" />
+    <option name="totallyTimeSpent" value="289308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1519,19 +1248,18 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52437705" sideWeight="0.3608742" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3943662" sideWeight="0.22027534" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19155844" sideWeight="0.23015021" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4914712" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49573562" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20469083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20415778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13646056" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13539445" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19989339" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1541,8 +1269,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.54279524" sideWeight="0.79584223" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.526087" sideWeight="0.34012875" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3978142" sideWeight="0.77972466" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7054348" sideWeight="0.7698498" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1577,188 +1306,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/CitiesEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="14" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/ProvincesEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="51" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/dao/ProvincesDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/DefaultService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/DefaultServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="24" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/FollowEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../Java/jdk1.8.0_60/src.zip!/java/lang/Override.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6292683">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/FollowService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.12439">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/common/InvestorPositionLevelType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36121672">
-          <caret line="10" column="1" selection-start-line="6" selection-start-column="0" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/FollowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="121" column="17" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/common/FollowTypeEmnu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36121672">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/FollowServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/DefaultController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/common/UserType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alipay/services/AlipayService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alipay/sign/MD5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alipay/android/Base64.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alipay/android/PayDemoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="66" selection-start-line="71" selection-start-column="66" selection-end-line="71" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/data/payment/SubmitOrderInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36121672">
-          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alipay/android/SignUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.36121672">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alipay/config/AlipayConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="44" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/InvestorService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="35" selection-start-line="96" selection-start-column="35" selection-end-line="96" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/InstitutionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="34" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/InstitutionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="43" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/InvestorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="165" column="73" selection-start-line="165" selection-start-column="38" selection-end-line="165" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/InstitutionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="159" column="1" selection-start-line="159" selection-start-column="1" selection-end-line="159" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/UserInfoEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1766,31 +1313,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserInfoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="307" column="9" selection-start-line="289" selection-start-column="8" selection-end-line="307" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/RequestForRankingEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/proc_create_tables.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="328" column="56" selection-start-line="328" selection-start-column="56" selection-end-line="328" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="56" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -1833,7 +1359,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1841,7 +1366,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1849,7 +1373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1857,7 +1380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1865,19 +1387,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="57" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/RequestForRankingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1885,9 +1394,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1895,11 +1401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="166" column="35" selection-start-line="166" selection-start-column="35" selection-end-line="166" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1132#1133#0" expanded="false" />
-            <element signature="e#1188#1189#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1914,7 +1415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1922,11 +1422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="494" column="56" selection-start-line="494" selection-start-column="56" selection-end-line="494" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#11928#11929#0" expanded="false" />
-            <element signature="e#11978#11979#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1934,21 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#1101#0" expanded="false" />
-            <element signature="e#531#532#0" expanded="false" />
-            <element signature="e#560#561#0" expanded="false" />
-            <element signature="e#605#606#0" expanded="false" />
-            <element signature="e#641#642#0" expanded="false" />
-            <element signature="e#719#720#0" expanded="false" />
-            <element signature="e#750#751#0" expanded="false" />
-            <element signature="e#798#799#0" expanded="false" />
-            <element signature="e#838#839#0" expanded="false" />
-            <element signature="e#940#941#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1045#1046#0" expanded="false" />
-            <element signature="e#1097#1098#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1956,92 +1436,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="74" column="4" selection-start-line="74" selection-start-column="4" selection-end-line="75" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#6516#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#566#567#0" expanded="false" />
-            <element signature="e#597#598#0" expanded="false" />
-            <element signature="e#645#646#0" expanded="false" />
-            <element signature="e#685#686#0" expanded="false" />
-            <element signature="e#857#858#0" expanded="false" />
-            <element signature="e#893#894#0" expanded="false" />
-            <element signature="e#949#950#0" expanded="false" />
-            <element signature="e#999#1000#0" expanded="false" />
-            <element signature="e#1740#1741#0" expanded="false" />
-            <element signature="e#1777#1778#0" expanded="false" />
-            <element signature="e#1845#1846#0" expanded="false" />
-            <element signature="e#1897#1898#0" expanded="false" />
-            <element signature="e#2032#2033#0" expanded="false" />
-            <element signature="e#2070#2071#0" expanded="false" />
-            <element signature="e#2132#2133#0" expanded="false" />
-            <element signature="e#2186#2187#0" expanded="false" />
-            <element signature="e#2319#2320#0" expanded="false" />
-            <element signature="e#2358#2359#0" expanded="false" />
-            <element signature="e#2420#2421#0" expanded="false" />
-            <element signature="e#2476#2477#0" expanded="false" />
-            <element signature="e#2598#2599#0" expanded="false" />
-            <element signature="e#2631#2632#0" expanded="false" />
-            <element signature="e#2683#2684#0" expanded="false" />
-            <element signature="e#2727#2728#0" expanded="false" />
-            <element signature="e#2841#2842#0" expanded="false" />
-            <element signature="e#2872#2873#0" expanded="false" />
-            <element signature="e#2920#2921#0" expanded="false" />
-            <element signature="e#2960#2961#0" expanded="false" />
-            <element signature="e#3077#3078#0" expanded="false" />
-            <element signature="e#3109#3110#0" expanded="false" />
-            <element signature="e#3159#3160#0" expanded="false" />
-            <element signature="e#3201#3202#0" expanded="false" />
-            <element signature="e#3330#3331#0" expanded="false" />
-            <element signature="e#3359#3360#0" expanded="false" />
-            <element signature="e#3403#3404#0" expanded="false" />
-            <element signature="e#3439#3440#0" expanded="false" />
-            <element signature="e#3506#3507#0" expanded="false" />
-            <element signature="e#3537#3538#0" expanded="false" />
-            <element signature="e#3585#3586#0" expanded="false" />
-            <element signature="e#3625#3626#0" expanded="false" />
-            <element signature="e#3736#3737#0" expanded="false" />
-            <element signature="e#3770#3771#0" expanded="false" />
-            <element signature="e#3824#3825#0" expanded="false" />
-            <element signature="e#3870#3871#0" expanded="false" />
-            <element signature="e#3996#3997#0" expanded="false" />
-            <element signature="e#4026#4027#0" expanded="false" />
-            <element signature="e#4072#4073#0" expanded="false" />
-            <element signature="e#4110#4111#0" expanded="false" />
-            <element signature="e#4181#4182#0" expanded="false" />
-            <element signature="e#4214#4215#0" expanded="false" />
-            <element signature="e#4266#4267#0" expanded="false" />
-            <element signature="e#4310#4311#0" expanded="false" />
-            <element signature="e#4424#4425#0" expanded="false" />
-            <element signature="e#4455#4456#0" expanded="false" />
-            <element signature="e#4503#4504#0" expanded="false" />
-            <element signature="e#4543#4544#0" expanded="false" />
-            <element signature="e#4634#4635#0" expanded="false" />
-            <element signature="e#4661#4662#0" expanded="false" />
-            <element signature="e#4701#4702#0" expanded="false" />
-            <element signature="e#4733#4734#0" expanded="false" />
-            <element signature="e#4816#4817#0" expanded="false" />
-            <element signature="e#4846#4847#0" expanded="false" />
-            <element signature="e#4892#4893#0" expanded="false" />
-            <element signature="e#4930#4931#0" expanded="false" />
-            <element signature="e#5044#5045#0" expanded="false" />
-            <element signature="e#5078#5079#0" expanded="false" />
-            <element signature="e#5132#5133#0" expanded="false" />
-            <element signature="e#5178#5179#0" expanded="false" />
-            <element signature="e#5307#5308#0" expanded="false" />
-            <element signature="e#5346#5347#0" expanded="false" />
-            <element signature="e#5410#5411#0" expanded="false" />
-            <element signature="e#5466#5467#0" expanded="false" />
-            <element signature="e#5752#5753#0" expanded="false" />
-            <element signature="e#5791#5792#0" expanded="false" />
-            <element signature="e#6089#6090#0" expanded="false" />
-            <element signature="e#6122#6123#0" expanded="false" />
-            <element signature="e#6177#6178#0" expanded="false" />
-            <element signature="e#6221#6222#0" expanded="false" />
-            <element signature="e#6380#6381#0" expanded="false" />
-            <element signature="e#6413#6414#0" expanded="false" />
-            <element signature="e#6468#6469#0" expanded="false" />
-            <element signature="e#6512#6513#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2049,14 +1443,234 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="29" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/InvestorServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33396226">
+        <state vertical-scroll-proportion="0.0">
           <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/SmsVerifyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AlibabaResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/ResponseResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AliResponse1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AliResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.107143">
+          <caret line="255" column="21" selection-start-line="255" selection-start-column="21" selection-end-line="255" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AlibabaAliqinFcSmsNumSendResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-dao.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/app_config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.125">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/es/InstitutionDocument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31878558">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-dao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0806794">
+          <caret line="44" column="61" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c162389b-5546-4720-9db1-f7491de68283/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/domain/SmsVerifyEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32447818">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/dao/SmsVerifyDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39658445">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/proc_create_tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63946867">
+          <caret line="345" column="14" selection-start-line="345" selection-start-column="14" selection-end-line="345" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/RequestForRankingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/SmsVerifyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="182" column="37" selection-start-line="182" selection-start-column="37" selection-end-line="182" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/UserInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/common/ResponseMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/UserInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="311" column="5" selection-start-line="311" selection-start-column="5" selection-end-line="311" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/data/follow/FollowedOrNotInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="81" selection-start-line="20" selection-start-column="81" selection-end-line="20" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/SmsVerifyServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5829847">
+          <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/utils/alidayu/AlidayuUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/controller/InstitutionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="144" column="43" selection-start-line="144" selection-start-column="43" selection-end-line="144" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/InstitutionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/djt/service/impl/InstitutionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83286905">
+          <caret line="354" column="24" selection-start-line="354" selection-start-column="24" selection-end-line="354" selection-end-column="24" />
           <folding />
         </state>
       </provider>

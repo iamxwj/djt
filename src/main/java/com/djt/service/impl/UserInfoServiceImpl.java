@@ -8,16 +8,12 @@
 package com.djt.service.impl;
 
 import com.djt.common.UserType;
-import com.djt.dao.InstitutionInfoDao;
-import com.djt.dao.InvestorInfoDao;
-import com.djt.dao.UserInfoDao;
+import com.djt.dao.*;
 import com.djt.data.ResponseData;
 import com.djt.data.UserLoginInfo;
 import com.djt.data.UserRegisterInfo;
 import com.djt.data.ValidResult;
-import com.djt.domain.InstitutionInfoEntity;
-import com.djt.domain.InvestorInfoEntity;
-import com.djt.domain.UserInfoEntity;
+import com.djt.domain.*;
 import com.djt.service.UserInfoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +42,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     private InstitutionInfoDao institutionInfoDao;
     @Autowired
     private InvestorInfoDao investorInfoDao;
+
+    @Autowired
+    private UserMoneyBagDao moneyBagDao;
+
 
     // key==> value: username ==> UserInfoEntity
 //    private final LoadingCache<String, UserInfoEntity> userInfoEntityCache = CacheBuilder.newBuilder()
@@ -87,7 +87,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        return new ResponseData(false, "username or password error", null);
+        return new ResponseData(false, "用户名或密码错误", null);
     }
 
     @Override
@@ -106,13 +106,14 @@ public class UserInfoServiceImpl implements UserInfoService {
                 Long institutionId = institutionInfoEntity.getInstitutionId();
                 httpSession.setAttribute("id", institutionId);  // 将机构ID写入会话数据
             }
-        } else if (userTypeId == UserType.INVESTOR) {  // 投资者用户类型
+        } else {  // 投资者用户类型
             InvestorInfoEntity investorInfoEntity = investorInfoDao.findByUserId(userId);
             if (investorInfoEntity != null) {
                 long investorId = investorInfoEntity.getInvestorId();
                 httpSession.setAttribute("id", investorId);  // 将投资人ID写入会话数据
             }
         }
+
     }
 
     @Override
@@ -196,10 +197,11 @@ public class UserInfoServiceImpl implements UserInfoService {
                 entity.setUserInfoEntity(userInfoEntity);
 
                 investorInfoDao.save(entity);
-            }
-            // 设置会话
-            setSessionData(request.getSession(), username);
+            } else {
 
+            }
+
+            setSessionData(request.getSession(), username);
             return new ResponseData(true, "注册成功", null);
         } catch (Exception e) {
             e.printStackTrace();
@@ -207,6 +209,7 @@ public class UserInfoServiceImpl implements UserInfoService {
             return new ResponseData(false, "注册失败", null);
         }
     }
+
 
     @Override
     public boolean existsUser(String username) {
@@ -239,7 +242,7 @@ public class UserInfoServiceImpl implements UserInfoService {
             } else {
                 return new ResponseData(false, "密码错误", null);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return new ResponseData(false, "修改密码失败", null);
         }
@@ -290,8 +293,8 @@ public class UserInfoServiceImpl implements UserInfoService {
         try {
             if (validateUserByOldPassword(userLoginInfo)) {
                 UserInfoEntity userInfoEntity1 = userInfoDao.findByMobile(userLoginInfo.getPhone());
-                if(userInfoEntity1 != null){
-                    return new ResponseData(false,"手机号码已经被使用请更改手机号",null);
+                if (userInfoEntity1 != null) {
+                    return new ResponseData(false, "手机号码已经被使用请更改手机号", null);
                 }
                 UserInfoEntity userInfoEntity = userInfoDao.findByName(userLoginInfo.getUsername());
                 userInfoEntity.setMobile(userLoginInfo.getPhone());
@@ -305,6 +308,19 @@ public class UserInfoServiceImpl implements UserInfoService {
 //            e.printStackTrace();
 //            logger.error(e.toString());
             return new ResponseData(false, "修改Phone失败", null);
+        }
+    }
+
+    @Override
+    public ResponseData modifyPasswordByVerify(UserLoginInfo userLoginInfo) {
+        try {
+            UserInfoEntity userInfoEntity = userInfoDao.findByName(userLoginInfo.getUsername());
+            userInfoEntity.setPassword(userLoginInfo.getNewPassword());
+            userInfoDao.save(userInfoEntity);
+            return new ResponseData(true, "修改密码成功", null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseData(false, "修改密码失败", null);
         }
     }
 

@@ -170,4 +170,16 @@ public class UserController {
     public ResponseData modifyPhone(@RequestBody  UserLoginInfo userLoginInfo){
         return userInfoService.modifyPhone(userLoginInfo);
     }
+
+
+    /**
+     * 直接修改密码（通过验证码后）
+     * @param userLoginInfo
+     * @return
+     */
+    @RequestMapping(value = "/direct_change_pass", method = RequestMethod.POST)
+    @ResponseBody
+    ResponseData modifyPasswordByVerify(@RequestBody UserLoginInfo userLoginInfo){
+        return userInfoService.modifyPasswordByVerify(userLoginInfo);
+    }
 }

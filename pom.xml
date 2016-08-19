@@ -254,6 +254,13 @@
             <artifactId>elasticsearch</artifactId>
             <version>2.3.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.taobao</groupId>
+            <artifactId>sdk</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/taobao-sdk.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>

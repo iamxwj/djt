@@ -10,8 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author HOU Zhipeng
- * @date 2016/06/12
+ * Created by chenbin on 2015/10/27.
  */
 public interface UserInfoService {
 
@@ -84,4 +83,11 @@ public interface UserInfoService {
      * @return
      */
     ResponseData modifyPhone(UserLoginInfo userLoginInfo);
+
+    /**
+     * 直接修改密码（通过验证码后）
+     * @param userLoginInfo
+     * @return
+     */
+    ResponseData modifyPasswordByVerify(UserLoginInfo userLoginInfo);
 }
