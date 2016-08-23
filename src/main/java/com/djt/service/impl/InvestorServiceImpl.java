@@ -196,7 +196,8 @@ public class InvestorServiceImpl implements InvestorService {
                 entity.setCity(info.getCity());
             if (!StringUtils.isNullOrEmpty(info.getMobilePortraitUrl()))
                 entity.setMobilePortrait(info.getMobilePortraitUrl());
-
+            if (!StringUtils.isNullOrEmpty(info.getStatus()))
+                entity.setMobilePortrait(info.getStatus());
             List<String> webPortraitUrlList = info.getWebPortraitUrl();
             StringBuilder sb = new StringBuilder();
             if (webPortraitUrlList != null) {

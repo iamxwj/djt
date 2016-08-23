@@ -3,11 +3,6 @@
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="djt-web.war">
       <element id="artifact" artifact-name="djt:war exploded" />
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="library" level="module" name="Maven: com.taobao:sdk:1.0" module-name="djt" />
-        </element>
-      </element>
     </root>
   </artifact>
 </component>
