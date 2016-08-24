@@ -7,6 +7,8 @@
 
 package com.djt.utils;
 
+import com.djt.data.PageInfo;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -51,5 +53,14 @@ public class PageAndSortUtils {
     public static Pageable pageAscSortRequest(String property, int pageIndex, int pageSize) {
         Sort sort = ascSort(property);
         return pageRequest(pageIndex, pageSize, sort);
+    }
+
+    public static <T> PageInfo<T>  getPageInfo(int curPage,int size,Page<T> page){
+       return  new PageInfo<T>(curPage, size,page.getTotalPages(),page.getTotalElements(),page.getContent());
+
+    }
+    public static <T,E> PageInfo<E>  getPageInfo2(int curPage,int size,Page<T> page){
+        return  new PageInfo<E>(curPage, size,page.getTotalPages(),page.getTotalElements());
+
     }
 }

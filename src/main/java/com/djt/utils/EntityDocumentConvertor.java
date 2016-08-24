@@ -1,10 +1,12 @@
 package com.djt.utils;
 
+import com.djt.data.PageInfo;
 import com.djt.domain.InstitutionInfoEntity;
 import com.djt.domain.InstitutionMemberEntity;
 import com.djt.domain.InvestorInfoEntity;
 import com.djt.domain.es.InstitutionDocument;
 import com.djt.domain.es.InvestorDocument;
+import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +43,14 @@ public class EntityDocumentConvertor {
         return string;
     }
 
-    public static Iterable<Long> getInstitutionIds(Iterable<InstitutionDocument> institutionDocuments) {
+    public static PageInfo<Long> getInstitutionIds(Page<InstitutionDocument> institutionDocuments, int page, int size) {
         List<Long> ids = new ArrayList<>();
-        for (InstitutionDocument institutionDocument : institutionDocuments) {
+        PageInfo<Long> pageInfo = PageAndSortUtils.getPageInfo2(page,size,institutionDocuments);
+        for (InstitutionDocument institutionDocument : institutionDocuments.getContent()) {
             ids.add(institutionDocument.getInstitutionId());
         }
-        return ids;
+        pageInfo.setContent(ids);
+        return pageInfo;
     }
 
 
@@ -65,12 +69,14 @@ public class EntityDocumentConvertor {
         return new InvestorDocument(i.getInvestorId(), i.getInvestorName(), i.getInstitutionName(), i.getInvestorPosition());
     }
 
-    public static Iterable<Long> getInvestorIds(Iterable<InvestorDocument> all){
+    public static PageInfo<Long> getInvestorIds(Page<InvestorDocument> institutionDocuments, int page, int size) {
         List<Long> ids = new ArrayList<>();
-        for(InvestorDocument i: all){
-            ids.add(i.getInvestorId());
+        PageInfo<Long> pageInfo = PageAndSortUtils.getPageInfo2(page,size,institutionDocuments);
+        for (InvestorDocument institutionDocument : institutionDocuments.getContent()) {
+            ids.add(institutionDocument.getInvestorId());
         }
-        return ids;
+        pageInfo.setContent(ids);
+        return pageInfo;
     }
     // end of the Investor
 }

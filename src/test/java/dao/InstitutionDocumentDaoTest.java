@@ -86,14 +86,5 @@ public class InstitutionDocumentDaoTest {
 
     @Test
     public void testTemplate() {
-        Page<InstitutionDocument> institutionDocuments =
-                institutionRepository.findByInstitutionNameAndInstitutionMemberNames("?", "?", new PageRequest(0, 10));
-        Iterable<Long> ids = EntityDocumentConvertor.getInstitutionIds(institutionDocuments);
-        for(Long id: ids){
-            System.out.println(id);
-        }
-        for (InstitutionDocument institutionDocument : institutionDocuments) {
-            System.out.println(institutionDocument);
-        }
     }
 }

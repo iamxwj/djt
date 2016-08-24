@@ -116,7 +116,7 @@ public class InstitutionServiceImpl implements InstitutionService {
         Timestamp createTime = entity.getCreateTime();
         Timestamp updateTime = entity.getUpdateTime();
 
-        InstitutionInfo info = new InstitutionInfo(institutionId, name, institutionIntro, achievements,level, year,
+        InstitutionInfo info = new InstitutionInfo(institutionId, name, institutionIntro, achievements, level, year,
                 fundNumber, fundUnit, staffSize, firstFields, province, city, address, webLogo, mobileLogo, createTime,
                 updateTime, userId, investorNames, investorShortList, status, business);
 
@@ -132,7 +132,7 @@ public class InstitutionServiceImpl implements InstitutionService {
     }
 
     private InvestorShortList renderInvestorsToShortList(InvestorInfoEntity i) {
-        return new InvestorShortList(i.getInvestorName(), i.getMobilePortrait(), i.getInvestorPosition());
+        return new InvestorShortList(i.getInvestorName(), i.getMobilePortrait(), i.getInvestorPosition(), i.getInvestorLevel());
     }
 
 
@@ -341,24 +341,28 @@ public class InstitutionServiceImpl implements InstitutionService {
             if (StringUtils.isNullOrEmpty(institutionMember)) {
                 institutionMember = "?";
             }
-            Iterable<Long> ids = EntityDocumentConvertor.getInstitutionIds(institutionRepository.findByInstitutionNameAndInstitutionMemberNames(institutionName, institutionMember, new PageRequest(page, size)));
-            Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findAll(ids);
-
+            PageInfo<Long> ids = EntityDocumentConvertor.getInstitutionIds(institutionRepository.findByInstitutionNameAndInstitutionMemberNames(institutionName, institutionMember, new PageRequest(page, size)),page,size);
+            Iterable<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findAll(ids.getContent());
             List<InstitutionInfo> institutionInfos = parseInvestorEntities(institutionInfoEntities);
-            return new ResponseData(true, "", institutionInfos);
+            PageInfo<InstitutionInfo> institutionInfoPageInfo = parsePageInfo(ids,institutionInfos);
+            return new ResponseData(true, "", institutionInfoPageInfo);
         } catch (Exception e) {
             return new ResponseData(false, "", null);
         }
     }
-
+    private PageInfo<InstitutionInfo> parsePageInfo(PageInfo<Long> ids, List<InstitutionInfo> investorInfos) {
+        PageInfo<InstitutionInfo> investorPageInfo = new PageInfo<>(ids);
+        investorPageInfo.setContent(investorInfos);
+        return investorPageInfo;
+    }
     @Override
     public ResponseData getFirstField(String firstField, int page, int size) {
         try {
             firstField = "%" + firstField + "%";
             Page<InstitutionInfoEntity> institutionInfoEntities = institutionInfoDao.findByFirstFieldsLike(firstField, new PageRequest(page, size));
-            List<InstitutionInfo> investorInfos = parseInvestorEntities(institutionInfoEntities);
-
-            return new ResponseData(true, "get institution info List success", investorInfos);
+            List<InstitutionInfo> institutionInfos = parseInvestorEntities(institutionInfoEntities);
+            PageInfo<InstitutionInfo> institutionInfoPageInfo = parsePageInfo(PageAndSortUtils.getPageInfo2(page,size,institutionInfoEntities),institutionInfos);
+            return new ResponseData(true, "get institution info List success", institutionInfoPageInfo);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseData(false, "get institution info List exists", null);

@@ -11,6 +11,7 @@ import com.djt.common.UserType;
 import com.djt.dao.*;
 import com.djt.data.*;
 import com.djt.data.condition.InvestSearchCondition;
+import com.djt.data.institution.InstitutionInfo;
 import com.djt.data.investor.*;
 import com.djt.domain.*;
 import com.djt.repositories.InvestorRepository;
@@ -332,16 +333,23 @@ public class InvestorServiceImpl implements InvestorService {
             if (StringUtils.isNullOrEmpty(position)) {
                 position = "?";
             }
-            Iterable<Long> ids =
+            PageInfo<Long> ids =
                     EntityDocumentConvertor
-                            .getInvestorIds(investorRepository.findByInvestorNameAndInstitutionNameAndInvestorPosition(institutionName, institutionMember, position, new PageRequest(page, size)));
-            Iterable<InvestorInfoEntity> InvestorInfoEntities = investorInfoDao.findAll(ids);
+                            .getInvestorIds(investorRepository.findByInvestorNameAndInstitutionNameAndInvestorPosition(institutionName, institutionMember, position, new PageRequest(page, size)),page,size);
+            Iterable<InvestorInfoEntity> InvestorInfoEntities = investorInfoDao.findAll(ids.getContent());
 
             List<InvestorInfo> investorInfos = parseInvestorEntities(InvestorInfoEntities);
-            return new ResponseData(true, "", investorInfos);
+            PageInfo<InvestorInfo> investorInfoPageInfo =parsePageInfo(ids,investorInfos);
+            return new ResponseData(true, "", investorInfoPageInfo);
         } catch (Exception e) {
             return new ResponseData(false, "", null);
         }
+    }
+
+    private PageInfo<InvestorInfo> parsePageInfo(PageInfo<Long> ids, List<InvestorInfo> investorInfos) {
+        PageInfo<InvestorInfo> investorPageInfo = new PageInfo<>(ids);
+        investorPageInfo.setContent(investorInfos);
+        return investorPageInfo;
     }
 
     @Override
@@ -351,7 +359,8 @@ public class InvestorServiceImpl implements InvestorService {
             firstField = "%" + firstField + "%";
             Page<InvestorInfoEntity> investorInfoEntities1 = investorInfoDao.findByLevelTypeAndFirstFieldsLike(position, firstField, new PageRequest(page, size));
             List<InvestorInfo> investorInfos = parseInvestorEntities(investorInfoEntities1);
-            return new ResponseData(true, "get search List success", investorInfos);
+            PageInfo<InvestorInfo> investorInfoPageInfo =parsePageInfo(PageAndSortUtils.getPageInfo2(page,size,investorInfoEntities1),investorInfos);
+            return new ResponseData(true, "get search List success", investorInfoPageInfo);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseData(false, "get search List fail", null);

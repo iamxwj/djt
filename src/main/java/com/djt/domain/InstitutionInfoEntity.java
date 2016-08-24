@@ -72,7 +72,7 @@ public class InstitutionInfoEntity {
      *
      * @return
      */
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     public UserInfoEntity getUserInfoEntity() {
         return userInfoEntity;
