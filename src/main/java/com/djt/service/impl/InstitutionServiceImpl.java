@@ -246,7 +246,8 @@ public class InstitutionServiceImpl implements InstitutionService {
                 entity.setFirstFields(sb2.toString());
             }
 
-
+            if (!StringUtils.isNullOrEmpty(info.getStatus()))
+                entity.setStatus(info.getStatus());
             if (!StringUtils.isNullOrEmpty(info.getProvince()))
                 entity.setProvince(info.getProvince());
             if (!StringUtils.isNullOrEmpty(info.getCity()))

@@ -106,6 +106,49 @@ public class InstitutionInfoEntity {
         this.institutionLevel = institutionLevel;
     }
 
+    private Double annualProfit; //年利润
+    @Basic
+    @Column(name = "annual_profit")
+    public Double getAnnualProfit() {
+        return annualProfit;
+    }
+
+    public void setAnnualProfit(Double annualProfit) {
+        this.annualProfit = annualProfit;
+    }
+
+    private String annualProfitUnit;//年利润单位
+    @Basic
+    @Column(name = "annual_profit_unit")
+    public String getAnnualProfitUnit() {
+        return annualProfitUnit;
+    }
+
+    public void setAnnualProfitUnit(String annualProfitUnit) {
+        this.annualProfitUnit = annualProfitUnit;
+    }
+
+    private Double annualRevenue; //年营收
+
+    public Double getAnnualRevenue() {
+        return annualRevenue;
+    }
+    @Basic
+    @Column(name = "annual_revenue")
+    public void setAnnualRevenue(Double annualRevenue) {
+        this.annualRevenue = annualRevenue;
+    }
+
+    private String annualRevenueUnit;//年营收单位
+
+    public String getAnnualRevenueUnit() {
+        return annualRevenueUnit;
+    }
+    @Basic
+    @Column(name = "annual_revenue_unit")
+    public void setAnnualRevenueUnit(String annualRevenueUnit) {
+        this.annualRevenueUnit = annualRevenueUnit;
+    }
 
     private Double fundNumber; //市值金额
 

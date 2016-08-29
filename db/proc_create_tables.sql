@@ -98,6 +98,14 @@ CREATE TABLE IF NOT EXISTS `institution_info` (
   COMMENT '基金规模',
   `fund_unit`         VARCHAR(15)                  DEFAULT ''
   COMMENT '基金单位（万元，万美元，亿元，亿美元）',
+  `annual_revenue`       DOUBLE                       DEFAULT '0'
+  COMMENT '年营收金额',
+  `annual_revenue_unit`         VARCHAR(15)                  DEFAULT ''
+  COMMENT '年营收单位（万元，万美元，亿元，亿美元）',
+  `annual_profit`       DOUBLE                       DEFAULT '0'
+  COMMENT '年利润金额',
+  `annual_profit_unit`         VARCHAR(15)                  DEFAULT ''
+  COMMENT '年利润单位（万元，万美元，亿元，亿美元）',
   `staff_size`        VARCHAR(60)                  DEFAULT ''
   COMMENT '人员规模',
   `status`            VARCHAR(500)                 DEFAULT ''

@@ -63,7 +63,6 @@ public class InvestorServiceImpl implements InvestorService {
 
         logger.info("pageNumber = " + page.getPageNumber() + "; pageSize = " + page.getPageSize());
 
-
         //Specification<InvestorInfoEntity> spec = SpecUtils.investorListSpec(condition);
         Iterable<InvestorInfoEntity> investorInfoEntityList = investorInfoDao.findAll();
         if (investorInfoEntityList == null)
@@ -198,7 +197,7 @@ public class InvestorServiceImpl implements InvestorService {
             if (!StringUtils.isNullOrEmpty(info.getMobilePortraitUrl()))
                 entity.setMobilePortrait(info.getMobilePortraitUrl());
             if (!StringUtils.isNullOrEmpty(info.getStatus()))
-                entity.setMobilePortrait(info.getStatus());
+                entity.setStatus(info.getStatus());
             List<String> webPortraitUrlList = info.getWebPortraitUrl();
             StringBuilder sb = new StringBuilder();
             if (webPortraitUrlList != null) {
